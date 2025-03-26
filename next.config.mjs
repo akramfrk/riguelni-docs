@@ -14,6 +14,9 @@ const nextConfig = {
   // Strict mode for better development
   reactStrictMode: true,
   swcMinify: true,
+  // Ensure proper static export
+  distDir: 'out',
+  trailingSlash: true,
   // Ensure proper CSS handling in static export
   webpack: (config, { isServer }) => {
     // Optimize CSS in production
