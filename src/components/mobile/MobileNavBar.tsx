@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { BookOpen, Code, Github, ChevronRight, Home, Layers, Users } from "lucide-react"
+import { ThemeTogglerMobile } from "@/components/mobile/MobileThemeToggler"
 
 interface MobileNavBarProps {
   isOpen: boolean
@@ -41,7 +42,7 @@ export function MobileNavBar({ isOpen, setIsOpen }: MobileNavBarProps) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 top-14 bg-black lg:hidden">
+    <div className="fixed inset-0 z-50 top-14 bg-background lg:hidden">
       <div className="flex flex-col h-full">
         <div className="flex-1 overflow-auto no-scrollbar">
           <div className="flex flex-col gap-2 p-4">
@@ -50,20 +51,23 @@ export function MobileNavBar({ isOpen, setIsOpen }: MobileNavBarProps) {
                 <Link
                   key={item.title}
                   href={item.url}
-                  className="flex items-center justify-between py-3 px-3 rounded-lg hover:bg-accent/10 text-white"
+                  className="flex items-center justify-between py-3 px-3 rounded-lg hover:bg-accent text-foreground"
                   onClick={() => setIsOpen(false)}
                   target={item.url.startsWith("http") ? "_blank" : undefined}
                   rel={item.url.startsWith("http") ? "noopener noreferrer" : undefined}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex h-5 w-5 items-center justify-center text-white/60">
+                    <div className="flex h-5 w-5 items-center justify-center text-muted-foreground">
                       {item.icon}
                     </div>
                     <span>{item.title}</span>
                   </div>
-                  <ChevronRight className="h-5 w-5 text-white/60" />
+                  <ChevronRight className="h-5 w-5 text-muted-foreground" />
                 </Link>
               ))}
+              <div className="flex justify-center py-3">
+                <ThemeTogglerMobile />
+              </div>
             </div>
           </div>
         </div>

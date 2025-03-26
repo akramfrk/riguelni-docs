@@ -5,7 +5,6 @@ import Link from "next/link"
 import { ArrowRight, Github, Search, Sparkles, Code2, BookOpen, Layers } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Command } from "@/components/lego/Command"
-import { useEffect, useState } from "react"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,44 +27,6 @@ const childVariants = {
 }
 
 export default function Hero() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return (
-      <div className="relative w-full overflow-visible">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 z-[-1] h-screen w-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
-        </div>
-        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] dark:bg-black" />
-        <div className="container relative mx-auto min-h-[calc(100vh-6rem)] flex flex-col justify-center items-center text-center">
-          <div className="relative max-w-5xl mx-auto px-4">
-            {/* Static content for initial render */}
-            <div className="mb-8 flex items-center justify-center gap-2">
-              <span className="inline-flex items-center rounded-full border border-primary/20 px-4 py-1.5 text-sm font-medium text-muted-foreground bg-background/50 backdrop-blur-sm shadow-sm">
-                <Sparkles className="mr-2 h-3.5 w-3.5 text-primary animate-pulse" />
-                Technical Documentation
-              </span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8">
-              Inside{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-primary">
-                Riguelni
-              </span>{" "}
-              Platform
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed">
-              Explore the architecture, technologies, and development practices used to build Riguelni - the modern freelancing platform connecting Algerian talent with global opportunities.
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className="relative w-full overflow-visible">
       {/* Gradient background with modern feel */}
@@ -79,7 +40,7 @@ export default function Hero() {
       <motion.section
         initial="hidden"
         animate="visible"
-        className="container relative mx-auto min-h-[calc(100vh-6rem)] flex flex-col justify-center items-center text-center"
+        className="container relative mx-auto min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-6rem)] flex flex-col justify-center items-center text-center pt-16 sm:pt-0"
       >
         <motion.div className="relative max-w-5xl mx-auto px-4" variants={containerVariants}>
           {/* Badge */}
