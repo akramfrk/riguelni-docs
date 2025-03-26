@@ -7,12 +7,6 @@ on:
     branches:
       - master
 
-permissions:
-  contents: read
-  deployments: write
-  pull-requests: write
-  statuses: write
-
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
@@ -29,11 +23,11 @@ jobs:
         run: npm install
 
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
+        uses: vercel/actions/deploy@v1
         with:
+          token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-args: '--prod'
-          working-directory: . 
+          working-directory: ./ 
