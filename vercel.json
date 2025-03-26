@@ -3,7 +3,7 @@
   "buildCommand": "next build",
   "devCommand": "next dev",
   "installCommand": "npm install",
-  "outputDirectory": "out",
+  "outputDirectory": ".next",
   "regions": ["iad1"],
   "headers": [
     {

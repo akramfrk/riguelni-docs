@@ -14,10 +14,7 @@ const nextConfig = {
   // Strict mode for better development
   reactStrictMode: true,
   swcMinify: true,
-  // Ensure proper static export
-  distDir: 'out',
-  trailingSlash: true,
-  // Ensure proper CSS handling in static export
+  // Remove distDir and trailingSlash as they might conflict with static export
   webpack: (config, { isServer }) => {
     // Optimize CSS in production
     if (!isServer && process.env.NODE_ENV === 'production') {
