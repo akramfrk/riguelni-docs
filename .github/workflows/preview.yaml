@@ -6,6 +6,13 @@ on:
   pull_request:
     branches:
       - master
+
+permissions:
+  contents: read
+  deployments: write
+  pull-requests: write
+  statuses: write
+
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
@@ -28,4 +35,5 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-args: '--prod' 
+          vercel-args: '--prod'
+          working-directory: . 
