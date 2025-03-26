@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   images: {
-    domains: ['avatars.githubusercontent.com'],
+    unoptimized: true,
   },
   // Enable CSS optimization
   optimizeFonts: true,
@@ -10,7 +11,7 @@ const nextConfig = {
   },
   // Strict mode for better development
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: true
 }
 
 export default nextConfig

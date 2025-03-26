@@ -19,9 +19,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preload" href="../styles/globals.css" as="style" />
-      </head>
       <body className={`${inter.className} min-h-screen bg-background antialiased`}>
         <ThemeProvider
           attribute="class"
