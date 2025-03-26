@@ -1,4 +1,4 @@
-import { HoverEffect } from "@/components/ui/card-hover-effect"
+import { HoverEffect, Card, CardTitle, CardDescription } from "@/components/ui/card-hover-effect"
 
 export default function Features() {
   return (

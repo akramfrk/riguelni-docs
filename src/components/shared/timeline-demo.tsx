@@ -99,25 +99,25 @@ export default function TimelineDemo() {
               <div>
                 <p className="font-medium text-foreground">Testing & Optimization</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Comprehensive testing of all features, performance optimization, and security auditing
+                  Comprehensive testing, performance optimization, and security audits
                 </p>
               </div>
             </div>
             <div className="flex gap-3 items-start">
               <span className="text-primary mt-1">✦</span>
               <div>
-                <p className="font-medium text-foreground">Documentation</p>
+                <p className="font-medium text-foreground">Documentation & Support</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Creating detailed user guides, API documentation, and developer resources
+                  Creating comprehensive documentation and setting up support infrastructure
                 </p>
               </div>
             </div>
             <div className="flex gap-3 items-start">
               <span className="text-primary mt-1">✦</span>
               <div>
-                <p className="font-medium text-foreground">Beta Launch</p>
+                <p className="font-medium text-foreground">Launch</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Initial platform release with core features and gathering user feedback for improvements
+                  Final preparations and launch of the platform to the public
                 </p>
               </div>
             </div>
@@ -128,8 +128,13 @@ export default function TimelineDemo() {
   ]
 
   return (
-    <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8">
-      <Timeline data={data} />
+    <div className="container px-4 md:px-6">
+      <div className="mx-auto max-w-[1000px]">
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
+          Development Roadmap
+        </h2>
+        <Timeline data={data} />
+      </div>
     </div>
   )
 }
