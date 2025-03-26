@@ -1,14 +1,9 @@
 /** @type {import('postcss-load-config').Config} */
-const config = {
+export default {
   plugins: {
-    'tailwindcss/nesting': {},
+    'postcss-import': {},
+    'tailwindcss/nesting': 'postcss-nesting',
     tailwindcss: {},
-    autoprefixer: {
-      flexbox: 'no-2009',
-      grid: 'autoplace'
-    },
-    ...(process.env.NODE_ENV === 'production' ? { cssnano: { preset: 'default' } } : {})
+    autoprefixer: {},
   },
 };
-
-export default config;
