@@ -1,3 +1,5 @@
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
@@ -11,7 +13,25 @@ const nextConfig = {
   },
   // Strict mode for better development
   reactStrictMode: true,
-  swcMinify: true
+  swcMinify: true,
+  // Ensure proper CSS handling in static export
+  webpack: (config, { isServer }) => {
+    // Optimize CSS in production
+    if (!isServer && process.env.NODE_ENV === 'production') {
+      config.optimization.minimize = true;
+      config.optimization.minimizer.push(
+        new CssMinimizerPlugin({
+          minimizerOptions: {
+            preset: ['default', {
+              discardComments: { removeAll: true },
+              normalizeWhitespace: false,
+            }],
+          },
+        })
+      );
+    }
+    return config;
+  }
 }
 
 export default nextConfig
