@@ -48,15 +48,18 @@
     --input: 273 19% 24%;
     --ring: 256 95% 83%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     @apply bg-background text-foreground;
-    font-family: "Inter", sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
@@ -65,19 +68,29 @@
   color: hsl(var(--primary));
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
 /* Animation utilities */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s linear infinite alternate;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 6s ease-in-out infinite;
+  }
+}
+
 @keyframes pulse-slow {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0.4;
   }
   50% {
@@ -92,14 +105,6 @@
   100% {
     background-position: 100% 50%;
   }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 6s ease-in-out infinite;
-}
-
-.animate-gradient {
-  animation: gradient 8s linear infinite alternate;
 }
 
 .bg-gradient-radial {

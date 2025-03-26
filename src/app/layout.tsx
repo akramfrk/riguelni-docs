@@ -19,12 +19,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <head>
+        <link rel="preload" href="../styles/globals.css" as="style" />
+      </head>
+      <body className={`${inter.className} min-h-screen bg-background antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          storageKey="riguelni-theme"
         >
           <div className="relative min-h-screen flex flex-col">
             <Navbar />
