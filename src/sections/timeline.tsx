@@ -1,4 +1,4 @@
-import TimelineDemo from "@/components/timeline-demo"
+import TimelineDemo from "@/components/shared/timeline-demo"
 
 export default function Timeline() {
   return (

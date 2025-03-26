@@ -22,16 +22,28 @@ export function ThemeToggler() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-32">
-        <DropdownMenuItem onClick={() => setTheme("light")} className="flex items-center gap-2">
+      <DropdownMenuContent align="end" className="w-32 z-[200]">
+        <DropdownMenuItem 
+          onClick={() => setTheme("light")} 
+          className="flex items-center gap-2 cursor-pointer"
+          data-active={theme === "light"}
+        >
           <Sun className="h-4 w-4" />
           <span>Light</span>
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")} className="flex items-center gap-2">
+        <DropdownMenuItem 
+          onClick={() => setTheme("dark")} 
+          className="flex items-center gap-2 cursor-pointer"
+          data-active={theme === "dark"}
+        >
           <Moon className="h-4 w-4" />
           <span>Dark</span>
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")} className="flex items-center gap-2">
+        <DropdownMenuItem 
+          onClick={() => setTheme("system")} 
+          className="flex items-center gap-2 cursor-pointer"
+          data-active={theme === "system"}
+        >
           <Monitor className="h-4 w-4" />
           <span>System</span>
         </DropdownMenuItem>

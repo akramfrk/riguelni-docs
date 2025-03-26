@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { cn } from "@/lib/utils"
 import { AnimatePresence, motion } from "framer-motion"
 import Link from "next/link"
@@ -18,10 +16,15 @@ export const HoverEffect = ({
   }[]
   className?: string
 }) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10", className)}>
+    <div
+      className={cn(
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10",
+        className
+      )}
+    >
       {items.map((item, idx) => (
         <Link
           href={item.link}
@@ -33,8 +36,8 @@ export const HoverEffect = ({
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-primary/20 dark:bg-primary/30 block rounded-3xl"
-                layoutId="featuresHoverBackground"
+                className="absolute inset-0 h-full w-full bg-primary/15 dark:bg-primary/30 block rounded-3xl border border-primary/10 dark:border-primary/20"
+                layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
@@ -67,8 +70,8 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-background border border-transparent dark:border-white/[0.2] group-hover:border-border relative z-20",
-        className,
+        "rounded-2xl h-full w-full p-4 overflow-hidden bg-background border border-border/10 relative z-20",
+        className
       )}
     >
       <div className="relative z-50">
@@ -85,7 +88,11 @@ export const CardTitle = ({
   className?: string
   children: React.ReactNode
 }) => {
-  return <h4 className={cn("text-foreground font-bold tracking-wide mt-4", className)}>{children}</h4>
+  return (
+    <h4 className={cn("text-card-foreground font-bold tracking-wide mt-4", className)}>
+      {children}
+    </h4>
+  )
 }
 
 export const CardDescription = ({
@@ -95,6 +102,14 @@ export const CardDescription = ({
   className?: string
   children: React.ReactNode
 }) => {
-  return <p className={cn("mt-4 text-muted-foreground tracking-wide leading-relaxed text-sm", className)}>{children}</p>
-}
-
+  return (
+    <p
+      className={cn(
+        "mt-4 text-muted-foreground tracking-wide leading-relaxed text-sm",
+        className
+      )}
+    >
+      {children}
+    </p>
+  )
+} 
