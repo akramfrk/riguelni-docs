@@ -45,16 +45,11 @@ const nextConfig = {
   // Strict mode for better development
   reactStrictMode: true,
   swcMinify: true,
-  // Configure static export
-  output: 'export',
-  // Configure asset handling
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/_next' : '',
-  // Configure webpack for CSS optimization
+  // Remove distDir and trailingSlash as they might conflict with static export
   webpack: (config, { isServer }) => {
     // Optimize CSS in production
     if (!isServer && process.env.NODE_ENV === 'production') {
       config.optimization.minimize = true;
-      config.optimization.minimizer = config.optimization.minimizer || [];
       config.optimization.minimizer.push(
         new CssMinimizerPlugin({
           minimizerOptions: {
