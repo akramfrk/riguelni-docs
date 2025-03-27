@@ -3,11 +3,11 @@
   "buildCommand": "next build",
   "devCommand": "next dev",
   "installCommand": "npm install",
-  "outputDirectory": ".next",
+  "outputDirectory": "out",
   "regions": ["iad1"],
   "headers": [
     {
-      "source": "/static/(.*)",
+      "source": "/_next/static/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "source": "/_next/static/(.*)",
+      "source": "/riguelni-docs/_next/static/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

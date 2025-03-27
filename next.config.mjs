@@ -46,10 +46,9 @@ const nextConfig = {
   // Strict mode for better development
   reactStrictMode: true,
   swcMinify: true,
-  // Configure output directory
-  distDir: '.next',
-  // Asset prefix for static export
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/riguelni-docs' : '',
+  // Remove distDir since we're using export
+  // Remove assetPrefix as it's causing path resolution issues
+  basePath: process.env.NODE_ENV === 'production' ? '/riguelni-docs' : '',
   webpack: (config, { isServer }) => {
     // Optimize CSS in production
     if (!isServer && process.env.NODE_ENV === 'production') {
