@@ -46,44 +46,7 @@ const nextConfig = {
   },
   // Strict mode for better development
   reactStrictMode: true,
-  swcMinify: true,
-  webpack: (config, { dev, isServer }) => {
-    // Optimize CSS in production
-    if (!dev && !isServer) {
-      config.optimization.minimize = true;
-      config.optimization.minimizer.push(
-        new CssMinimizerPlugin({
-          minimizerOptions: {
-            preset: ['default', {
-              discardComments: { removeAll: true },
-              normalizeWhitespace: false,
-            }],
-          },
-        })
-      );
-
-      // Ensure CSS modules are handled correctly
-      const rules = config.module.rules
-        .find((rule) => typeof rule.oneOf === 'object')
-        .oneOf.filter((rule) => Array.isArray(rule.use));
-
-      rules.forEach((rule) => {
-        rule.use.forEach((moduleLoader) => {
-          if (
-            moduleLoader.loader?.includes('css-loader') &&
-            !moduleLoader.loader?.includes('postcss-loader')
-          ) {
-            moduleLoader.options.modules = {
-              ...moduleLoader.options.modules,
-              exportLocalsConvention: 'camelCase',
-            };
-          }
-        });
-      });
-    }
-
-    return config;
-  }
+  swcMinify: true
 }
 
 export default nextConfig
