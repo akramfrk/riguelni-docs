@@ -168,18 +168,6 @@ export function AnimatedContent() {
           </div>
         </motion.div>
       </motion.div>
-
-      <p className="text-lg text-muted-foreground">
-        We&apos;re building the future of freelancing, one line of code at a time.
-      </p>
-
-      <p className="text-lg text-muted-foreground">
-        &quot;The best way to predict the future is to create it.&quot; We&apos;re not just building a platform, we&apos;re building the future of work.
-      </p>
-
-      <p className="text-lg text-muted-foreground">
-        We&apos;re not just a team, we&apos;re a family.
-      </p>
     </motion.div>
   )
 } 

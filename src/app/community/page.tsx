@@ -230,13 +230,16 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
 
         {/* Image with enhanced hover effect */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500"></div>
-        <Image
-          src={member.image}
-          alt={member.name}
-          width={200}
-          height={200}
-          className="rounded-full object-cover"
-        />
+        <div className="relative w-full h-full">
+          <Image
+            src={member.image}
+            alt={member.name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover w-full h-full transform group-hover:scale-110 transition-all duration-700 ease-out"
+            priority={member.featured}
+          />
+        </div>
       </div>
 
       <div className="p-7">
