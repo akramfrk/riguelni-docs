@@ -30,7 +30,7 @@ function Navbar() {
       {/* Background layer with lower z-index */}
       <div className={`fixed top-0 z-[100] w-full backdrop-blur-sm transition-colors duration-200 ${
         scrolled 
-          ? "bg-[#f6f1f8] dark:bg-background/95" 
+          ? "bg-background/80" 
           : "bg-white dark:bg-[#050505]"
       }`}>
         {/* Main navbar content */}
