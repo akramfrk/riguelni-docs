@@ -27,7 +27,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "BOUSSEKINE Mohamed Ismail",
     role: "Project Manager",
-    image: "/team/smail.jpg",
+    image: "/team/ismail.jpg",
     tasks: [
       "Manages project execution and team coordination",
       "Develops and manages the website logic",
