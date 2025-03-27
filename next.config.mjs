@@ -2,7 +2,7 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: 'export',
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -46,7 +46,10 @@ const nextConfig = {
   // Strict mode for better development
   reactStrictMode: true,
   swcMinify: true,
-  // Remove distDir and trailingSlash as they might conflict with static export
+  // Configure output directory
+  distDir: '.next',
+  // Asset prefix for static export
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/riguelni-docs' : '',
   webpack: (config, { isServer }) => {
     // Optimize CSS in production
     if (!isServer && process.env.NODE_ENV === 'production') {
