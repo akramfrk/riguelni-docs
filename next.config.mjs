@@ -2,6 +2,8 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Remove basePath and use trailingSlash for better compatibility
+  trailingSlash: true,
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -45,8 +47,6 @@ const nextConfig = {
   // Strict mode for better development
   reactStrictMode: true,
   swcMinify: true,
-  // Configure base path for production
-  basePath: process.env.NODE_ENV === 'production' ? '/riguelni-docs' : '',
   webpack: (config, { isServer }) => {
     // Optimize CSS in production
     if (!isServer && process.env.NODE_ENV === 'production') {
