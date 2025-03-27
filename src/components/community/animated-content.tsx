@@ -68,7 +68,7 @@ export function AnimatedContent() {
         variants={childVariants}
         className="mx-auto mt-6 max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed"
       >
-        Meet the passionate individuals building Algeria's premier freelancing platform. We're on a mission to connect talented Algerian freelancers with meaningful opportunities and empower the digital economy.
+        Meet the passionate individuals building Algeria&apos;s premier freelancing platform. We&apos;re on a mission to connect talented Algerian freelancers with meaningful opportunities and empower the digital economy.
       </motion.p>
 
       {/* Quote Section */}
@@ -125,7 +125,7 @@ export function AnimatedContent() {
                 }}
                 className="block mb-4"
               >
-                "Connecting talent with opportunity, we're building more than a platform —"
+                &quot;Connecting talent with opportunity, we&apos;re building more than a platform —&quot;
               </motion.span>
               <motion.span 
                 variants={{
@@ -134,7 +134,7 @@ export function AnimatedContent() {
                 }}
                 className="text-primary"
               >
-                we're shaping the future of digital work in Algeria.
+                we&apos;re shaping the future of digital work in Algeria.
               </motion.span>
             </motion.blockquote>
 
@@ -168,6 +168,18 @@ export function AnimatedContent() {
           </div>
         </motion.div>
       </motion.div>
+
+      <p className="text-lg text-muted-foreground">
+        We&apos;re building the future of freelancing, one line of code at a time.
+      </p>
+
+      <p className="text-lg text-muted-foreground">
+        &quot;The best way to predict the future is to create it.&quot; We&apos;re not just building a platform, we&apos;re building the future of work.
+      </p>
+
+      <p className="text-lg text-muted-foreground">
+        We&apos;re not just a team, we&apos;re a family.
+      </p>
     </motion.div>
   )
 } 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Github, Linkedin, Mail, ChevronRight, Paintbrush, Star } from "lucide-react"
 import { AnimatedContent } from "@/components/community/animated-content"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Community | Riguelni",
@@ -229,10 +230,12 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
 
         {/* Image with enhanced hover effect */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500"></div>
-        <img
-          src={member.image || "/placeholder.svg"}
+        <Image
+          src={member.image}
           alt={member.name}
-          className="object-cover w-full h-full transform group-hover:scale-110 transition-all duration-700 ease-out"
+          width={200}
+          height={200}
+          className="rounded-full object-cover"
         />
       </div>
 
