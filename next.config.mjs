@@ -46,7 +46,24 @@ const nextConfig = {
   },
   // Strict mode for better development
   reactStrictMode: true,
-  swcMinify: true
+  swcMinify: true,
+  webpack: (config, { dev, isServer }) => {
+    // Optimize CSS
+    if (!dev && !isServer) {
+      config.optimization.minimize = true;
+      config.optimization.minimizer.push(
+        new CssMinimizerPlugin({
+          minimizerOptions: {
+            preset: ['default', {
+              discardComments: { removeAll: true },
+              normalizeWhitespace: false,
+            }],
+          },
+        })
+      );
+    }
+    return config;
+  },
 }
 
 export default nextConfig
