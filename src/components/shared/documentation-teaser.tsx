@@ -9,10 +9,10 @@ export function DocumentationTeaser() {
   return (
     <LazyMotion features={domAnimation}>
       <div className="relative overflow-hidden">
-        <div className="container px-4 py-20 md:px-6">
+        <div className="container px-4 md:px-6 py-20">
           <div className="relative">
             {/* Main content */}
-            <div className="mx-auto max-w-[1200px]">
+            <div className="mx-auto max-w-[90rem]">
               <m.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

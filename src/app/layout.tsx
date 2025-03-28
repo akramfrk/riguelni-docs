@@ -12,6 +12,38 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Riguelni Documentation",
   description: "Documentation for the Riguelni Platform",
+  keywords: [
+    "Riguelni",
+    "documentation",
+    "freelancing platform",
+    "Algerian developers",
+    "technical documentation",
+    "development practices",
+    "modern architecture"
+  ],
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
+  authors: [{ name: "Riguelni Team" }],
+  openGraph: {
+    title: "riguelni-docs.vercel.app",
+    description: "A modern, intuitive documentation platform for developers",
+    url: "https://riguelni-docs.vercel.app",
+    siteName: "Riguelni.docs - Modern Documentation Platform",
+    locale: "en_US",
+    type: "website",
+    images: [{ url: "/logo.svg", width: 32, height: 32 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Riguelni.docs - Modern Documentation Platform",
+    description: "A modern, intuitive documentation platform for developers",
+    images: ["/logo.svg"],
+  },
+  viewport: "width=device-width, initial-scale=1",
+  robots: "index, follow",
 };
 
 export default function RootLayout({

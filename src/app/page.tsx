@@ -5,7 +5,7 @@ import TimelineDemo from "@/components/shared/timeline-demo";
 
 export default function MarketingPage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       <Hero />
       <Features />
       <section className="py-16 md:py-24">

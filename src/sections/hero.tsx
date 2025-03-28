@@ -40,9 +40,9 @@ export default function Hero() {
       <motion.section
         initial="hidden"
         animate="visible"
-        className="container relative mx-auto min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-6rem)] flex flex-col justify-center items-center text-center pt-16 sm:pt-0"
+        className="container relative mx-auto min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-6rem)] flex flex-col justify-center items-center text-center pt-16 sm:pt-0 px-4"
       >
-        <motion.div className="relative max-w-5xl mx-auto px-4" variants={containerVariants}>
+        <motion.div className="relative w-full max-w-5xl mx-auto" variants={containerVariants}>
           {/* Badge */}
           <motion.div variants={childVariants} className="mb-8 flex items-center justify-center gap-2">
             <span className="inline-flex items-center rounded-full border border-primary/20 px-4 py-1.5 text-sm font-medium text-muted-foreground bg-background/50 backdrop-blur-sm shadow-sm">
@@ -97,7 +97,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Feature cards */}
-          <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-16 max-w-5xl mx-auto px-4" variants={childVariants}>
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-16 w-full" variants={childVariants}>
             {[
               {
                 title: "Architecture",
@@ -120,14 +120,14 @@ export default function Hero() {
             ].map((feature, index) => (
               <Link key={index} href={feature.href} className="block h-full">
                 <motion.div
-                  className="group relative h-full p-6 rounded-2xl border border-border/10 bg-background/50 backdrop-blur-sm hover:border-primary/20 transition-all duration-300"
+                  className="group relative h-full p-6 pb-12 rounded-2xl border border-border/10 bg-background/50 backdrop-blur-sm hover:border-primary/20 transition-all duration-300"
                   whileHover={{ y: -5 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
                   <feature.icon className="h-8 w-8 text-primary mb-4" />
                   <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground">{feature.description}</p>
-                  <ArrowRight className="h-4 w-4 text-primary absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                  <ArrowRight className="h-4 w-4 text-primary absolute bottom-4 right-6 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                 </motion.div>
               </Link>
             ))}
