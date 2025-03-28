@@ -32,8 +32,8 @@ const teamMembers: TeamMember[] = [
       "Ensures database security and API integrations and its documentation"
     ],
     contact: {
-      email: "m.boussekine@esi-sba.dz",
-      github: "https://github.com/smail19",
+      email: "am.boussekine@ensta.edu.dz ",
+      github: "https://github.com/1sma31L",
       linkedin: "https://linkedin.com/in/smail-boussekine"
     },
     showGithub: true,
@@ -49,9 +49,9 @@ const teamMembers: TeamMember[] = [
       "Ensures design consistency across the website"
     ],
     contact: {
-      email: "a.ferkioui@esi-sba.dz",
-      github: "https://github.com/akramferkioui",
-      linkedin: "https://linkedin.com/in/akram-ferkioui"
+      email: "aa.ferkioui@ensta.edu.dz",
+      github: "https://github.com/akramfrk",
+      linkedin: "https://www.linkedin.com/in/ferkioui-akram"
     }
   },
   {
@@ -64,9 +64,9 @@ const teamMembers: TeamMember[] = [
       "Ensures a seamless user experience on mobile devices"
     ],
     contact: {
-      email: "w.hammouti@esi-sba.dz",
-      github: "https://github.com/walidhammouti",
-      linkedin: "https://linkedin.com/in/walid-hammouti"
+      email: "aw.hammouti@ensta.edu.dz",
+      github: "https://github.com/walid-hammouti",
+      linkedin: "https://www.linkedin.com/in/hammouti-walid-616952315"
     }
   },
   {
@@ -79,8 +79,8 @@ const teamMembers: TeamMember[] = [
       "Optimizes website performance for a better user experience"
     ],
     contact: {
-      email: "d.amedjkouh@esi-sba.dz",
-      github: "https://github.com/darineamedjkouh",
+      email: "ad.amedjkouh@ensta.edu.dz",
+      github: "https://github.com/Anastasia-programmer",
       linkedin: "https://linkedin.com/in/darine-amedjkouh"
     }
   },
@@ -94,9 +94,9 @@ const teamMembers: TeamMember[] = [
       "Creates intuitive Navigation flow"
     ],
     contact: {
-      email: "l.bentaleb@esi-sba.dz",
+      email: "al.bentaleb@ensta.edu.dz",
       behance: "https://behance.net/lisabentaleb",
-      linkedin: "https://linkedin.com/in/lisa-bentaleb"
+      linkedin: "https://www.linkedin.com/in/lisa-bentaleb-19334a332"
     }
   }
 ]
