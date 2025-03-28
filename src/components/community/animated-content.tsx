@@ -44,37 +44,10 @@ export function AnimatedContent() {
       variants={containerVariants}
       className="relative max-w-5xl mx-auto px-4 text-center"
     >
-      {/* Badge */}
-      <motion.div variants={childVariants} className="mb-8 flex items-center justify-center gap-2">
-        <span className="inline-flex items-center rounded-full border border-primary/20 px-4 py-1.5 text-sm font-medium text-muted-foreground bg-background/50 backdrop-blur-sm shadow-sm">
-          <Sparkles className="mr-2 h-3.5 w-3.5 text-primary animate-pulse" />
-          Empowering Algeria
-        </span>
-      </motion.div>
-
-      {/* Main heading */}
-      <motion.h1
-        variants={childVariants}
-        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8"
-      >
-        The Team Behind{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7877C6] via-[#7877C6]/80 to-[#7877C6]/60">
-          Riguelni
-        </span>
-      </motion.h1>
-
-      {/* Description */}
-      <motion.p
-        variants={childVariants}
-        className="mx-auto mt-6 max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed"
-      >
-        Meet the passionate individuals building Algeria&apos;s premier freelancing platform. We&apos;re on a mission to connect talented Algerian freelancers with meaningful opportunities and empower the digital economy.
-      </motion.p>
-
       {/* Quote Section */}
       <motion.div
         variants={childVariants}
-        className="max-w-4xl mx-auto mt-16 mb-32 relative"
+        className="max-w-4xl mx-auto relative mb-32"
       >
         <motion.div 
           initial="initial"

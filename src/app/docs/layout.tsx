@@ -1,18 +1,15 @@
-export default function DocsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import { ReactNode } from "react"
+
+interface DocsLayoutProps {
+  children: ReactNode
+}
+
+export default function DocsLayout({ children }: DocsLayoutProps) {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <aside className="md:col-span-1">
-          {/* Add documentation sidebar here */}
-        </aside>
-        <main className="md:col-span-3">
-          {children}
-        </main>
+    <div className="min-h-screen bg-background">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        {children}
       </div>
     </div>
-  );
+  )
 } 
