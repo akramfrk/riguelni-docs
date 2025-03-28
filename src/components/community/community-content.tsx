@@ -25,7 +25,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "BOUSSEKINE Mohamed Ismail",
     role: "Project Manager",
-    image: "/team/ismail.jpg",
+    image: "/team/ismail.webp",
     tasks: [
       "Manages project execution and team coordination",
       "Develops and manages the website logic",
@@ -42,7 +42,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "FERKIOUI Akram",
     role: "Styling & Documentation",
-    image: "/team/akram.jpg",
+    image: "/team/akram.webp",
     tasks: [
       "Designs the visual styles and layout of the website",
       "Prepares the web site for project documentation",
@@ -57,7 +57,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "HAMMOUTI Walid",
     role: "Mobile App Developer",
-    image: "/team/walid.jpg",
+    image: "/team/walid.webp",
     tasks: [
       "Develops the mobile application for the platform",
       "Implements UI components and API integrations for mobile users",
@@ -72,7 +72,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "AMEDJKOUH Darine",
     role: "Frontend Developer",
-    image: "/team/darine.jpg",
+    image: "/team/darine.webp",
     tasks: [
       "Builds the frontend structure of the website",
       "Implements interactive features and logic",
@@ -87,7 +87,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "BENTALEB Lisa",
     role: "UI/UX Designer",
-    image: "/team/lisa.jpg",
+    image: "/team/lisa.webp",
     tasks: [
       "Designs the user interface using Figma",
       "Focuses on User Interface, User experience",
