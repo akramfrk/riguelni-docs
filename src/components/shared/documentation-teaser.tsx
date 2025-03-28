@@ -18,20 +18,20 @@ export function DocumentationTeaser() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col lg:flex-row gap-12 items-center"
+                className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center"
               >
                 {/* Left side content */}
-                <div className="flex-1 space-y-6 text-left">
-                  <h2 className="text-4xl font-bold tracking-tight">
+                <div className="flex-1 space-y-4 lg:space-y-6 text-left">
+                  <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
                     Discover How We Built{" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-primary">
                       Riguelni
                     </span>
                   </h2>
-                  <p className="text-lg text-muted-foreground">
+                  <p className="text-base lg:text-lg text-muted-foreground">
                     An in-depth look at the technologies, architecture decisions, and development practices that power our freelancing platform.
                   </p>
-                  <div className="flex gap-4">
+                  <div className="flex flex-wrap gap-3 lg:gap-4">
                     <Button asChild size="lg" className="rounded-full">
                       <Link href="/docs/architecture">
                         <Workflow className="mr-2 h-4 w-4" />
@@ -48,8 +48,8 @@ export function DocumentationTeaser() {
                 </div>
 
                 {/* Right side tech cards */}
-                <div className="flex-1">
-                  <div className="grid grid-cols-2 gap-4">
+                <div className="flex-1 w-full">
+                  <div className="grid grid-cols-2 gap-3 lg:gap-4">
                     {[
                       {
                         title: "Frontend",
@@ -88,12 +88,12 @@ export function DocumentationTeaser() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className={`group relative overflow-hidden rounded-2xl border border-border/50 bg-background/50 p-6 backdrop-blur-sm hover:border-primary/20 transition-all duration-300 ${index === 4 ? "col-span-2 md:col-span-1 md:translate-x-1/2" : ""}`}
+                        className={`group relative overflow-hidden rounded-xl lg:rounded-2xl border border-border/50 bg-background/50 p-4 lg:p-6 backdrop-blur-sm hover:border-primary/20 transition-all duration-300 ${index === 4 ? "col-span-2" : ""}`}
                       >
                         <div className={`rounded-xl ${tech.color} absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity`} />
-                        <tech.icon className={`h-8 w-8 ${tech.color.split(' ')[1]} mb-3`} />
-                        <h3 className="font-semibold mb-1">{tech.title}</h3>
-                        <p className="text-sm text-muted-foreground">{tech.description}</p>
+                        <tech.icon className={`h-6 w-6 lg:h-8 lg:w-8 ${tech.color.split(' ')[1]} mb-2 lg:mb-3`} />
+                        <h3 className="font-semibold text-sm lg:text-base mb-1">{tech.title}</h3>
+                        <p className="text-xs lg:text-sm text-muted-foreground">{tech.description}</p>
                       </m.div>
                     ))}
                   </div>
@@ -106,7 +106,7 @@ export function DocumentationTeaser() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
+                className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6"
               >
                 {[
                   {
@@ -134,13 +134,13 @@ export function DocumentationTeaser() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="group relative h-full p-6 rounded-2xl border border-border/10 bg-background/50 backdrop-blur-sm hover:border-primary/20 transition-all duration-300"
+                    className="group relative h-full p-4 lg:p-6 rounded-xl lg:rounded-2xl border border-border/10 bg-background/50 backdrop-blur-sm hover:border-primary/20 transition-all duration-300"
                     whileHover={{ y: -5 }}
                   >
-                    <div className={`absolute inset-0 ${feature.color} rounded-2xl opacity-0 group-hover:opacity-5 transition-all duration-500`} />
-                    <feature.icon className={`h-8 w-8 ${feature.color.split(' ')[1]} mb-4`} />
-                    <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    <div className={`absolute inset-0 ${feature.color} rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-5 transition-all duration-500`} />
+                    <feature.icon className={`h-6 w-6 lg:h-8 lg:w-8 ${feature.color.split(' ')[1]} mb-3 lg:mb-4`} />
+                    <h3 className="text-base lg:text-lg font-semibold mb-2">{feature.title}</h3>
+                    <p className="text-xs lg:text-sm text-muted-foreground">{feature.description}</p>
                   </m.div>
                 ))}
               </m.div>
