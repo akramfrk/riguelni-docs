@@ -40,13 +40,11 @@ const nextConfig = {
     ],
   },
   // Enable CSS optimization
-  optimizeFonts: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   // Strict mode for better development
   reactStrictMode: true,
-  swcMinify: true,
   webpack: (config, { dev, isServer }) => {
     // Optimize CSS
     if (!dev && !isServer) {
@@ -56,7 +54,14 @@ const nextConfig = {
           minimizerOptions: {
             preset: ['default', {
               discardComments: { removeAll: true },
-              normalizeWhitespace: false,
+              normalizeWhitespace: true,
+              minifyFontValues: false,
+              minifyGradients: false,
+              minifyParams: false,
+              minifySelectors: false,
+              mergeLonghand: false,
+              mergeRules: false,
+              cssDeclarationSorter: false,
             }],
           },
         })

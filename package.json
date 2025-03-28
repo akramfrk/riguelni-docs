@@ -38,10 +38,10 @@
     "date-fns": "^2.30.0",
     "framer-motion": "^10.18.0",
     "lucide-react": "^0.292.0",
-    "next": "14.0.3",
-    "next-themes": "^0.2.1",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "15.1.7",
+    "next-themes": "^0.4.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-icons": "^5.5.0",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7"
@@ -49,14 +49,15 @@
   "devDependencies": {
     "@types/node": "^20",
     "@types/prop-types": "^15.7.14",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0",
     "autoprefixer": "^10.4.16",
     "css-minimizer-webpack-plugin": "^7.0.2",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.3",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.5",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.7",
+    "postcss": "^8",
+    "postcss-preset-env": "^9.1.0",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
 }

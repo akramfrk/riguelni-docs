@@ -17,7 +17,14 @@ import {
   SiSupabase,
   SiAppwrite
 } from "react-icons/si"
+import { IconType } from "react-icons"
 import { Button } from "@/components/ui/button"
+import React from "react"
+
+type TechStackItem = {
+  name: string;
+  Component: IconType;
+};
 
 // Loading skeleton for the documentation page
 function DocumentationPageSkeleton() {
@@ -113,6 +120,21 @@ export default function DocumentationPage() {
     return <DocumentationPageSkeleton />
   }
 
+  const techStack: TechStackItem[] = [
+    { name: "TypeScript", Component: SiTypescript },
+    { name: "JavaScript", Component: SiJavascript },
+    { name: "CSS", Component: SiCss3 },
+    { name: "TailwindCSS", Component: SiTailwindcss },
+    { name: "React.JS", Component: SiReact },
+    { name: "Next.JS", Component: SiNextdotjs },
+    { name: "Framer Motion", Component: SiFramer },
+    { name: "Redux", Component: SiRedux },
+    { name: "Dart", Component: SiDart },
+    { name: "Flutter", Component: SiFlutter },
+    { name: "Supabase", Component: SiSupabase },
+    { name: "Appwrite", Component: SiAppwrite },
+  ];
+
   return (
     <div className="relative py-12 overflow-hidden">
       {/* Background Elements */}
@@ -162,7 +184,7 @@ export default function DocumentationPage() {
 
               {/* Description */}
               <p className="text-muted-foreground/80 max-w-2xl">
-                Explore our comprehensive documentation to learn about Riguelni's architecture, features, and best
+                Explore our comprehensive documentation to learn about Riguelni&apos;s architecture, features, and best
                 practices for building modern applications.
               </p>
 
@@ -324,38 +346,6 @@ export default function DocumentationPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[
-              { name: "TypeScript", icon: SiTypescript },
-              { name: "JavaScript", icon: SiJavascript },
-              { name: "CSS", icon: SiCss3 },
-              { name: "TailwindCSS", icon: SiTailwindcss },
-              { name: "React.JS", icon: SiReact },
-              { name: "Next.JS", icon: SiNextdotjs },
-              { name: "Framer Motion", icon: SiFramer },
-              { name: "Redux", icon: SiRedux },
-              { name: "Dart", icon: SiDart },
-              { name: "Flutter", icon: SiFlutter },
-              { name: "Supabase", icon: SiSupabase },
-              { name: "Appwrite", icon: SiAppwrite },
-            ].map((tech) => (
-              <div
-                key={tech.name}
-                className="bg-gradient-to-br from-card/95 to-card/80 backdrop-blur-xl rounded-2xl p-6 flex flex-col items-center justify-center aspect-[4/3] transition-all duration-500 hover:scale-105 border border-border/50 hover:border-primary/50 hover:shadow-[0_8px_40px_-12px_rgba(0,0,0,0.3)] group relative overflow-hidden"
-              >
-                {/* Background accents */}
-                <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-gradient-to-br from-primary/5 via-primary/2 to-transparent opacity-0 blur-2xl -z-10 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-[40px] -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="mb-4 flex items-center justify-center h-14 w-14 bg-gradient-to-br from-primary/15 to-primary/5 rounded-xl group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300 shadow-inner">
-                  <tech.icon 
-                    className="w-8 h-8 transition-all duration-300 group-hover:scale-110 text-primary group-hover:text-primary" 
-                  />
-                </div>
-                <span className="font-medium text-center bg-gradient-to-r from-foreground to-foreground/90 bg-clip-text text-transparent group-hover:text-primary transition-colors duration-300">{tech.name}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Project Management Workflow */}
