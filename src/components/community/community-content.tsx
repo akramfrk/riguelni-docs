@@ -55,21 +55,6 @@ const teamMembers: TeamMember[] = [
     }
   },
   {
-    name: "AMEDJKOUH Darine",
-    role: "Frontend Developer",
-    image: "/team/darine.jpg",
-    tasks: [
-      "Builds the frontend structure of the website",
-      "Implements interactive features and logic",
-      "Optimizes website performance for a better user experience"
-    ],
-    contact: {
-      email: "d.amedjkouh@esi-sba.dz",
-      github: "https://github.com/darineamedjkouh",
-      linkedin: "https://linkedin.com/in/darine-amedjkouh"
-    }
-  },
-  {
     name: "HAMMOUTI Walid",
     role: "Mobile App Developer",
     image: "/team/walid.jpg",
@@ -82,6 +67,21 @@ const teamMembers: TeamMember[] = [
       email: "w.hammouti@esi-sba.dz",
       github: "https://github.com/walidhammouti",
       linkedin: "https://linkedin.com/in/walid-hammouti"
+    }
+  },
+  {
+    name: "AMEDJKOUH Darine",
+    role: "Frontend Developer",
+    image: "/team/darine.jpg",
+    tasks: [
+      "Builds the frontend structure of the website",
+      "Implements interactive features and logic",
+      "Optimizes website performance for a better user experience"
+    ],
+    contact: {
+      email: "d.amedjkouh@esi-sba.dz",
+      github: "https://github.com/darineamedjkouh",
+      linkedin: "https://linkedin.com/in/darine-amedjkouh"
     }
   },
   {

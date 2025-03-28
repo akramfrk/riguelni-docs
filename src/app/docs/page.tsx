@@ -23,7 +23,7 @@ import React from "react"
 
 type TechStackItem = {
   name: string;
-  Component: IconType;
+  Component: any;
 };
 
 // Loading skeleton for the documentation page
@@ -332,8 +332,8 @@ export default function DocumentationPage() {
             </h2>
           </div>
 
-          <div className="flex flex-col items-center gap-4 mb-8 text-center">
-            <div className="p-3 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary shadow-inner">
+          <div className="flex flex-col items-center gap-4 mb-12 text-center">
+            <div className="p-3 rounded-xl bg-primary/10 text-primary shadow-inner">
               <Layers className="w-6 h-6" />
             </div>
             <div className="space-y-2">
@@ -346,6 +346,22 @@ export default function DocumentationPage() {
             </div>
           </div>
 
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            {techStack.map((tech) => {
+              const Icon = tech.Component as React.ComponentType<{ className?: string }>;
+              return (
+                <div
+                  key={tech.name}
+                  className="bg-white dark:bg-white/5 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center justify-center aspect-square transition-all duration-500 hover:scale-105 border border-border/5 hover:border-primary/10 hover:shadow-[0_8px_40px_-12px_rgba(139,92,246,0.15)] group"
+                >
+                  <div className="mb-2 flex items-center justify-center h-12 w-12 bg-[#E8EAFF] dark:bg-primary/10 rounded-xl group-hover:bg-primary/10 transition-all duration-300">
+                    <Icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <span className="font-medium text-sm text-center text-gray-800 dark:text-gray-200">{tech.name}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Project Management Workflow */}
@@ -506,7 +522,7 @@ export default function DocumentationPage() {
               className="h-12 px-6 font-medium text-base rounded-full bg-primary hover:bg-primary/90"
             >
               <span className="flex items-center gap-2">
-                <span>View Project Management Details</span>
+                <span>View Details</span>
                 <ArrowRight className="w-5 h-5" />
               </span>
             </Button>
