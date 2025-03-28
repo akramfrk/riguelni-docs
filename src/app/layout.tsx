@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import Navbar from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { SignupDialog } from "@/components/shared/signup-dialog";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +33,7 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
+            <SignupDialog />
           </div>
         </ThemeProvider>
       </body>
