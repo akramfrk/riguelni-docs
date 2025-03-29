@@ -53,16 +53,16 @@ const UnderDevelopment: FC = () => {
       <div className="w-full max-w-3xl mx-auto px-6 py-16 text-center">
         <div className="mb-12 flex justify-center">
           <motion.div
-            className="flex items-center text-5xl md:text-7xl font-mono font-bold text-foreground"
+            className="flex items-center text-3xl sm:text-4xl md:text-7xl font-mono font-bold text-foreground"
             initial="initial"
             animate="animate"
           >
             <motion.span variants={bracketVariants} className="text-primary">{`{`}</motion.span>
-            <div className="flex items-center gap-3 mx-2 md:mx-4">
+            <div className="flex items-center gap-2 sm:gap-3 mx-2 md:mx-4">
               <span>Riguelni</span>
               <span>Docs</span>
             </div>
-            <motion.div className="flex">
+            <motion.div className="flex items-center">
               <motion.span variants={dotsVariants} className="text-primary opacity-0">
                 .
               </motion.span>
@@ -89,32 +89,32 @@ const UnderDevelopment: FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
         >
           <motion.div
             variants={sorryVariants}
             animate="animate"
-            className="inline-flex items-center px-6 py-3 rounded-full bg-secondary/20 border border-secondary mb-8"
+            className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-secondary/20 border border-secondary mb-6 sm:mb-8"
           >
-            <AlertTriangle className="h-5 w-5 mr-2 text-primary" />
-            <span className="text-base font-medium text-primary">Sorry for the inconvenience</span>
+            <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-primary" />
+            <span className="text-sm sm:text-base font-medium text-primary">Sorry for the inconvenience</span>
           </motion.div>
 
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Under Development</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3 sm:mb-4">Under Development</h1>
 
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
             We&apos;re currently building something amazing. Our site is being crafted with care and will be available soon.
           </p>
 
-          <div className="flex flex-col items-center justify-center space-y-6 max-w-md mx-auto">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full">
+          <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 max-w-md mx-auto w-full px-4">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full max-w-[200px] sm:max-w-[240px]">
               <Button
                 asChild
                 size="lg"
-                className="h-12 px-6 font-medium text-base rounded-full bg-primary hover:bg-primary/90"
+                className="w-full h-11 sm:h-12 px-4 sm:px-6 font-medium text-sm sm:text-base rounded-full bg-primary hover:bg-primary/90"
               >
                 <Link href="/" className="inline-flex items-center justify-center gap-2">
-                  <Home className="h-5 w-5" />
+                  <Home className="h-4 w-4 sm:h-5 sm:w-5" />
                   Back to Home
                 </Link>
               </Button>
@@ -126,7 +126,7 @@ const UnderDevelopment: FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-16 text-sm text-muted-foreground"
+          className="mt-12 sm:mt-16 text-xs sm:text-sm text-muted-foreground px-4"
         >
         </motion.div>
       </div>
