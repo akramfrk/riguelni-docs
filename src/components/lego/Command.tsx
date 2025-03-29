@@ -61,36 +61,57 @@ export function Command() {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Navigation">
-            <CommandItem onSelect={() => router.push("/")}>
+            <CommandItem onSelect={() => {
+              router.push("/")
+              setOpen(false)
+            }}>
               <Home className="mr-2 h-4 w-4 text-primary/70" />
               Home
             </CommandItem>
-            <CommandItem onSelect={() => router.push("/docs")}>
+            <CommandItem onSelect={() => {
+              router.push("/docs")
+              setOpen(false)
+            }}>
               <Book className="mr-2 h-4 w-4 text-primary/70" />
               Documentation
             </CommandItem>
-            <CommandItem onSelect={() => router.push("/community")}>
+            <CommandItem onSelect={() => {
+              router.push("/community")
+              setOpen(false)
+            }}>
               <Users className="mr-2 h-4 w-4 text-primary/70" />
               Community
             </CommandItem>
           </CommandGroup>
           <CommandGroup heading="Documentation">
-            <CommandItem onSelect={() => router.push("/docs/frontend")}>
+            <CommandItem onSelect={() => {
+              router.push("/docs/frontend")
+              setOpen(false)
+            }}>
               <Code2 className="mr-2 h-4 w-4 text-primary/70" />
               Frontend
               <CommandShortcut>Next.js</CommandShortcut>
             </CommandItem>
-            <CommandItem onSelect={() => router.push("/docs/database")}>
+            <CommandItem onSelect={() => {
+              router.push("/docs/database")
+              setOpen(false)
+            }}>
               <Database className="mr-2 h-4 w-4 text-primary/70" />
               Database
               <CommandShortcut>PostgreSQL</CommandShortcut>
             </CommandItem>
-            <CommandItem onSelect={() => router.push("/docs/apis")}>
+            <CommandItem onSelect={() => {
+              router.push("/docs/apis")
+              setOpen(false)
+            }}>
               <FileCode2 className="mr-2 h-4 w-4 text-primary/70" />
               APIs
               <CommandShortcut>REST & GraphQL</CommandShortcut>
             </CommandItem>
-            <CommandItem onSelect={() => router.push("/docs/mobile")}>
+            <CommandItem onSelect={() => {
+              router.push("/docs/mobile")
+              setOpen(false)
+            }}>
               <Laptop2 className="mr-2 h-4 w-4 text-primary/70" />
               Mobile App
               <CommandShortcut>React Native</CommandShortcut>
@@ -98,7 +119,10 @@ export function Command() {
           </CommandGroup>
           <CommandGroup heading="Links">
             <CommandItem
-              onSelect={() => window.open("https://github.com/riguelni", "_blank")}
+              onSelect={() => {
+                window.open("https://github.com/riguelni", "_blank")
+                setOpen(false)
+              }}
             >
               <Github className="mr-2 h-4 w-4 text-primary/70" />
               GitHub
