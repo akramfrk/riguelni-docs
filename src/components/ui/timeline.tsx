@@ -100,7 +100,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <motion.div
                 whileHover={{ scale: 1.1 }}
-                className="h-12 absolute left-3 md:left-3 w-12 rounded-full bg-background flex items-center justify-center shadow-lg ring-2 ring-primary/20"
+                className="h-12 absolute left-0 md:left-3 w-12 rounded-full bg-background flex items-center justify-center shadow-lg ring-2 ring-primary/20"
               >
                 <div className="h-5 w-5 rounded-full bg-gradient-to-br from-primary to-primary/60 border-2 border-primary/20 p-2 animate-pulse" />
               </motion.div>
@@ -109,7 +109,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               </h3>
             </div>
 
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
+            <div className="relative pl-16 md:pl-4 pr-4 w-full">
               <h3 className="md:hidden block text-2xl mb-4 text-left font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
                 {item.title}
               </h3>
@@ -124,7 +124,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                     damping: 20
                   }
                 }}
-                className="group relative bg-card/80 rounded-xl p-6 shadow-lg border border-border/50 backdrop-blur-sm transition-all duration-500 hover:bg-card/95"
+                className="group relative bg-card/80 rounded-xl p-4 md:p-6 shadow-lg border border-border/50 backdrop-blur-sm transition-all duration-500 hover:bg-card/95"
               >
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute inset-0 rounded-xl bg-primary/5 opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
@@ -139,7 +139,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-muted to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+          className="absolute md:left-8 left-4 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-muted to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
         >
           <motion.div
             style={{

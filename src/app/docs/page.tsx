@@ -581,7 +581,7 @@ export default function DocumentationPage() {
                 {/* Corner accent */}
                 <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-[80px] -z-10" />
 
-                <div className="relative">
+                <div className="relative flex flex-col h-full">
                   <div className="flex items-start gap-5 mb-6">
                     <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-300 border border-primary/20">
                       <card.icon className="w-6 h-6" />
@@ -594,9 +594,9 @@ export default function DocumentationPage() {
                     </div>
                   </div>
 
-                  <p className="text-muted-foreground text-lg mb-8 leading-relaxed">{card.description}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed">{card.description}</p>
 
-                  <div className="flex items-center text-primary font-medium text-lg group-hover:translate-x-2 transition-transform duration-300">
+                  <div className="mt-auto pt-8 flex items-center text-primary font-medium text-lg group-hover:translate-x-2 transition-transform duration-300">
                     View Documentation
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
                   </div>

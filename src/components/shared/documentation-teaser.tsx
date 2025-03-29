@@ -70,15 +70,21 @@ export function DocumentationTeaser() {
                         color: "bg-purple-500/10 text-purple-500",
                       },
                       {
-                        title: "Backend",
-                        icon: Braces,
-                        description: "Node.js & Express",
+                        title: "Database",
+                        icon: Boxes,
+                        description: "PostgreSQL & Supabase",
                         color: "bg-green-500/10 text-green-500",
                       },
                       {
-                        title: "Database",
-                        icon: Boxes,
-                        description: "MongoDB & Redis",
+                        title: "APIs",
+                        icon: Braces,
+                        description: "REST & GraphQL APIs",
+                        color: "bg-orange-500/10 text-orange-500",
+                      },
+                      {
+                        title: "Authentication",
+                        icon: Shield,
+                        description: "Supabase Auth & JWT",
                         color: "bg-yellow-500/10 text-yellow-500",
                       },
                     ].map((tech, index) => (
@@ -88,7 +94,7 @@ export function DocumentationTeaser() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className={`group relative overflow-hidden rounded-xl lg:rounded-2xl border border-border/50 bg-background/50 p-4 lg:p-6 backdrop-blur-sm hover:border-primary/20 transition-all duration-300 ${index === 4 ? "col-span-2" : ""}`}
+                        className={`group relative overflow-hidden rounded-xl lg:rounded-2xl border border-border/50 bg-background/50 p-4 lg:p-6 backdrop-blur-sm hover:border-primary/20 transition-all duration-300`}
                       >
                         <div className={`rounded-xl ${tech.color} absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity`} />
                         <tech.icon className={`h-6 w-6 lg:h-8 lg:w-8 ${tech.color.split(' ')[1]} mb-2 lg:mb-3`} />
@@ -151,4 +157,5 @@ export function DocumentationTeaser() {
     </LazyMotion>
   )
 }
+
 

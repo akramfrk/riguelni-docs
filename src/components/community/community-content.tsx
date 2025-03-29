@@ -25,7 +25,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "BOUSSEKINE Mohamed Ismail",
     role: "Project Manager",
-    image: "/team/ismail.jpg",
+    image: "/team/ismail.webp",
     tasks: [
       "Manages project execution and team coordination",
       "Develops and manages the website logic",
@@ -42,7 +42,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "FERKIOUI Akram",
     role: "Styling & Documentation",
-    image: "/team/akram.jpg",
+    image: "/team/akram.webp",
     tasks: [
       "Designs the visual styles and layout of the website",
       "Prepares the web site for project documentation",
@@ -57,7 +57,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "HAMMOUTI Walid",
     role: "Mobile App Developer",
-    image: "/team/walid.jpg",
+    image: "/team/walid.webp",
     tasks: [
       "Develops the mobile application for the platform",
       "Implements UI components and API integrations for mobile users",
@@ -72,7 +72,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "AMEDJKOUH Darine",
     role: "Frontend Developer",
-    image: "/team/darine.jpg",
+    image: "/team/darine.webp",
     tasks: [
       "Builds the frontend structure of the website",
       "Implements interactive features and logic",
@@ -87,7 +87,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "BENTALEB Lisa",
     role: "UI/UX Designer",
-    image: "/team/lisa.jpg",
+    image: "/team/lisa.webp",
     tasks: [
       "Designs the user interface using Figma",
       "Focuses on User Interface, User experience",
@@ -232,7 +232,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
             <div className="flex gap-3">
               <a
                 href={`mailto:${member.contact.email}`}
-                className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 hover:scale-110 transition-all text-white"
+                className="p-2.5 rounded-full bg-white/10 border border-transparent hover:border-primary hover:scale-110 transition-all text-white"
                 title="Email"
               >
                 <Mail className="w-5 h-5" />
@@ -242,7 +242,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
                   href={member.contact.github || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 hover:scale-110 transition-all text-white"
+                  className="p-2.5 rounded-full bg-white/10 border border-transparent hover:border-primary hover:scale-110 transition-all text-white"
                   title="GitHub"
                 >
                   <Github className="w-5 h-5" />
@@ -253,7 +253,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
                   href={member.contact.behance}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 hover:scale-110 transition-all text-white"
+                  className="p-2.5 rounded-full bg-white/10 border border-transparent hover:border-primary hover:scale-110 transition-all text-white"
                   title="Behance"
                 >
                   <Paintbrush className="w-5 h-5" />
@@ -264,7 +264,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
                   href={member.contact.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 hover:scale-110 transition-all text-white"
+                  className="p-2.5 rounded-full bg-white/10 border border-transparent hover:border-primary hover:scale-110 transition-all text-white"
                   title="LinkedIn"
                 >
                   <Linkedin className="w-5 h-5" />
@@ -275,13 +275,18 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
         </div>
       </div>
 
-      <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-        <p className="text-muted-foreground mb-4">{member.role}</p>
-        <ul className="space-y-2">
+      <div className="p-6 space-y-4">
+        <div>
+          <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
+            {member.name}
+          </h3>
+          <p className="text-muted-foreground text-sm">{member.role}</p>
+        </div>
+
+        <ul className="space-y-2 text-sm text-muted-foreground">
           {member.tasks.map((task, index) => (
-            <li key={index} className="flex items-start gap-2 text-sm">
-              <ChevronRight className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+            <li key={index} className="flex items-start gap-2">
+              <ChevronRight className="w-4 h-4 mt-0.5 text-primary/60" />
               <span>{task}</span>
             </li>
           ))}
