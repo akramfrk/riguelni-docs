@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Code2, Database, Globe, Layers, Smartphone, Sparkles, GitBranch, CheckCircle, Users, Calendar } from "lucide-react"
+import { ArrowRight, Code2, Database, Globe, Layers, Smartphone, Sparkles, GitBranch, CheckCircle, Users, Calendar, FileCode2, Palette } from "lucide-react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import {
@@ -221,21 +221,48 @@ export default function DocumentationPage() {
       <div className="max-w-[1200px] mx-auto px-4 py-12">
         {/* Platform Introduction */}
         <div className="max-w-[1000px] mx-auto mb-24">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-16">
+          <div className="relative flex flex-col items-center mb-16">
+            {/* Background accents */}
+            <div className="absolute -inset-x-8 -inset-y-8 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 rounded-[2rem] blur-2xl -z-10" />
+            <div className="absolute -inset-x-4 -inset-y-4 bg-gradient-to-b from-primary/3 via-transparent to-transparent rounded-3xl blur-xl -z-10" />
+            
+            <h2 className="text-2xl md:text-4xl font-bold text-center">
             <div className="relative inline-flex flex-col items-center">
-              <span className="text-primary/40 text-sm font-medium tracking-wider mb-2 uppercase">OVERVIEW</span>
-              <span className="relative inline-block">
+                <span className="text-primary/50 text-sm font-medium tracking-[0.2em] mb-3 uppercase flex items-center gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="h-px w-8 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary/30" />
+                  </div>
+                  Overview
+                  <div className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary/30" />
+                    <span className="h-px w-8 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+                  </div>
+                </span>
+                <div className="relative">
+                  <span className="relative inline-block px-4 py-2">
+                    <span className="relative z-10 bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent">
                 Platform Introduction
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-gradient-to-r from-primary/30 via-primary/20 to-primary/30 rounded-md -z-10" />
+                    </span>
+                    {/* Decorative elements */}
+                    <div className="absolute -inset-x-4 -inset-y-2 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-lg -z-10" />
+                    <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+                    <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
+                    <div className="absolute right-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
               </span>
+                </div>
             </div>
           </h2>
+          </div>
 
           <div className="bg-gradient-to-br from-card/95 to-card/80 backdrop-blur-xl rounded-2xl border border-border/50 overflow-hidden shadow-[0_8px_40px_-12px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.4)] hover:border-primary/50 transition-all duration-500 group">
             <div className="relative">
               {/* Background accents */}
               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-primary/5 via-primary/2 to-transparent opacity-20 blur-3xl -z-10 group-hover:opacity-30 transition-opacity duration-500" />
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-[80px] -z-10" />
+              <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-primary/5 via-primary/2 to-transparent opacity-20 blur-3xl -z-10 group-hover:opacity-30 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-primary/10 to-transparent rounded-tr-[80px] -z-10" />
 
               <div className="p-8 md:p-12 relative">
                 <div className="flex items-center gap-5 mb-10">
@@ -244,18 +271,20 @@ export default function DocumentationPage() {
                   </div>
                   <div>
                     <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/90 bg-clip-text text-transparent group-hover:text-primary transition-colors mb-2">
-                      About RIGELNI
+                      About RIGUELNI
                     </h3>
                     <div className="h-1 w-16 bg-gradient-to-r from-primary/40 to-primary/20 rounded-full group-hover:w-24 transition-all duration-300" />
                   </div>
                 </div>
 
                 <p className="text-muted-foreground/90 text-lg mb-12 leading-relaxed max-w-none">
-                  RIGELNI is a modern freelance platform that connects skilled professionals with clients looking for
-                  services. The platform provides a secure and intuitive environment where users can both buy and sell
-                  services, making it a flexible solution for freelancers and businesses alike. With robust features
-                  such as secure payments, real-time chat, and an easy-to-use dashboard, RIGELNI aims to streamline
-                  freelance transactions and project management.
+                  RIGUELNI is a modern platform that helps freelancers and businesses connect easily. 
+                  We bring together talented professionals and companies looking for services in one simple place. 
+                  Our platform is built with user-friendly tools that make work easier, including safe payments, 
+                  instant messaging, and a clear project dashboard. Whether you&apos;re a freelancer wanting to show your work 
+                  or a business looking for skilled people, RIGUELNI makes it simple to find what you need. We use smart 
+                  tools to match the right people together, keep prices clear, and handle any issues professionally. 
+                  Our goal is to make freelance work smooth and easy for everyone.
                 </p>
 
                 <div className="mt-10">
@@ -266,26 +295,26 @@ export default function DocumentationPage() {
                     Platform Availability
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="flex items-center gap-5 p-6 rounded-lg bg-gradient-to-br from-background/90 to-background/70 border border-border/50 hover:border-primary/30 hover:bg-background/90 transition-all duration-300 shadow-lg">
-                      <div className="p-4 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary shadow-inner">
+                    <div className="flex items-center gap-5 p-6 rounded-lg bg-gradient-to-br from-background/90 to-background/70 border border-border/50 hover:border-primary/30 hover:bg-background/90 transition-all duration-300 shadow-lg group">
+                      <div className="p-4 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary shadow-inner group-hover:bg-primary/20 transition-colors duration-300">
                         <Globe className="w-6 h-6" />
                       </div>
                       <div className="flex-1">
-                        <span className="font-medium text-lg mb-1 block bg-gradient-to-r from-foreground to-foreground/90 bg-clip-text text-transparent">
+                        <span className="font-medium text-lg mb-1 block bg-gradient-to-r from-foreground to-foreground/90 bg-clip-text text-transparent group-hover:text-primary transition-colors">
                           Website
                         </span>
-                        <p className="text-sm text-muted-foreground/80">Desktop-friendly platform for easy access</p>
+                        <p className="text-sm text-muted-foreground/80">Full-featured platform with responsive design and powerful tools</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-5 p-6 rounded-lg bg-gradient-to-br from-background/90 to-background/70 border border-border/50 hover:border-primary/30 hover:bg-background/90 transition-all duration-300 shadow-lg">
-                      <div className="p-4 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary shadow-inner">
+                    <div className="flex items-center gap-5 p-6 rounded-lg bg-gradient-to-br from-background/90 to-background/70 border border-border/50 hover:border-primary/30 hover:bg-background/90 transition-all duration-300 shadow-lg group">
+                      <div className="p-4 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary shadow-inner group-hover:bg-primary/20 transition-colors duration-300">
                         <Smartphone className="w-6 h-6" />
                       </div>
                       <div className="flex-1">
-                        <span className="font-medium text-lg mb-1 block bg-gradient-to-r from-foreground to-foreground/90 bg-clip-text text-transparent">
+                        <span className="font-medium text-lg mb-1 block bg-gradient-to-r from-foreground to-foreground/90 bg-clip-text text-transparent group-hover:text-primary transition-colors">
                           Mobile App
                         </span>
-                        <p className="text-sm text-muted-foreground/80">Optimized experience for users on the go</p>
+                        <p className="text-sm text-muted-foreground/80">Cross-platform mobile app with real-time updates and notifications</p>
                       </div>
                     </div>
                   </div>
@@ -350,8 +379,8 @@ export default function DocumentationPage() {
             {techStack.map((tech) => {
               const Icon = tech.Component as React.ComponentType<{ className?: string }>;
               return (
-                <div
-                  key={tech.name}
+              <div
+                key={tech.name}
                   className="bg-white dark:bg-white/5 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center justify-center aspect-square transition-all duration-500 hover:scale-105 border border-border/5 hover:border-primary/10 hover:shadow-[0_8px_40px_-12px_rgba(139,92,246,0.15)] group"
                 >
                   <div className="mb-2 flex items-center justify-center h-12 w-12 bg-[#E8EAFF] dark:bg-primary/10 rounded-xl group-hover:bg-primary/10 transition-all duration-300">
@@ -515,7 +544,7 @@ export default function DocumentationPage() {
         </div>
 
         {/* View More Button */}
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-8">
           <Link href="/docs/project-management" className="group relative">
             <Button
               size="lg"
@@ -535,75 +564,125 @@ export default function DocumentationPage() {
         {/* Background accents */}
         <div className="absolute -inset-x-8 -inset-y-4 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 rounded-3xl blur-2xl -z-10" />
 
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-20">
+        <div className="relative flex flex-col items-center mb-20">
+          {/* Background accents */}
+          <div className="absolute -inset-x-8 -inset-y-8 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 rounded-[2rem] blur-2xl -z-10" />
+          <div className="absolute -inset-x-4 -inset-y-4 bg-gradient-to-b from-primary/3 via-transparent to-transparent rounded-3xl blur-xl -z-10" />
+          
+          <h2 className="text-2xl md:text-4xl font-bold text-center">
           <div className="relative inline-flex flex-col items-center">
-            <span className="text-primary/30 text-sm font-medium mb-2">EXPLORE</span>
-            <span className="relative inline-block">
-              Documentation Resources
-              <span className="absolute bottom-1 left-0 w-full h-3 bg-primary/20 rounded-md -z-10" />
+              <span className="text-primary/50 text-sm font-medium tracking-[0.2em] mb-3 uppercase flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="h-px w-8 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary/30" />
+                </div>
+                Resources
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary/30" />
+                  <span className="h-px w-8 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+                </div>
+              </span>
+              <div className="relative">
+                <span className="relative inline-block px-4 py-2">
+                  <span className="relative z-10 bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent">
+                    Documentation
+                  </span>
+                  {/* Decorative elements */}
+                  <div className="absolute -inset-x-4 -inset-y-2 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-lg -z-10" />
+                  <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+                  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+                  <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
+                  <div className="absolute right-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
             </span>
+              </div>
           </div>
         </h2>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              title: "Frontend",
-              icon: Code2,
-              description:
-                "Explore our modern frontend architecture built with Next.js, React, and Tailwind CSS. Learn about component structure, state management, and UI/UX patterns.",
-              href: "/docs/frontend",
-              accent: "from-[#7877C6]/20 via-transparent to-transparent",
-            },
-            {
-              title: "Database & APIs",
-              icon: Database,
-              description:
-                "Discover our database schema, API endpoints, and backend architecture. Understand data models, relationships, and API documentation.",
-              href: "/docs/backend",
-              accent: "from-primary/20 via-transparent to-transparent",
-            },
-            {
-              title: "Mobile App",
-              icon: Smartphone,
-              description:
-                "Learn about our mobile application architecture, features, and development process. Explore mobile-specific components and API integrations.",
-              href: "/docs/mobile",
-              accent: "from-[#7877C6]/20 via-transparent to-transparent",
-            },
-          ].map((card) => (
-            <Link key={card.title} href={card.href} className="group">
-              <div className="relative h-full bg-card/80 backdrop-blur-sm rounded-2xl p-8 border border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_50px_-12px_rgba(120,119,198,0.3)] overflow-hidden">
-                {/* Card accent */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br opacity-20 blur-3xl -z-10 group-hover:opacity-30 transition-opacity duration-500" />
+        <div className="grid gap-6 md:grid-cols-2">
+          <Link
+            href="/docs/design"
+            className="group relative overflow-hidden rounded-lg border bg-card p-6 transition-colors hover:bg-accent"
+          >
+            <div className="flex items-center gap-4">
+              <div className="rounded-lg bg-primary/10 p-3">
+                <Palette className="h-6 w-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-semibold">Design</h3>
+                <p className="text-sm text-muted-foreground">
+                  Figma & UI/UX
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 flex items-center text-sm text-primary">
+              View Documentation
+              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </div>
+          </Link>
 
-                {/* Corner accent */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-[80px] -z-10" />
-
-                <div className="relative flex flex-col h-full">
-                  <div className="flex items-start gap-5 mb-6">
-                    <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-300 border border-primary/20">
-                      <card.icon className="w-6 h-6" />
+          <Link
+            href="/docs/frontend"
+            className="group relative overflow-hidden rounded-lg border bg-card p-6 transition-colors hover:bg-accent"
+          >
+            <div className="flex items-center gap-4">
+              <div className="rounded-lg bg-primary/10 p-3">
+                <Code2 className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold group-hover:text-primary transition-colors mb-2">
-                        {card.title}
-                      </h3>
-                      <div className="h-1 w-16 bg-primary/30 rounded-full group-hover:w-24 transition-all duration-300" />
+                <h3 className="font-semibold">Front-end</h3>
+                <p className="text-sm text-muted-foreground">
+                  Next.js & React
+                </p>
                     </div>
                   </div>
-
-                  <p className="text-muted-foreground text-lg leading-relaxed">{card.description}</p>
-
-                  <div className="mt-auto pt-8 flex items-center text-primary font-medium text-lg group-hover:translate-x-2 transition-transform duration-300">
+            <div className="mt-4 flex items-center text-sm text-primary">
                     View Documentation
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </div>
+          </Link>
+
+          <Link
+            href="/docs/mobile"
+            className="group relative overflow-hidden rounded-lg border bg-card p-6 transition-colors hover:bg-accent"
+          >
+            <div className="flex items-center gap-4">
+              <div className="rounded-lg bg-primary/10 p-3">
+                <Smartphone className="h-6 w-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-semibold">Mobile App</h3>
+                <p className="text-sm text-muted-foreground">
+                  Flutter & Dart
+                </p>
                   </div>
                 </div>
+            <div className="mt-4 flex items-center text-sm text-primary">
+              View Documentation
+              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </div>
+          </Link>
+
+          <Link
+            href="/docs/database"
+            className="group relative overflow-hidden rounded-lg border bg-card p-6 transition-colors hover:bg-accent"
+          >
+            <div className="flex items-center gap-4">
+              <div className="rounded-lg bg-primary/10 p-3">
+                <Database className="h-6 w-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-semibold">Data Base and APIs</h3>
+                <p className="text-sm text-muted-foreground">
+                  PostgreSQL & REST/GraphQL
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 flex items-center text-sm text-primary">
+              View Documentation
+              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>
             </Link>
-          ))}
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Riguelni Documentation",
   description: "Documentation for the Riguelni Platform",
+  metadataBase: new URL("https://riguelni-docs.vercel.app"),
   keywords: [
     "Riguelni",
     "documentation",
@@ -42,8 +43,12 @@ export const metadata: Metadata = {
     description: "A modern, intuitive documentation platform for developers",
     images: ["/logo.svg"],
   },
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
