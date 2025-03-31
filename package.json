@@ -51,6 +51,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20",
     "@types/prop-types": "^15.7.14",
     "@types/react": "18.2.0",
