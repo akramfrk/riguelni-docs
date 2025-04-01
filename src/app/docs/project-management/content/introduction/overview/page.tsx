@@ -1,7 +1,5 @@
 import { MDXRenderer } from "@/components/mdx-renderer"
 import { readContent } from "@/lib/content"
-import { Suspense } from "react"
-import { Skeleton } from "@/components/ui/skeleton"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 
@@ -13,20 +11,7 @@ export default async function OverviewPage() {
   return (
     <main className="flex-1 max-w-3xl mx-auto [&_h1]:scroll-mt-[50vh] [&_h2]:scroll-mt-[50vh] [&_h3]:scroll-mt-[50vh] pb-16 pt-16">
       <div className="min-h-[200px]">
-        <Suspense fallback={
-          <div className="space-y-4 animate-in fade-in-50">
-            <Skeleton className="h-12 w-[80%] mb-6" />
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-[90%]" />
-            <Skeleton className="h-4 w-[95%]" />
-            <Skeleton className="h-8 w-[40%] mt-8" />
-            <Skeleton className="h-4 w-full mt-4" />
-            <Skeleton className="h-4 w-[85%]" />
-            <Skeleton className="h-4 w-[90%]" />
-          </div>
-        }>
-          <MDXRenderer source={source} />
-        </Suspense>
+        <MDXRenderer source={source} />
       </div>
 
       <div className="flex items-center justify-end mt-20 pt-8 border-t border-border/40">
