@@ -1,29 +1,15 @@
 'use client'
 
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { Suspense, useEffect, useState } from 'react'
+import { MDXRemote } from "next-mdx-remote"
 
 interface MDXContentProps {
-  source: MDXRemoteSerializeResult
+  source: any
 }
 
 export function MDXContent({ source }: MDXContentProps) {
-  const [MDXComponent, setMDXComponent] = useState<any>(null)
-
-  useEffect(() => {
-    // Import the component only on the client side
-    import('next-mdx-remote').then((mod) => {
-      setMDXComponent(() => mod.MDXRemote)
-    })
-  }, [])
-
-  if (!MDXComponent) {
-    return <div>Loading content...</div>
-  }
-
   return (
-    <Suspense fallback={<div>Loading content...</div>}>
-      <MDXComponent {...source} />
-    </Suspense>
+    <div className="prose prose-slate dark:prose-invert max-w-none">
+      <MDXRemote {...source} />
+    </div>
   )
 } 

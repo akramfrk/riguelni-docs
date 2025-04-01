@@ -42,13 +42,6 @@ function DocumentationPageSkeleton() {
       <div className="border-b border-border/40 bg-background/30 backdrop-blur-sm">
         <div className="max-w-[1200px] mx-auto px-4">
           <div className="flex flex-col space-y-6 py-8">
-            {/* Breadcrumb Skeleton */}
-            <div className="flex items-center gap-2">
-              <div className="h-4 w-24 bg-muted/50 rounded animate-pulse" />
-              <span className="text-muted-foreground/40">/</span>
-              <div className="h-4 w-16 bg-muted/50 rounded animate-pulse" />
-            </div>
-
             {/* Title Section Skeleton */}
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
@@ -149,25 +142,6 @@ export default function DocumentationPage() {
       <div className="border-b border-border/40 bg-background/30 backdrop-blur-sm">
         <div className="max-w-[1200px] mx-auto px-4">
           <div className="flex flex-col space-y-6 py-8">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-sm">
-              <span className="text-primary font-medium">Overview</span>
-              <span className="text-muted-foreground/40">/</span>
-              <Link 
-                href="#documentation-resources" 
-                className="text-muted-foreground hover:text-primary/80 transition-colors"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector('#documentation-resources')?.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                  });
-                }}
-              >
-                Documentation
-              </Link>
-            </div>
-
             {/* Title Section */}
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
@@ -560,7 +534,7 @@ export default function DocumentationPage() {
       </div>
 
       {/* Documentation Resources */}
-      <div id="documentation-resources" className="max-w-[1800px] mx-auto relative px-6 scroll-mt-24">
+      <div className="max-w-[1800px] mx-auto relative px-6 scroll-mt-24">
         {/* Background accents */}
         <div className="absolute -inset-x-8 -inset-y-4 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 rounded-3xl blur-2xl -z-10" />
 
