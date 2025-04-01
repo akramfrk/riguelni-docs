@@ -9,24 +9,25 @@ export const dynamic = "force-dynamic"
 
 export default async function OverviewPage() {
   const source = await readContent("project-management/content/introduction/overview")
-
+  
   return (
     <main className="flex-1 max-w-3xl mx-auto [&_h1]:scroll-mt-[50vh] [&_h2]:scroll-mt-[50vh] [&_h3]:scroll-mt-[50vh] pb-16 pt-16">
-      <Suspense fallback={
-        <div className="space-y-4">
-          <Skeleton className="h-8 w-3/4" />
-          <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-4/6" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-4/6" />
-          <Skeleton className="h-4 w-5/6" />
-        </div>
-      }>
-        <div className="min-h-[200px]">
+      <div className="min-h-[200px]">
+        <Suspense fallback={
+          <div className="space-y-4 animate-in fade-in-50">
+            <Skeleton className="h-12 w-[80%] mb-6" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-[90%]" />
+            <Skeleton className="h-4 w-[95%]" />
+            <Skeleton className="h-8 w-[40%] mt-8" />
+            <Skeleton className="h-4 w-full mt-4" />
+            <Skeleton className="h-4 w-[85%]" />
+            <Skeleton className="h-4 w-[90%]" />
+          </div>
+        }>
           <MDXRenderer source={source} />
-        </div>
-      </Suspense>
+        </Suspense>
+      </div>
 
       <div className="flex items-center justify-end mt-20 pt-8 border-t border-border/40">
         <Link
