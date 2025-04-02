@@ -1,38 +1,21 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Components } from "react-markdown";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function OverviewPage() {
-  const components: Partial<Components> = {
-    h1: ({ children }) => {
-      return (
-        <h1 className="scroll-mt-[50vh] mb-8">
-          {children}
-        </h1>
-      );
-    },
-    h2: ({ children }) => {
-      const id = children?.toString().toLowerCase().replace(/\s+/g, '-');
-      return (
-        <h2 id={id} className="scroll-mt-[50vh] mt-8 mb-4">
-          {children}
-        </h2>
-      );
-    },
-    h3: ({ children }) => {
-      return (
-        <h3 className="scroll-mt-[50vh] mt-6 mb-3">
-          {children}
-        </h3>
-      );
-    },
-  };
+  const [isLoading, setIsLoading] = useState(true);
+  const [markdownContent, setMarkdownContent] = useState("");
 
-  const [markdownContent] = useState(`# Introduction
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      setMarkdownContent(`# Introduction
 
 Welcome to the Project Management section of the RIGUELNI documentation. Here, we'll explore how our platform helps teams work together effectively, manage their projects efficiently, and deliver high-quality results.
 
@@ -123,33 +106,143 @@ Effective project management is crucial for success because it:
 - Saves time and resources
 
 By using our project management tools, you can create a more organized, efficient, and successful work environment for your team.`);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const components: Partial<Components> = {
+    h1: ({ children }) => {
+      return (
+        <h1 className="scroll-mt-[50vh] mb-8">
+          {children}
+        </h1>
+      );
+    },
+    h2: ({ children }) => {
+      const id = children?.toString().toLowerCase().replace(/\s+/g, '-');
+      return (
+        <h2 id={id} className="scroll-mt-[50vh] mt-8 mb-4">
+          {children}
+        </h2>
+      );
+    },
+    h3: ({ children }) => {
+      return (
+        <h3 className="scroll-mt-[50vh] mt-6 mb-3">
+          {children}
+        </h3>
+      );
+    },
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <div className="flex">
         <main className="flex-1 max-w-3xl mx-auto pb-16 pt-16">
           <div className="min-h-[200px] prose prose-lg dark:prose-invert prose-primary">
-            <ReactMarkdown components={components}>{markdownContent}</ReactMarkdown>
-          </div>
+            {isLoading ? (
+              <div className="space-y-8">
+                {/* Title section */}
+                <div className="space-y-6">
+                  <Skeleton className="h-12 w-[60%]" /> {/* Title */}
+                  <div className="space-y-4">
+                    <Skeleton className="h-5 w-full" />
+                    <Skeleton className="h-5 w-[90%]" />
+                  </div>
+                </div>
 
-          <div className="flex items-center justify-end mt-20 pt-8 border-t border-border/40">
-            <Link
-              href="/docs/project-management/content/version-control/git-github-code-hosting"
-              className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline"
-            >
-              <div className="flex flex-col items-end relative z-10">
-                <span className="text-xs font-medium text-muted-foreground/60 mb-1.5 group-hover:text-muted-foreground/80 transition-colors duration-200">
-                  Next
-                </span>
-                <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:translate-x-0.5 transition-all duration-300">
-                  Git & GitHub for Code Hosting
-                </span>
+                {/* Overview section */}
+                <div className="space-y-6">
+                  <Skeleton className="h-8 w-[70%]" /> {/* Section title */}
+                  <div className="space-y-4">
+                    <Skeleton className="h-5 w-full" />
+                    <Skeleton className="h-5 w-[95%]" />
+                    <Skeleton className="h-5 w-[85%]" />
+                  </div>
+                  <div className="space-y-3">
+                    <Skeleton className="h-5 w-[40%]" />
+                    <Skeleton className="h-5 w-[45%]" />
+                    <Skeleton className="h-5 w-[35%]" />
+                    <Skeleton className="h-5 w-[42%]" />
+                  </div>
+                </div>
+
+                {/* Efficient Workflow section */}
+                <div className="space-y-6">
+                  <Skeleton className="h-7 w-[50%]" /> {/* Subsection title */}
+                  <div className="space-y-4">
+                    <Skeleton className="h-5 w-[92%]" />
+                    <div className="space-y-3">
+                      <Skeleton className="h-5 w-[35%]" />
+                      <Skeleton className="h-5 w-[40%]" />
+                      <Skeleton className="h-5 w-[38%]" />
+                      <Skeleton className="h-5 w-[42%]" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Additional sections */}
+                <div className="space-y-6">
+                  <Skeleton className="h-8 w-[45%]" />
+                  <div className="space-y-4">
+                    <Skeleton className="h-5 w-full" />
+                    <Skeleton className="h-5 w-[88%]" />
+                    <div className="space-y-3">
+                      <Skeleton className="h-5 w-[42%]" />
+                      <Skeleton className="h-5 w-[38%]" />
+                      <Skeleton className="h-5 w-[45%]" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <Skeleton className="h-8 w-[55%]" />
+                  <div className="space-y-4">
+                    <Skeleton className="h-5 w-[94%]" />
+                    <Skeleton className="h-5 w-[89%]" />
+                    <div className="space-y-3">
+                      <Skeleton className="h-5 w-[40%]" />
+                      <Skeleton className="h-5 w-[35%]" />
+                      <Skeleton className="h-5 w-[42%]" />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                <ChevronRight className="h-4 w-4 text-primary group-hover:text-primary group-hover:translate-x-0.5 transition-transform duration-300" />
-              </div>
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </Link>
+            ) : (
+              <ReactMarkdown components={components}>{markdownContent}</ReactMarkdown>
+            )}
+
+            {/* Next link section */}
+            <div className="flex items-center justify-end mt-20 pt-8 border-t border-border/40">
+              {isLoading ? (
+                <div className="flex items-center gap-4 px-5 py-3">
+                  <div className="flex flex-col items-end">
+                    <Skeleton className="h-3 w-16 mb-2" />
+                    <Skeleton className="h-4 w-48" />
+                  </div>
+                  <Skeleton className="h-7 w-7 rounded-full" />
+                </div>
+              ) : (
+                <Link
+                  href="/docs/project-management/content/version-control/git-github-code-hosting"
+                  className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline"
+                >
+                  <div className="flex flex-col items-end relative z-10">
+                    <span className="text-xs font-medium text-muted-foreground/60 mb-1.5 group-hover:text-muted-foreground/80 transition-colors duration-200">
+                      Next
+                    </span>
+                    <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:translate-x-0.5 transition-all duration-300">
+                      Git & GitHub for Code Hosting
+                    </span>
+                  </div>
+                  <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                    <ChevronRight className="h-4 w-4 text-primary group-hover:text-primary group-hover:translate-x-0.5 transition-transform duration-300" />
+                  </div>
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                </Link>
+              )}
+            </div>
           </div>
         </main>
 
@@ -159,29 +252,40 @@ By using our project management tools, you can create a more organized, efficien
             <div className="space-y-4 pb-8">
               <div className="font-medium">On this page</div>
               <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="#overview-of-our-approach" className="text-muted-foreground hover:text-primary">
-                    Overview of Our Approach
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#core-objectives" className="text-muted-foreground hover:text-primary">
-                    Core Objectives
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#key-components-of-our-project-management"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    Key Components of Our Project Management
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#why-project-management-matters" className="text-muted-foreground hover:text-primary">
-                    Why Project Management Matters
-                  </Link>
-                </li>
+                {isLoading ? (
+                  <>
+                    <li><Skeleton className="h-4 w-48" /></li>
+                    <li><Skeleton className="h-4 w-40" /></li>
+                    <li><Skeleton className="h-4 w-56" /></li>
+                    <li><Skeleton className="h-4 w-44" /></li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link href="#overview-of-our-approach" className="text-muted-foreground hover:text-primary">
+                        Overview of Our Approach
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="#core-objectives" className="text-muted-foreground hover:text-primary">
+                        Core Objectives
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="#key-components-of-our-project-management"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        Key Components of Our Project Management
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="#why-project-management-matters" className="text-muted-foreground hover:text-primary">
+                        Why Project Management Matters
+                      </Link>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>
