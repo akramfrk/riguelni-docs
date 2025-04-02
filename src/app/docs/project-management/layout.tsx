@@ -39,22 +39,22 @@ export default function ProjectManagementLayout({
 
         {/* Breadcrumb */}
         <div className="absolute top-13 left-4 md:left-0 right-4 mb-8 overflow-x-auto whitespace-nowrap pb-2 px-4 md:px-0">
-          <nav className="hidden md:block pl-[280px] pr-[280px]">
+          <nav className="block md:pl-[280px] md:pr-[280px]">
             <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="text-sm md:text-base">
+              <BreadcrumbList className="flex-wrap">
+                <BreadcrumbItem className="text-xs md:text-base">
                   <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem className="text-sm md:text-base">
+                <BreadcrumbSeparator className="text-xs md:text-base" />
+                <BreadcrumbItem className="text-xs md:text-base">
                   <BreadcrumbLink href="/docs/project-management">Project Management</BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem className="text-sm md:text-base">
+                <BreadcrumbSeparator className="text-xs md:text-base" />
+                <BreadcrumbItem className="text-xs md:text-base">
                   <BreadcrumbLink href="/docs/project-management/content/introduction/overview">Introduction</BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem className="text-sm md:text-base">
+                <BreadcrumbSeparator className="text-xs md:text-base" />
+                <BreadcrumbItem className="text-xs md:text-base">
                   <BreadcrumbPage>Overview</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
