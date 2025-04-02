@@ -11,18 +11,33 @@ export async function readContent(contentPath: string) {
     return contentCache[contentPath]
   }
 
-  const fullPath = path.join(process.cwd(), "src/app/docs", contentPath, `${path.basename(contentPath)}.mdx`)
-  const content = await fs.promises.readFile(fullPath, "utf-8")
-  
-  const serializedContent = await serialize(content, {
-    mdxOptions: {
-      rehypePlugins: [rehypeSlug],
-    },
-    parseFrontmatter: true,
-  })
+  try {
+    const fullPath = path.join(process.cwd(), "src/app/docs", contentPath, `${path.basename(contentPath)}.mdx`)
+    
+    // Check if file exists
+    if (!fs.existsSync(fullPath)) {
+      throw new Error(`MDX file not found at path: ${fullPath}`)
+    }
 
-  // Cache the result
-  contentCache[contentPath] = serializedContent
+    const content = await fs.promises.readFile(fullPath, "utf-8")
+    
+    if (!content) {
+      throw new Error(`Empty MDX file at path: ${fullPath}`)
+    }
 
-  return serializedContent
+    const serializedContent = await serialize(content, {
+      mdxOptions: {
+        rehypePlugins: [rehypeSlug],
+      },
+      parseFrontmatter: true,
+    })
+
+    // Cache the result
+    contentCache[contentPath] = serializedContent
+
+    return serializedContent
+  } catch (error) {
+    console.error(`Error reading MDX content for path ${contentPath}:`, error)
+    throw error
+  }
 } 

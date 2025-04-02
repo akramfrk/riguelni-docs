@@ -1,7 +1,6 @@
 "use client"
 
-import type React from "react"
-
+import React, { useState } from "react"
 import Link from "next/link"
 import { BookOpen, CheckCircle, Menu, ChevronRight, ChevronLeft } from "lucide-react"
 import {
@@ -12,7 +11,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { useState } from "react"
 import { cn } from "@/lib/utils"
 
 export default function ProjectManagementLayout({
@@ -42,27 +40,6 @@ export default function ProjectManagementLayout({
         {/* Breadcrumb */}
         <div className="absolute top-13 left-4 md:left-0 right-4 mb-8 overflow-x-auto whitespace-nowrap pb-2 px-4 md:px-0">
           <nav className="hidden md:block pl-[280px] pr-[280px]">
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbLink href="/docs/project-management">Project Management</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbLink href="/docs/project-management/content/introduction/overview">Introduction</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbPage>Overview</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </nav>
-          <nav className="md:hidden">
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="text-sm md:text-base">
