@@ -341,43 +341,7 @@ export default function ProjectManagementLayout({
         </div>
 
         {/* Main content */}
-        <main className="flex-1 max-w-3xl mx-auto prose prose-slate dark:prose-invert [&_h1]:scroll-mt-[50vh] [&_h2]:scroll-mt-[50vh] [&_h3]:scroll-mt-[50vh] pb-16 pt-16 md:pt-0 px-4 md:px-0">
-          {children}
-        </main>
-
-        {/* Right sidebar */}
-        <div className="hidden lg:block w-64 shrink-0 border-l border-border/40 pl-6">
-          <div className="sticky top-[4.5rem] h-[calc(100vh-4.5rem)] overflow-y-auto">
-            <div className="space-y-4 pb-8">
-              <div className="font-medium">On this page</div>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="#overview-of-our-approach" className="text-muted-foreground hover:text-primary">
-                    Overview of Our Approach
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#core-objectives" className="text-muted-foreground hover:text-primary">
-                    Core Objectives
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#key-components-of-our-project-management"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    Key Components of Our Project Management
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#why-project-management-matters" className="text-muted-foreground hover:text-primary">
-                    Why Project Management Matters
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <div className="flex-1">{children}</div>
       </div>
     </div>
   )
