@@ -3,14 +3,6 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { BookOpen, CheckCircle, Menu, ChevronRight, ChevronLeft } from "lucide-react"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 import { cn } from "@/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
 
@@ -47,43 +39,6 @@ export default function ProjectManagementLayout({
             <ChevronRight className="h-3.5 w-3.5" /> Menu
           </span>
         </button>
-
-        {/* Breadcrumb */}
-        <div className="absolute top-13 left-4 md:left-0 right-4 mb-8 overflow-x-auto whitespace-nowrap pb-2 px-4 md:px-0">
-          <nav className="block md:pl-[280px] md:pr-[280px]">
-            {isLoading ? (
-              <div className="flex items-center gap-2">
-                <Skeleton className="h-4 w-16" />
-                <Skeleton className="h-4 w-4" />
-                <Skeleton className="h-4 w-32" />
-                <Skeleton className="h-4 w-4" />
-                <Skeleton className="h-4 w-24" />
-                <Skeleton className="h-4 w-4" />
-                <Skeleton className="h-4 w-20" />
-              </div>
-            ) : (
-              <Breadcrumb>
-                <BreadcrumbList>
-                  <BreadcrumbItem className="text-sm md:text-base">
-                    <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem className="text-sm md:text-base">
-                    <BreadcrumbLink href="/docs/project-management">Project Management</BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem className="text-sm md:text-base">
-                    <BreadcrumbLink href="/docs/project-management/content/introduction/overview">Introduction</BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem className="text-sm md:text-base">
-                    <BreadcrumbPage>Overview</BreadcrumbPage>
-                  </BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
-            )}
-          </nav>
-        </div>
 
         {/* Mobile sidebar */}
         <div

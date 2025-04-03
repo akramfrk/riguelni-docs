@@ -4,12 +4,45 @@ import ReactMarkdown from "react-markdown";
 import { useState, useEffect } from "react";
 import type { Components } from "react-markdown";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, MoreHorizontal } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+} from "@/components/ui/breadcrumb";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function OverviewPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [markdownContent, setMarkdownContent] = useState("");
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 100; // Adjust based on your header height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      // Add a small delay to ensure the element is in the DOM
+      setTimeout(() => {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  };
 
   useEffect(() => {
     // Simulate loading time
@@ -113,23 +146,25 @@ By using our project management tools, you can create a more organized, efficien
 
   const components: Partial<Components> = {
     h1: ({ children }) => {
+      const id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
       return (
-        <h1 className="scroll-mt-[50vh] mb-8">
+        <h1 id={id} className="scroll-mt-24 mb-8">
           {children}
         </h1>
       );
     },
     h2: ({ children }) => {
-      const id = children?.toString().toLowerCase().replace(/\s+/g, '-');
+      const id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
       return (
-        <h2 id={id} className="scroll-mt-[50vh] mt-8 mb-4">
+        <h2 id={id} className="scroll-mt-24 mt-8 mb-4">
           {children}
         </h2>
       );
     },
     h3: ({ children }) => {
+      const id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
       return (
-        <h3 className="scroll-mt-[50vh] mt-6 mb-3">
+        <h3 id={id} className="scroll-mt-24 mt-6 mb-3">
           {children}
         </h3>
       );
@@ -138,9 +173,56 @@ By using our project management tools, you can create a more organized, efficien
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="flex">
-        <main className="flex-1 max-w-3xl mx-auto pb-16 pt-16">
-          <div className="min-h-[200px] prose prose-lg dark:prose-invert prose-primary">
+      {/* Breadcrumb */}
+      <div className="absolute top-[3.75rem] left-4 md:left-0 right-4 mb-8 overflow-x-auto whitespace-nowrap pb-2 px-4 md:px-0">
+        <nav className="block md:pl-[280px] md:pr-[280px]">
+          {isLoading ? (
+            <div className="flex items-center gap-2">
+              <Skeleton className="h-4 w-16" />
+              <Skeleton className="h-4 w-4" />
+              <Skeleton className="h-4 w-32" />
+              <Skeleton className="h-4 w-4" />
+              <Skeleton className="h-4 w-24" />
+              <Skeleton className="h-4 w-4" />
+              <Skeleton className="h-4 w-20" />
+            </div>
+          ) : (
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem className="text-sm md:text-base">
+                  <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="flex items-center gap-1">
+                    <BreadcrumbEllipsis className="h-4 w-4" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start">
+                    <DropdownMenuItem asChild>
+                      <BreadcrumbLink href="/docs/project-management" className="text-sm">
+                        Project Management
+                      </BreadcrumbLink>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <BreadcrumbLink href="/docs/project-management/content/introduction" className="text-sm">
+                        Introduction
+                      </BreadcrumbLink>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem className="text-sm md:text-base">
+                  <BreadcrumbPage>Overview</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          )}
+        </nav>
+      </div>
+
+      <div className="flex flex-col lg:flex-row">
+        <main className="flex-1 max-w-full lg:max-w-3xl mx-auto pb-16 pt-16 px-4 md:px-8 lg:px-12">
+          <div className="min-h-[200px] prose dark:prose-invert prose-primary max-w-none [&>*:first-child]:!mt-0 prose-headings:!mt-0">
             {isLoading ? (
               <div className="space-y-8">
                 {/* Title section */}
@@ -262,25 +344,47 @@ By using our project management tools, you can create a more organized, efficien
                 ) : (
                   <>
                     <li>
-                      <Link href="#overview-of-our-approach" className="text-muted-foreground hover:text-primary">
+                      <Link 
+                        href="#introduction" 
+                        onClick={(e) => handleScroll(e, 'introduction')}
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        Introduction
+                      </Link>
+                    </li>
+                    <li>
+                      <Link 
+                        href="#overview-of-our-approach" 
+                        onClick={(e) => handleScroll(e, 'overview-of-our-approach')}
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
                         Overview of Our Approach
                       </Link>
                     </li>
                     <li>
-                      <Link href="#core-objectives" className="text-muted-foreground hover:text-primary">
+                      <Link 
+                        href="#core-objectives" 
+                        onClick={(e) => handleScroll(e, 'core-objectives')}
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
                         Core Objectives
                       </Link>
                     </li>
                     <li>
-                      <Link
-                        href="#key-components-of-our-project-management"
-                        className="text-muted-foreground hover:text-primary"
+                      <Link 
+                        href="#key-components-of-our-project-management" 
+                        onClick={(e) => handleScroll(e, 'key-components-of-our-project-management')}
+                        className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Key Components of Our Project Management
+                        Key Components
                       </Link>
                     </li>
                     <li>
-                      <Link href="#why-project-management-matters" className="text-muted-foreground hover:text-primary">
+                      <Link 
+                        href="#why-project-management-matters" 
+                        onClick={(e) => handleScroll(e, 'why-project-management-matters')}
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
                         Why Project Management Matters
                       </Link>
                     </li>
