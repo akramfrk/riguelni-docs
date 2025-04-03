@@ -53,7 +53,7 @@ export default function ProjectManagementLayout({
               "transform transition-transform duration-300 ease-out",
               isSidebarOpen ? "translate-x-0" : "-translate-x-full",
             )}
-            style={{ top: '4rem', height: 'calc(100vh - 4rem)' }}
+            style={{ top: '3.75rem', height: 'calc(100vh - 3.75rem)' }}
           >
             {/* Close button */}
             <button
