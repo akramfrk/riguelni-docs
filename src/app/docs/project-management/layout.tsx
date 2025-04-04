@@ -192,7 +192,7 @@ export default function ProjectManagementLayout({
                       </li>
                       <li>
                         <Link
-                          href="/docs/project-management/content/team-collaboration/telegram-team-communication"
+                          href="/docs/project-management/content/team-collaboration/telegram-communication"
                           className="text-muted-foreground hover:text-primary"
                         >
                           Telegram for Team Communication
@@ -200,7 +200,7 @@ export default function ProjectManagementLayout({
                       </li>
                       <li>
                         <Link
-                          href="/docs/project-management/content/team-collaboration/jira-project-tracking"
+                          href="/docs/project-management/content/team-collaboration/jira-project-management"
                           className="text-muted-foreground hover:text-primary"
                         >
                           Jira for Project Tracking
@@ -349,7 +349,7 @@ export default function ProjectManagementLayout({
                       </li>
                       <li>
                         <Link
-                          href="/docs/project-management/content/team-collaboration/telegram-team-communication"
+                          href="/docs/project-management/content/team-collaboration/telegram-communication"
                           className="text-muted-foreground hover:text-primary"
                         >
                           Telegram for Team Communication
@@ -357,7 +357,7 @@ export default function ProjectManagementLayout({
                       </li>
                       <li>
                         <Link
-                          href="/docs/project-management/content/team-collaboration/jira-project-tracking"
+                          href="/docs/project-management/content/team-collaboration/jira-project-management"
                           className="text-muted-foreground hover:text-primary"
                         >
                           Jira for Project Tracking

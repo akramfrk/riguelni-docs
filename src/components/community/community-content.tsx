@@ -45,7 +45,7 @@ const teamMembers: TeamMember[] = [
     image: "/team/akram.webp",
     tasks: [
       "Designs the visual styles and layout of the website",
-      "Prepares the web site for project documentation",
+      "Develops the web site for project documentation",
       "Ensures design consistency across the website"
     ],
     contact: {

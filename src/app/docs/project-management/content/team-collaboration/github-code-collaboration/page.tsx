@@ -30,7 +30,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 
-export default function FeatureBranchesPage() {
+export default function GitHubCollaborationPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [markdownContent, setMarkdownContent] = useState("")
 
@@ -55,127 +55,95 @@ export default function FeatureBranchesPage() {
     // Simulate loading time
     const timer = setTimeout(() => {
       setIsLoading(false)
-      setMarkdownContent(`# Feature Branches for New Features
-At RIGELNI, we use feature branches to implement new features, style components, and fix bugs. This approach allows us to work on changes independently without affecting the main codebase until the changes are ready for review.
+      setMarkdownContent(`# GitHub for Code Collaboration
+At RIGELNI, we use GitHub as our primary platform for code collaboration. It provides a centralized repository for our codebase, enabling seamless collaboration between team members, code review processes, and project management.
 
-## Why Feature Branches?
+## Why GitHub?
 ### Benefits of Our Approach
-Using feature branches provides several advantages for our development workflow:
+Using GitHub for code collaboration offers several advantages for our development workflow:
 
-- Isolated development environment
-- Safe experimentation with new features
-- Clean code history
-- Better collaboration
-- Easier code review process
+- Centralized code repository
+- Visual diff and merge tools
+- Pull request workflow
+- Issue tracking and project boards
+- Code review tools
+- Branch protection rules
+- CI/CD integration
 
-### Branch Naming Convention
-We follow a consistent naming convention for our branches:
+### Repository Organization
+We organize our repositories with a clear structure:
 
-- Feature branches: \`feature/description-of-feature\`
-- Bug fixes: \`fix/description-of-bug\`
-- Style updates: \`style/description-of-style\`
-- Documentation: \`docs/description-of-docs\`
+- One repository per project
+- Clear README files with setup instructions
+- Consistent branch naming conventions
+- Protected main branches
+- Issue templates for bug reports and feature requests
 
-## Our Branching Workflow
+## Our GitHub Workflow
 
-### Creating a Feature Branch
+### Creating Issues
 [IMAGE_PLACEHOLDER_1]
 
-### Making Changes
+### Pull Request Process
 [IMAGE_PLACEHOLDER_2]
 
-### Creating Pull Requests
+### Code Review Guidelines
 [IMAGE_PLACEHOLDER_3]
 
-### Review and Merge Process
+### Project Boards
 [IMAGE_PLACEHOLDER_4]
 
-### Challenges We Faced
-While using feature branches, we encountered a common problem when multiple team members worked on the same file simultaneously:
+### Using VS Code with GitHub
+Here's how we typically work with GitHub using VS Code:
 
-- **Merge Conflicts in Shared Files**: When one developer worked on functionality while another worked on styling in the same file, we often faced complex merge conflicts.
-- **Delayed Integration**: These conflicts sometimes delayed the integration of both features.
-- **Code Quality Issues**: Rushed conflict resolutions sometimes led to code quality issues.
+1. **Cloning Repositories**
+   - Open VS Code
+   - Click the "Clone Repository" button in the Source Control view
+   - Enter the GitHub repository URL
+   - Select a local folder to clone to
 
-### Our Solution
-To solve these problems, we implemented a sequential workflow:
+2. **Working with Branches**
+   - Create new branches directly in VS Code
+   - Switch between branches using the branch picker
+   - Push and pull changes with the Source Control view
 
-1. **Functionality First**
-   - The developer responsible for functionality works on the feature first
-   - They complete all functional aspects of the feature
-   - They push their changes and create a pull request
-   - After review and merge, the feature branch is deleted
-
-2. **Styling Second**
-   - The developer responsible for styling creates a new branch from the updated main
-   - They implement all styling changes
-   - They push their changes and create a pull request
-   - After review and merge, the styling branch is deleted
-
-This approach ensures:
-- Clean separation of concerns
-- No merge conflicts between functionality and styling
-- Better code quality
-- Smoother collaboration
-- Faster feature completion
-
-### Example Workflow
-Here's how we typically work with feature branches using VS Code's Git UI:
-
-1. **Creating a New Branch**
-   - Click the branch name in the bottom-left corner of VS Code
-   - Select "Create New Branch"
-   - Enter branch name following our convention (e.g., \`feature/new-feature\`)
-   - Press Enter to create and switch to the new branch
-
-2. **Making Changes**
-   - Make your code changes in VS Code
-   - Changes will appear in the Source Control view (Ctrl+Shift+G)
-   - Click the + icon to stage changes
-   - Enter a commit message following our convention
-   - Click the checkmark to commit
-
-3. **Pushing Changes**
-   - Click the "..." menu in the Source Control view
-   - Select "Push" to send your branch to GitHub
-   - VS Code will automatically create a remote branch
-
-4. **Creating Pull Request**
-   - After pushing, VS Code will show a notification
+3. **Creating Pull Requests**
+   - After pushing changes, VS Code will show a notification
    - Click "Create Pull Request" in the notification
    - Fill in the PR details in GitHub's web interface
-   - Request review from the project manager
+   - Request review from team members
 
-5. **After PR is Merged**
-   - Switch back to main branch using the branch picker
-   - Click "Pull" to get latest changes
-   - Delete the feature branch using the branch picker
+4. **Reviewing Code**
+   - Use GitHub's web interface for detailed code reviews
+   - Add comments on specific lines
+   - Request changes or approve PRs
+   - Merge when approved
 
 ## Best Practices
 
-### Branch Management
-- Keep branches focused and small
-- Update frequently with main branch
-- Delete branches after merging
-- Use descriptive branch names
-- Follow naming conventions
+### Repository Management
+- Keep repositories focused and well-organized
+- Use descriptive commit messages
+- Maintain up-to-date documentation
+- Set up branch protection rules
+- Configure issue templates
 
-### Commit Messages
-- Use conventional commit format
-- Be specific and descriptive
-- Reference issue numbers
-- Keep messages concise
-- Use present tense
+### Collaboration Guidelines
+- Assign issues to specific team members
+- Use project boards to track progress
+- Regular team syncs on GitHub projects
+- Clear communication in PR descriptions
+- Reference issues in commits and PRs
 
-### Pull Request Guidelines
-- Include clear descriptions
-- Add relevant screenshots
-- Reference related issues
-- Request specific reviewers
-- Keep PRs manageable in size
+### Security Practices
+- Never commit sensitive information
+- Use environment variables for secrets
+- Enable two-factor authentication
+- Regular security audits
+- Keep dependencies updated
 
 ## Conclusion
-Feature branches are an essential part of our development workflow at RIGELNI. They allow us to maintain a clean, organized codebase while enabling efficient collaboration and code review. By following our branching strategy and best practices, we ensure high-quality code delivery and smooth integration of new features.`)
+GitHub is an essential tool in our development workflow at RIGELNI. It enables efficient collaboration, code review, and project management. By following our GitHub workflow and best practices, we ensure high-quality code delivery and smooth team collaboration.`)
     }, 1000)
 
     return () => clearTimeout(timer)
@@ -184,8 +152,8 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
   const components: Partial<Components> = {
     h1: ({ children }) => {
       let id = '';
-      if (children?.toString().includes('Feature Branches for New Features')) {
-        id = 'feature-branches-for-new-features';
+      if (children?.toString().includes('GitHub for Code Collaboration')) {
+        id = 'github-for-code-collaboration';
       } else {
         id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') || '';
       }
@@ -197,10 +165,10 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
     },
     h2: ({ children }) => {
       let id = '';
-      if (children?.toString().includes('Why Feature Branches')) {
-        id = 'why-feature-branches';
-      } else if (children?.toString().includes('Our Branching Workflow')) {
-        id = 'our-branching-workflow';
+      if (children?.toString().includes('Why GitHub')) {
+        id = 'why-github';
+      } else if (children?.toString().includes('Our GitHub Workflow')) {
+        id = 'our-github-workflow';
       } else if (children?.toString().includes('Best Practices')) {
         id = 'best-practices';
       } else if (children?.toString().includes('Conclusion')) {
@@ -241,25 +209,25 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                 <div className="w-full cursor-zoom-in">
                   <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
                     <Image
-                      src="/FeatureBranches/creating-branch.png"
-                      alt="Creating a Feature Branch"
+                      src="/GitHub/creating-issues.png"
+                      alt="Creating Issues"
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
-                      <span className="font-semibold text-primary">Figure 1</span>
-                      <span className="text-muted-foreground"> — Creating a Feature Branch in VS Code</span>
+                      <span className="font-semibold text-primary">Figure 2</span>
+                      <span className="text-muted-foreground"> — Creating and Managing Issues</span>
                     </figcaption>
                   </div>
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Creating a Feature Branch</DialogTitle>
+                <DialogTitle className="sr-only">Creating Issues</DialogTitle>
                 <div className="relative w-full h-full">
                   <Image
-                    src="/FeatureBranches/creating-branch.png"
-                    alt="Creating a Feature Branch"
+                    src="/GitHub/creating-issues.png"
+                    alt="Creating Issues"
                     fill
                     className="object-contain"
                   />
@@ -277,25 +245,25 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                 <div className="w-full cursor-zoom-in">
                   <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
                     <Image
-                      src="/FeatureBranches/making-changes.png"
-                      alt="Making Changes in a Feature Branch"
+                      src="/GitHub/pull-request.png"
+                      alt="Pull Request Process"
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
-                      <span className="font-semibold text-primary">Figure 2</span>
-                      <span className="text-muted-foreground"> — Making Changes in a Feature Branch</span>
+                      <span className="font-semibold text-primary">Figure 3</span>
+                      <span className="text-muted-foreground"> — Pull Request Process</span>
                     </figcaption>
                   </div>
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Making Changes in a Feature Branch</DialogTitle>
+                <DialogTitle className="sr-only">Pull Request Process</DialogTitle>
                 <div className="relative w-full h-full">
                   <Image
-                    src="/FeatureBranches/making-changes.png"
-                    alt="Making Changes in a Feature Branch"
+                    src="/GitHub/pull-request.png"
+                    alt="Pull Request Process"
                     fill
                     className="object-contain"
                   />
@@ -313,25 +281,25 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                 <div className="w-full cursor-zoom-in">
                   <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
                     <Image
-                      src="/FeatureBranches/creating-pr.png"
-                      alt="Creating a Pull Request"
+                      src="/GitHub/code-review.png"
+                      alt="Code Review Guidelines"
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
-                      <span className="font-semibold text-primary">Figure 3</span>
-                      <span className="text-muted-foreground"> — Creating a Pull Request</span>
+                      <span className="font-semibold text-primary">Figure 4</span>
+                      <span className="text-muted-foreground"> — Code Review Guidelines</span>
                     </figcaption>
                   </div>
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Creating a Pull Request</DialogTitle>
+                <DialogTitle className="sr-only">Code Review Guidelines</DialogTitle>
                 <div className="relative w-full h-full">
                   <Image
-                    src="/FeatureBranches/creating-pr.png"
-                    alt="Creating a Pull Request"
+                    src="/GitHub/code-review.png"
+                    alt="Code Review Guidelines"
                     fill
                     className="object-contain"
                   />
@@ -349,25 +317,25 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                 <div className="w-full cursor-zoom-in">
                   <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
                     <Image
-                      src="/FeatureBranches/review-merge.png"
-                      alt="Review and Merge Process"
+                      src="/GitHub/project-boards.png"
+                      alt="Project Boards"
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
-                      <span className="font-semibold text-primary">Figure 4</span>
-                      <span className="text-muted-foreground"> — Review and Merge Process</span>
+                      <span className="font-semibold text-primary">Figure 5</span>
+                      <span className="text-muted-foreground"> — Using Project Boards</span>
                     </figcaption>
                   </div>
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Review and Merge Process</DialogTitle>
+                <DialogTitle className="sr-only">Project Boards</DialogTitle>
                 <div className="relative w-full h-full">
                   <Image
-                    src="/FeatureBranches/review-merge.png"
-                    alt="Review and Merge Process"
+                    src="/GitHub/project-boards.png"
+                    alt="Project Boards"
                     fill
                     className="object-contain"
                   />
@@ -414,15 +382,15 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management/content/version-control" className="text-sm">
-                        Version Control
+                      <BreadcrumbLink href="/docs/project-management/content/team-collaboration/github-code-collaboration" className="text-sm">
+                        Team Collaboration
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbPage>Feature Branches for New Features</BreadcrumbPage>
+                  <BreadcrumbPage>GitHub for Code Collaboration</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -444,7 +412,7 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                   </div>
                 </div>
 
-                {/* Why Feature Branches section */}
+                {/* Why GitHub section */}
                 <div className="space-y-6">
                   <Skeleton className="h-8 w-[70%]" /> {/* Section title */}
                   <div className="space-y-4">
@@ -508,62 +476,19 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
               <>
                 <ReactMarkdown components={components}>{markdownContent}</ReactMarkdown>
                 {/* Next link section */}
-                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-0 sm:justify-between mt-20 pt-8 border-t border-border/40">
-                  {isLoading ? (
-                    <>
-                      <div className="flex items-center gap-4 px-5 py-3 w-full sm:w-auto">
-                        <div className="flex flex-col items-start flex-1 sm:flex-initial">
-                          <Skeleton className="h-3 w-16 mb-2" />
-                          <Skeleton className="h-4 w-48" />
-                        </div>
-                        <Skeleton className="h-7 w-7 rounded-full" />
-                      </div>
-                      <div className="flex items-center gap-4 px-5 py-3 w-full sm:w-auto">
-                        <div className="flex flex-col items-end flex-1 sm:flex-initial">
-                          <Skeleton className="h-3 w-16 mb-2" />
-                          <Skeleton className="h-4 w-48" />
-                        </div>
-                        <Skeleton className="h-7 w-7 rounded-full" />
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <Link
-                        href="/docs/project-management/content/version-control/vs-code-development"
-                        className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline w-full sm:w-auto"
-                      >
-                        <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                          <ChevronRight className="h-4 w-4 text-primary group-hover:text-primary group-hover:-translate-x-0.5 transition-transform duration-300 rotate-180" />
-                        </div>
-                        <div className="flex flex-col items-start relative z-10 flex-1 sm:flex-initial">
-                          <span className="text-xs font-medium text-muted-foreground/60 mb-1.5 group-hover:text-muted-foreground/80 transition-colors duration-200">
-                            Previous
-                          </span>
-                          <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:-translate-x-0.5 transition-all duration-300">
-                            VS Code for Development
-                          </span>
-                        </div>
-                        <span className="absolute inset-0 bg-gradient-to-l from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                      </Link>
-                      <Link
-                        href="/docs/project-management/content/team-collaboration/github-code-collaboration"
-                        className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline w-full sm:w-auto"
-                      >
-                        <div className="flex flex-col items-end relative z-10 flex-1 sm:flex-initial">
-                          <span className="text-xs font-medium text-muted-foreground/60 mb-1.5 group-hover:text-muted-foreground/80 transition-colors duration-200">
-                            Next
-                          </span>
-                          <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:translate-x-0.5 transition-all duration-300">
-                            GitHub for Code Collaboration
-                          </span>
-                        </div>
-                        <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                          <ChevronRight className="h-4 w-4 text-primary group-hover:text-primary group-hover:translate-x-0.5 transition-transform duration-300" />
-                        </div>
-                        <span className="absolute inset-0 bg-gradient-to-r from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                      </Link>
-                    </>
-                  )}
+                <div className="flex justify-between items-center mt-8 pt-8 border-t">
+                  <Link
+                    href="/docs/project-management/content/version-control/feature-branches"
+                    className="text-primary hover:underline"
+                  >
+                    ← Feature Branches
+                  </Link>
+                  <Link
+                    href="/docs/project-management/content/team-collaboration/telegram-communication"
+                    className="text-primary hover:underline"
+                  >
+                    Telegram Communication →
+                  </Link>
                 </div>
               </>
             )}
@@ -587,29 +512,29 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                   <>
                     <li>
                       <Link 
-                        href="#feature-branches-for-new-features" 
-                        onClick={(e) => handleScroll(e, 'feature-branches-for-new-features')}
+                        href="#github-for-code-collaboration" 
+                        onClick={(e) => handleScroll(e, 'github-for-code-collaboration')}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Feature Branches for New Features
+                        GitHub for Code Collaboration
                       </Link>
                     </li>
                     <li>
                       <Link 
-                        href="#why-feature-branches" 
-                        onClick={(e) => handleScroll(e, 'why-feature-branches')}
+                        href="#why-github" 
+                        onClick={(e) => handleScroll(e, 'why-github')}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Why Feature Branches?
+                        Why GitHub?
                       </Link>
                     </li>
                     <li>
                       <Link
-                        href="#our-branching-workflow"
-                        onClick={(e) => handleScroll(e, 'our-branching-workflow')}
+                        href="#our-github-workflow"
+                        onClick={(e) => handleScroll(e, 'our-github-workflow')}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Our Branching Workflow
+                        Our GitHub Workflow
                       </Link>
                     </li>
                     <li>

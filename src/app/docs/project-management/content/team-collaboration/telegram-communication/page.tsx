@@ -30,7 +30,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 
-export default function FeatureBranchesPage() {
+export default function TelegramCommunicationPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [markdownContent, setMarkdownContent] = useState("")
 
@@ -55,127 +55,85 @@ export default function FeatureBranchesPage() {
     // Simulate loading time
     const timer = setTimeout(() => {
       setIsLoading(false)
-      setMarkdownContent(`# Feature Branches for New Features
-At RIGELNI, we use feature branches to implement new features, style components, and fix bugs. This approach allows us to work on changes independently without affecting the main codebase until the changes are ready for review.
+      setMarkdownContent(`# Telegram Communication
+At RIGELNI, we have created a dedicated Telegram group that serves as our primary communication channel. This group enables smooth communication and efficient file sharing between team members, making collaboration seamless and effective.
 
-## Why Feature Branches?
-### Benefits of Our Approach
-Using feature branches provides several advantages for our development workflow:
+## Our Telegram Group
+### Purpose and Benefits
+Our Telegram group provides several key advantages for our workflow:
 
-- Isolated development environment
-- Safe experimentation with new features
-- Clean code history
-- Better collaboration
-- Easier code review process
+- Instant communication for quick questions and updates
+- Easy file sharing for code snippets, designs, and documentation
+- Real-time notifications for important announcements
+- Group discussions for technical decisions
+- Quick access to team members for urgent matters
+- Cross-platform availability for all team members
+- Message history for reference and documentation
 
-### Branch Naming Convention
-We follow a consistent naming convention for our branches:
+### Group Structure
+We maintain a simple but effective group structure:
 
-- Feature branches: \`feature/description-of-feature\`
-- Bug fixes: \`fix/description-of-bug\`
-- Style updates: \`style/description-of-style\`
-- Documentation: \`docs/description-of-docs\`
+- Main team group for all communication
+- Clear guidelines for message organization
+- Consistent naming conventions for files
+- Regular cleanup of outdated information
 
-## Our Branching Workflow
+## How We Use Telegram
 
-### Creating a Feature Branch
-[IMAGE_PLACEHOLDER_1]
+### Daily Communication
+Our team uses the Telegram group for:
 
-### Making Changes
-[IMAGE_PLACEHOLDER_2]
+- Sharing progress updates on tasks
+- Reporting blockers and requesting assistance
+- Celebrating achievements and milestones
+- Coordinating meetings and schedules
+- Discussing technical approaches
 
-### Creating Pull Requests
-[IMAGE_PLACEHOLDER_3]
+### File Sharing
+We leverage Telegram's file sharing capabilities for:
 
-### Review and Merge Process
-[IMAGE_PLACEHOLDER_4]
+- Sharing code snippets for quick reviews
+- Exchanging design mockups and assets
+- Distributing documentation and guides
+- Sending configuration files
+- Sharing logs for troubleshooting
 
-### Challenges We Faced
-While using feature branches, we encountered a common problem when multiple team members worked on the same file simultaneously:
+### Integration with Development Workflow
+Our Telegram group integrates with our development process:
 
-- **Merge Conflicts in Shared Files**: When one developer worked on functionality while another worked on styling in the same file, we often faced complex merge conflicts.
-- **Delayed Integration**: These conflicts sometimes delayed the integration of both features.
-- **Code Quality Issues**: Rushed conflict resolutions sometimes led to code quality issues.
+1. **Code Reviews**
+   - Share code snippets for quick feedback
+   - Discuss implementation details
+   - Get immediate responses to questions
 
-### Our Solution
-To solve these problems, we implemented a sequential workflow:
+2. **Project Coordination**
+   - Share meeting notes and action items
+   - Update task status and progress
+   - Coordinate deployments and releases
 
-1. **Functionality First**
-   - The developer responsible for functionality works on the feature first
-   - They complete all functional aspects of the feature
-   - They push their changes and create a pull request
-   - After review and merge, the feature branch is deleted
-
-2. **Styling Second**
-   - The developer responsible for styling creates a new branch from the updated main
-   - They implement all styling changes
-   - They push their changes and create a pull request
-   - After review and merge, the styling branch is deleted
-
-This approach ensures:
-- Clean separation of concerns
-- No merge conflicts between functionality and styling
-- Better code quality
-- Smoother collaboration
-- Faster feature completion
-
-### Example Workflow
-Here's how we typically work with feature branches using VS Code's Git UI:
-
-1. **Creating a New Branch**
-   - Click the branch name in the bottom-left corner of VS Code
-   - Select "Create New Branch"
-   - Enter branch name following our convention (e.g., \`feature/new-feature\`)
-   - Press Enter to create and switch to the new branch
-
-2. **Making Changes**
-   - Make your code changes in VS Code
-   - Changes will appear in the Source Control view (Ctrl+Shift+G)
-   - Click the + icon to stage changes
-   - Enter a commit message following our convention
-   - Click the checkmark to commit
-
-3. **Pushing Changes**
-   - Click the "..." menu in the Source Control view
-   - Select "Push" to send your branch to GitHub
-   - VS Code will automatically create a remote branch
-
-4. **Creating Pull Request**
-   - After pushing, VS Code will show a notification
-   - Click "Create Pull Request" in the notification
-   - Fill in the PR details in GitHub's web interface
-   - Request review from the project manager
-
-5. **After PR is Merged**
-   - Switch back to main branch using the branch picker
-   - Click "Pull" to get latest changes
-   - Delete the feature branch using the branch picker
+3. **Knowledge Sharing**
+   - Share learning resources and tutorials
+   - Document solutions to common problems
+   - Maintain a repository of team knowledge
 
 ## Best Practices
 
-### Branch Management
-- Keep branches focused and small
-- Update frequently with main branch
-- Delete branches after merging
-- Use descriptive branch names
-- Follow naming conventions
+### Communication Guidelines
+- Use clear and concise messages
+- Tag relevant team members when needed
+- Use appropriate formatting for readability
+- Maintain a professional tone
+- Organize discussions by topic or project
 
-### Commit Messages
-- Use conventional commit format
-- Be specific and descriptive
-- Reference issue numbers
-- Keep messages concise
-- Use present tense
-
-### Pull Request Guidelines
-- Include clear descriptions
-- Add relevant screenshots
-- Reference related issues
-- Request specific reviewers
-- Keep PRs manageable in size
+### File Management
+- Use descriptive names for shared files
+- Compress large files before sharing
+- Organize shared resources logically
+- Clean up old or outdated files
+- Use appropriate file formats
 
 ## Conclusion
-Feature branches are an essential part of our development workflow at RIGELNI. They allow us to maintain a clean, organized codebase while enabling efficient collaboration and code review. By following our branching strategy and best practices, we ensure high-quality code delivery and smooth integration of new features.`)
+Our Telegram group is an essential communication tool in our workflow at RIGELNI. It enables efficient team coordination, knowledge sharing, and project management. By following our communication guidelines and best practices, we ensure smooth collaboration and successful project delivery.`)
     }, 1000)
 
     return () => clearTimeout(timer)
@@ -184,8 +142,8 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
   const components: Partial<Components> = {
     h1: ({ children }) => {
       let id = '';
-      if (children?.toString().includes('Feature Branches for New Features')) {
-        id = 'feature-branches-for-new-features';
+      if (children?.toString().includes('Telegram Communication')) {
+        id = 'telegram-communication';
       } else {
         id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') || '';
       }
@@ -197,10 +155,10 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
     },
     h2: ({ children }) => {
       let id = '';
-      if (children?.toString().includes('Why Feature Branches')) {
-        id = 'why-feature-branches';
-      } else if (children?.toString().includes('Our Branching Workflow')) {
-        id = 'our-branching-workflow';
+      if (children?.toString().includes('Why Telegram')) {
+        id = 'why-telegram';
+      } else if (children?.toString().includes('Our Telegram Workflow')) {
+        id = 'our-telegram-workflow';
       } else if (children?.toString().includes('Best Practices')) {
         id = 'best-practices';
       } else if (children?.toString().includes('Conclusion')) {
@@ -241,25 +199,25 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                 <div className="w-full cursor-zoom-in">
                   <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
                     <Image
-                      src="/FeatureBranches/creating-branch.png"
-                      alt="Creating a Feature Branch"
+                      src="/Telegram/channel-setup.png"
+                      alt="Channel Setup"
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
                       <span className="font-semibold text-primary">Figure 1</span>
-                      <span className="text-muted-foreground"> — Creating a Feature Branch in VS Code</span>
+                      <span className="text-muted-foreground"> — Setting up a Telegram Channel</span>
                     </figcaption>
                   </div>
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Creating a Feature Branch</DialogTitle>
+                <DialogTitle className="sr-only">Channel Setup</DialogTitle>
                 <div className="relative w-full h-full">
                   <Image
-                    src="/FeatureBranches/creating-branch.png"
-                    alt="Creating a Feature Branch"
+                    src="/Telegram/channel-setup.png"
+                    alt="Channel Setup"
                     fill
                     className="object-contain"
                   />
@@ -277,25 +235,25 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                 <div className="w-full cursor-zoom-in">
                   <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
                     <Image
-                      src="/FeatureBranches/making-changes.png"
-                      alt="Making Changes in a Feature Branch"
+                      src="/Telegram/message-guidelines.png"
+                      alt="Message Guidelines"
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
                       <span className="font-semibold text-primary">Figure 2</span>
-                      <span className="text-muted-foreground"> — Making Changes in a Feature Branch</span>
+                      <span className="text-muted-foreground"> — Message Guidelines and Formatting</span>
                     </figcaption>
                   </div>
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Making Changes in a Feature Branch</DialogTitle>
+                <DialogTitle className="sr-only">Message Guidelines</DialogTitle>
                 <div className="relative w-full h-full">
                   <Image
-                    src="/FeatureBranches/making-changes.png"
-                    alt="Making Changes in a Feature Branch"
+                    src="/Telegram/message-guidelines.png"
+                    alt="Message Guidelines"
                     fill
                     className="object-contain"
                   />
@@ -313,25 +271,25 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                 <div className="w-full cursor-zoom-in">
                   <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
                     <Image
-                      src="/FeatureBranches/creating-pr.png"
-                      alt="Creating a Pull Request"
+                      src="/Telegram/file-sharing.png"
+                      alt="File Sharing"
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
                       <span className="font-semibold text-primary">Figure 3</span>
-                      <span className="text-muted-foreground"> — Creating a Pull Request</span>
+                      <span className="text-muted-foreground"> — File Sharing Best Practices</span>
                     </figcaption>
                   </div>
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Creating a Pull Request</DialogTitle>
+                <DialogTitle className="sr-only">File Sharing</DialogTitle>
                 <div className="relative w-full h-full">
                   <Image
-                    src="/FeatureBranches/creating-pr.png"
-                    alt="Creating a Pull Request"
+                    src="/Telegram/file-sharing.png"
+                    alt="File Sharing"
                     fill
                     className="object-contain"
                   />
@@ -349,25 +307,61 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                 <div className="w-full cursor-zoom-in">
                   <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
                     <Image
-                      src="/FeatureBranches/review-merge.png"
-                      alt="Review and Merge Process"
+                      src="/Telegram/bot-integration.png"
+                      alt="Bot Integration"
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
                       <span className="font-semibold text-primary">Figure 4</span>
-                      <span className="text-muted-foreground"> — Review and Merge Process</span>
+                      <span className="text-muted-foreground"> — Bot Integration and Automation</span>
                     </figcaption>
                   </div>
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Review and Merge Process</DialogTitle>
+                <DialogTitle className="sr-only">Bot Integration</DialogTitle>
                 <div className="relative w-full h-full">
                   <Image
-                    src="/FeatureBranches/review-merge.png"
-                    alt="Review and Merge Process"
+                    src="/Telegram/bot-integration.png"
+                    alt="Bot Integration"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
+          </figure>
+        );
+      }
+      if (text.includes('[IMAGE_PLACEHOLDER_5]')) {
+        return (
+          <figure className="mt-1 mb-4 group">
+            <Dialog>
+              <DialogTrigger asChild>
+                <div className="w-full cursor-zoom-in">
+                  <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
+                    <Image
+                      src="/Telegram/notification-management.png"
+                      alt="Notification Management"
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
+                      <span className="font-semibold text-primary">Figure 5</span>
+                      <span className="text-muted-foreground"> — Notification Settings and Management</span>
+                    </figcaption>
+                  </div>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
+                <DialogTitle className="sr-only">Notification Management</DialogTitle>
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/Telegram/notification-management.png"
+                    alt="Notification Management"
                     fill
                     className="object-contain"
                   />
@@ -414,15 +408,15 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management/content/version-control" className="text-sm">
-                        Version Control
+                      <BreadcrumbLink href="/docs/project-management/content/team-collaboration" className="text-sm">
+                        Team Collaboration
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbPage>Feature Branches for New Features</BreadcrumbPage>
+                  <BreadcrumbPage>Telegram Communication</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -444,7 +438,7 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                   </div>
                 </div>
 
-                {/* Why Feature Branches section */}
+                {/* Why Telegram section */}
                 <div className="space-y-6">
                   <Skeleton className="h-8 w-[70%]" /> {/* Section title */}
                   <div className="space-y-4">
@@ -529,7 +523,7 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                   ) : (
                     <>
                       <Link
-                        href="/docs/project-management/content/version-control/vs-code-development"
+                        href="/docs/project-management/content/team-collaboration/github-code-collaboration"
                         className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline w-full sm:w-auto"
                       >
                         <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
@@ -540,13 +534,13 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                             Previous
                           </span>
                           <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:-translate-x-0.5 transition-all duration-300">
-                            VS Code for Development
+                            GitHub for Code Collaboration
                           </span>
                         </div>
                         <span className="absolute inset-0 bg-gradient-to-l from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                       </Link>
                       <Link
-                        href="/docs/project-management/content/team-collaboration/github-code-collaboration"
+                        href="/docs/project-management/content/team-collaboration/jira-project-management"
                         className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline w-full sm:w-auto"
                       >
                         <div className="flex flex-col items-end relative z-10 flex-1 sm:flex-initial">
@@ -554,7 +548,7 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                             Next
                           </span>
                           <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:translate-x-0.5 transition-all duration-300">
-                            GitHub for Code Collaboration
+                            Jira for Project Management
                           </span>
                         </div>
                         <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
@@ -587,29 +581,29 @@ Feature branches are an essential part of our development workflow at RIGELNI. T
                   <>
                     <li>
                       <Link 
-                        href="#feature-branches-for-new-features" 
-                        onClick={(e) => handleScroll(e, 'feature-branches-for-new-features')}
+                        href="#telegram-communication" 
+                        onClick={(e) => handleScroll(e, 'telegram-communication')}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Feature Branches for New Features
+                        Telegram Communication
                       </Link>
                     </li>
                     <li>
                       <Link 
-                        href="#why-feature-branches" 
-                        onClick={(e) => handleScroll(e, 'why-feature-branches')}
+                        href="#why-telegram" 
+                        onClick={(e) => handleScroll(e, 'why-telegram')}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Why Feature Branches?
+                        Why Telegram?
                       </Link>
                     </li>
                     <li>
                       <Link
-                        href="#our-branching-workflow"
-                        onClick={(e) => handleScroll(e, 'our-branching-workflow')}
+                        href="#our-telegram-workflow"
+                        onClick={(e) => handleScroll(e, 'our-telegram-workflow')}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Our Branching Workflow
+                        Our Telegram Workflow
                       </Link>
                     </li>
                     <li>
