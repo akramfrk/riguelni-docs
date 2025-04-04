@@ -249,7 +249,7 @@ export default function ProjectManagementLayout({
         {/* Left sidebar */}
         {!shouldHideSidebar && (
           <div className="hidden md:block w-64 shrink-0 border-r border-border/50 pr-6">
-            <nav className="sticky top-[3.75rem] h-[calc(100vh-3.75rem)] overflow-y-auto pr-6">
+            <nav className="sticky top-[4.5rem] h-[calc(100vh-4.5rem)] overflow-y-auto pr-6">
               <div className="space-y-6 pb-8">
                 {isLoading ? (
                   <>

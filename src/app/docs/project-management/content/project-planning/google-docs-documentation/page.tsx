@@ -303,52 +303,74 @@ Google Docs is an essential tool in our documentation workflow at RIGELNI. It en
 
                 {/* Why Google Docs section */}
                 <div className="space-y-6">
-                  <Skeleton className="h-8 w-[70%]" /> {/* Section title */}
+                  <Skeleton className="h-8 w-[40%]" /> {/* Section title */}
                   <div className="space-y-4">
-                    <Skeleton className="h-5 w-full" />
-                    <Skeleton className="h-5 w-[95%]" />
-                    <Skeleton className="h-5 w-[85%]" />
+                    <Skeleton className="h-6 w-[70%]" /> {/* Subsection title */}
+                    <div className="space-y-2 pl-4">
+                      <Skeleton className="h-5 w-[80%]" />
+                      <Skeleton className="h-5 w-[75%]" />
+                      <Skeleton className="h-5 w-[85%]" />
+                      <Skeleton className="h-5 w-[70%]" />
+                    </div>
                   </div>
-                  <div className="space-y-3">
-                    <Skeleton className="h-5 w-[40%]" />
-                    <Skeleton className="h-5 w-[45%]" />
-                    <Skeleton className="h-5 w-[35%]" />
-                  </div>
-                </div>
-
-                {/* Our Workflow section */}
-                <div className="space-y-6">
-                  <Skeleton className="h-7 w-[50%]" /> {/* Subsection title */}
                   <div className="space-y-4">
-                    <Skeleton className="h-5 w-[92%]" />
-                    <div className="space-y-3">
-                      <Skeleton className="h-5 w-[35%]" />
-                      <Skeleton className="h-5 w-[40%]" />
-                      <Skeleton className="h-5 w-[38%]" />
+                    <Skeleton className="h-6 w-[60%]" /> {/* Subsection title */}
+                    <div className="space-y-2 pl-4">
+                      <Skeleton className="h-5 w-[75%]" />
+                      <Skeleton className="h-5 w-[80%]" />
+                      <Skeleton className="h-5 w-[65%]" />
                     </div>
                   </div>
                 </div>
 
-                {/* Additional sections */}
+                {/* Our Documentation Workflow section */}
                 <div className="space-y-6">
-                  <Skeleton className="h-8 w-[45%]" />
+                  <Skeleton className="h-8 w-[50%]" /> {/* Section title */}
                   <div className="space-y-4">
-                    <Skeleton className="h-5 w-full" />
-                    <Skeleton className="h-5 w-[88%]" />
-                    <div className="space-y-3">
-                      <Skeleton className="h-5 w-[42%]" />
-                      <Skeleton className="h-5 w-[38%]" />
-                      <Skeleton className="h-5 w-[45%]" />
+                    <Skeleton className="h-6 w-[45%]" /> {/* Subsection title */}
+                    <div className="space-y-3 pl-4">
+                      <div className="space-y-2">
+                        <Skeleton className="h-5 w-[90%]" />
+                        <div className="pl-4 space-y-2">
+                          <Skeleton className="h-5 w-[70%]" />
+                          <Skeleton className="h-5 w-[75%]" />
+                          <Skeleton className="h-5 w-[65%]" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Feature cards skeleton */}
+                {/* Best Practices section */}
+                <div className="space-y-6">
+                  <Skeleton className="h-8 w-[45%]" /> {/* Section title */}
+                  <div className="space-y-4">
+                    <Skeleton className="h-6 w-[40%]" /> {/* Subsection title */}
+                    <div className="space-y-2 pl-4">
+                      <Skeleton className="h-5 w-[85%]" />
+                      <Skeleton className="h-5 w-[80%]" />
+                      <Skeleton className="h-5 w-[75%]" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Documentation Resources section */}
                 <div className="mt-16">
-                  <Skeleton className="h-8 w-[40%] mb-8" />
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                  <Skeleton className="h-8 w-[45%] mb-8" /> {/* Section title */}
+                  <div className="space-y-4">
                     {[1, 2, 3, 4, 5, 6].map((i) => (
-                      <Skeleton key={i} className="h-40 rounded-lg" />
+                      <div key={i} className="group relative overflow-hidden rounded-lg border border-border/40 bg-background p-6">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-4">
+                            <div className="h-12 w-12 rounded-full bg-accent/50" />
+                            <Skeleton className="h-5 w-32" />
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Skeleton className="h-4 w-24" />
+                            <div className="h-4 w-4 rounded bg-accent/50" />
+                          </div>
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -356,18 +378,18 @@ Google Docs is an essential tool in our documentation workflow at RIGELNI. It en
                 {/* Navigation buttons skeleton */}
                 <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-0 sm:justify-between mt-20 pt-8 border-t border-border/40">
                   <div className="flex items-center gap-4 px-5 py-3 w-full sm:w-auto">
+                    <div className="h-7 w-7 rounded-full bg-accent/50" />
                     <div className="flex flex-col items-start flex-1 sm:flex-initial">
                       <Skeleton className="h-3 w-16 mb-2" />
                       <Skeleton className="h-4 w-48" />
                     </div>
-                    <Skeleton className="h-7 w-7 rounded-full" />
                   </div>
                   <div className="flex items-center gap-4 px-5 py-3 w-full sm:w-auto">
                     <div className="flex flex-col items-end flex-1 sm:flex-initial">
                       <Skeleton className="h-3 w-16 mb-2" />
                       <Skeleton className="h-4 w-48" />
                     </div>
-                    <Skeleton className="h-7 w-7 rounded-full" />
+                    <div className="h-7 w-7 rounded-full bg-accent/50" />
                   </div>
                 </div>
               </div>
@@ -376,7 +398,7 @@ Google Docs is an essential tool in our documentation workflow at RIGELNI. It en
                 <ReactMarkdown components={components}>{markdownContent}</ReactMarkdown>
                 
                 {/* Feature cards section */}
-                <div className="mt-16">
+                <div id="our-documentation-resources" className="scroll-mt-24 mt-16">
                   <h2 className="text-2xl font-bold mb-8">Our Documentation Resources</h2>
                   
                   <motion.div 
@@ -394,27 +416,27 @@ Google Docs is an essential tool in our documentation workflow at RIGELNI. It en
                       {
                         title: "Meeting Report #1",
                         icon: FileText,
-                        href: "https://docs.google.com/document/d/example1",
+                        href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-1",
                       },
                       {
                         title: "Meeting Report #2",
                         icon: FileText,
-                        href: "https://docs.google.com/document/d/example2",
+                        href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-2",
                       },
                       {
                         title: "Meeting Report #3",
                         icon: FileText,
-                        href: "https://docs.google.com/document/d/example3",
+                        href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-3",
                       },
                       {
                         title: "Meeting Report #4",
                         icon: FileText,
-                        href: "https://docs.google.com/document/d/example4",
+                        href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-4",
                       },
                       {
                         title: "Meeting Report #5",
                         icon: FileText,
-                        href: "https://docs.google.com/document/d/example5",
+                        href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-5",
                       },
                     ].map((item, index) => (
                       <Link
@@ -449,18 +471,20 @@ Google Docs is an essential tool in our documentation workflow at RIGELNI. It en
                   {isLoading ? (
                     <>
                       <div className="flex items-center gap-4 px-5 py-3 w-full sm:w-auto">
-                        <div className="flex flex-col items-start flex-1 sm:flex-initial">
-                          <Skeleton className="h-3 w-16 mb-2" />
-                          <Skeleton className="h-4 w-48" />
+                        <div className="flex items-center gap-4 px-5 py-3 w-full sm:w-auto">
+                          <div className="h-7 w-7 rounded-full bg-accent/50" />
+                          <div className="flex flex-col items-start flex-1 sm:flex-initial">
+                            <Skeleton className="h-3 w-16 mb-2" />
+                            <Skeleton className="h-4 w-48" />
+                          </div>
                         </div>
-                        <Skeleton className="h-7 w-7 rounded-full" />
                       </div>
                       <div className="flex items-center gap-4 px-5 py-3 w-full sm:w-auto">
                         <div className="flex flex-col items-end flex-1 sm:flex-initial">
                           <Skeleton className="h-3 w-16 mb-2" />
                           <Skeleton className="h-4 w-48" />
                         </div>
-                        <Skeleton className="h-7 w-7 rounded-full" />
+                        <div className="h-7 w-7 rounded-full bg-accent/50" />
                       </div>
                     </>
                   ) : (
@@ -483,7 +507,7 @@ Google Docs is an essential tool in our documentation workflow at RIGELNI. It en
                         <span className="absolute inset-0 bg-gradient-to-l from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                       </Link>
                       <Link
-                        href="/docs/project-management/content/project-planning/next-page"
+                        href="/docs/project-management/content/project-planning/excalidraw-explaining"
                         className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline w-full sm:w-auto"
                       >
                         <div className="flex flex-col items-end relative z-10 flex-1 sm:flex-initial">
@@ -491,7 +515,7 @@ Google Docs is an essential tool in our documentation workflow at RIGELNI. It en
                             Next
                           </span>
                           <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:translate-x-0.5 transition-all duration-300">
-                            Next Page
+                            Excalidraw for Explaining
                           </span>
                         </div>
                         <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
