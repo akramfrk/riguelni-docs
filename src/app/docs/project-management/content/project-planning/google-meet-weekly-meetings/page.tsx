@@ -22,7 +22,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import Image from "next/image"
 import {
   Dialog,
   DialogContent,
@@ -30,7 +29,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 
-export default function JiraProjectManagementPage() {
+export default function GoogleMeetWeeklyMeetingsPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [markdownContent, setMarkdownContent] = useState("")
 
@@ -55,106 +54,138 @@ export default function JiraProjectManagementPage() {
     // Simulate loading time
     const timer = setTimeout(() => {
       setIsLoading(false)
-      setMarkdownContent(`# Jira for Project Management
-At RIGELNI, we use Jira as our primary project management tool. It helps us track tasks, manage sprints, and maintain transparency across our development process.
+      setMarkdownContent(`# Google Meet for Weekly Meetings
+At RIGELNI, we use Google Meet as our primary platform for conducting weekly team meetings. These meetings are essential for maintaining team alignment, tracking progress, and ensuring effective communication across our projects.
 
-## Why Jira?
+## Why Google Meet?
 ### Benefits of Our Approach
-Using Jira for project management offers several advantages for our workflow:
+Using Google Meet for our weekly meetings offers several advantages:
 
-- Centralized task tracking
-- Sprint planning and management
-- Team collaboration
-- Progress visualization
-- Custom workflows
-- Integration with other tools
-- Reporting and analytics
+- Seamless integration with our Google Workspace ecosystem
+- Reliable video and audio quality
+- Screen sharing capabilities for presentations
+- Recording functionality for team members who can't attend
+- Chat feature for additional communication during meetings
+- Calendar integration for easy scheduling
+- Cross-platform accessibility (desktop, mobile, browser)
 
-### Project Organization
-We organize our Jira projects with a clear structure:
+### Meeting Structure
+Our weekly meetings follow a consistent structure:
 
-- One project per major feature or component
-- Consistent issue types (Story, Task, Bug)
-- Standardized labels and components
-- Clear priority levels
-- Defined workflows
+- Regular time slot (every Monday at 10:00 AM)
+- Clear agenda sent in advance
+- Designated meeting host
+- Time-boxed discussions
+- Action item tracking
+- Follow-up documentation
 
-## Our Jira Workflow
+## Our Weekly Meeting Workflow
 
-### Project Setup
-[IMAGE_PLACEHOLDER_1]
+### Meeting Preparation
+Before each meeting, we ensure:
 
-### Sprint Planning
-[IMAGE_PLACEHOLDER_2]
+1. **Agenda Creation**
+   - Team lead creates a detailed agenda
+   - Agenda includes time allocations for each topic
+   - Previous action items are reviewed
+   - New topics are added based on team input
 
-### Task Management
-[IMAGE_PLACEHOLDER_3]
+2. **Calendar Invitation**
+   - Meeting is scheduled in Google Calendar
+   - Google Meet link is automatically generated
+   - All team members are invited
+   - Reminder is set for 10 minutes before the meeting
 
-### Progress Tracking
-[IMAGE_PLACEHOLDER_4]
+3. **Resource Preparation**
+   - Any necessary documents are shared in advance
+   - Presenters prepare their materials
+   - Technical setup is tested
 
-### Reporting
-[IMAGE_PLACEHOLDER_5]
+### During the Meeting
+Our meetings follow this structure:
 
-### Using Jira with VS Code
-Here's how we typically work with Jira using VS Code:
+1. **Opening (5 minutes)**
+   - Welcome and attendance check
+   - Brief overview of the agenda
+   - Any urgent announcements
 
-1. **Task Creation**
-   - Create tasks in Jira
-   - Link tasks to GitHub issues
-   - Assign tasks to team members
-   - Set due dates and priorities
+2. **Project Updates (15 minutes)**
+   - Each team member provides a brief update
+   - Progress on assigned tasks
+   - Any blockers or challenges
+   - Next steps and priorities
 
-2. **Sprint Management**
-   - Plan sprints in Jira
-   - Move tasks between sprints
-   - Track sprint progress
-   - Update task status
+3. **Technical Discussion (20 minutes)**
+   - Deep dive into technical challenges
+   - Code reviews or architecture discussions
+   - Knowledge sharing sessions
+   - Problem-solving for complex issues
 
-3. **Progress Updates**
-   - Update task status in Jira
-   - Add comments and attachments
-   - Link commits to tasks
-   - Track time spent
+4. **Planning and Roadmap (15 minutes)**
+   - Upcoming features and milestones
+   - Sprint planning and task assignment
+   - Resource allocation
+   - Timeline adjustments
 
-4. **Reporting**
-   - Generate sprint reports
-   - Track team velocity
-   - Monitor burndown charts
-   - Analyze team performance
+5. **Closing (5 minutes)**
+   - Summary of action items
+   - Assignment of responsibilities
+   - Next meeting date confirmation
+   - Open floor for questions
+
+### Post-Meeting Follow-up
+After each meeting, we ensure:
+
+1. **Meeting Minutes**
+   - Key decisions are documented
+   - Action items are recorded
+   - Deadlines are established
+   - Minutes are shared with all team members
+
+2. **Action Item Tracking**
+   - Tasks are added to our project management tool
+   - Assignees are notified
+   - Due dates are set
+   - Progress is monitored
+
+3. **Feedback Collection**
+   - Team members provide feedback on meeting effectiveness
+   - Suggestions for improvement are gathered
+   - Process is continuously refined
 
 ## Best Practices
 
-### Task Management
-- Create detailed task descriptions
-- Use consistent task templates
-- Set realistic estimates
-- Update task status regularly
-- Link related tasks
+### Meeting Management
+- Start and end meetings on time
+- Stick to the agenda
+- Encourage participation from all team members
+- Use the mute button when not speaking
+- Raise hand feature for questions
+- Use the chat for links and references
 
-### Sprint Planning
-- Plan sprints in advance
-- Set achievable goals
-- Include buffer time
-- Review previous sprints
-- Adjust based on velocity
+### Technical Setup
+- Test audio and video before joining
+- Use headphones to prevent echo
+- Ensure stable internet connection
+- Close unnecessary applications
+- Have a backup device ready
 
-### Team Collaboration
-- Regular status updates
-- Clear communication
-- Document decisions
-- Share knowledge
-- Support team members
+### Communication Guidelines
+- Be concise and clear in your updates
+- Prepare your points in advance
+- Listen actively to others
+- Respect speaking time limits
+- Use visual aids when appropriate
 
-### Integration Practices
-- Link Jira with GitHub
-- Connect with communication tools
-- Use automation rules
-- Maintain consistent workflows
-- Regular tool synchronization
+### Documentation
+- Take notes during the meeting
+- Record important decisions
+- Document action items with owners
+- Share meeting resources promptly
+- Archive meeting recordings
 
 ## Conclusion
-Jira is an essential tool in our project management workflow at RIGELNI. It enables efficient task tracking, sprint management, and team collaboration. By following our Jira workflow and best practices, we ensure smooth project execution and successful delivery.`)
+Google Meet is an essential tool in our weekly meeting workflow at RIGELNI. It enables effective team communication, project tracking, and knowledge sharing. By following our structured approach and best practices, we ensure that our meetings are productive, inclusive, and valuable for all team members.`)
     }, 1000)
 
     return () => clearTimeout(timer)
@@ -163,8 +194,8 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
   const components: Partial<Components> = {
     h1: ({ children }) => {
       let id = '';
-      if (children?.toString().includes('Jira Project Management')) {
-        id = 'jira-project-management';
+      if (children?.toString().includes('Google Meet for Weekly Meetings')) {
+        id = 'google-meet-weekly-meetings';
       } else {
         id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') || '';
       }
@@ -176,10 +207,10 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
     },
     h2: ({ children }) => {
       let id = '';
-      if (children?.toString().includes('Why Jira')) {
-        id = 'why-jira';
-      } else if (children?.toString().includes('Our Jira Workflow')) {
-        id = 'our-jira-workflow';
+      if (children?.toString().includes('Why Google Meet')) {
+        id = 'why-google-meet';
+      } else if (children?.toString().includes('Our Weekly Meeting Workflow')) {
+        id = 'our-weekly-meeting-workflow';
       } else if (children?.toString().includes('Best Practices')) {
         id = 'best-practices';
       } else if (children?.toString().includes('Conclusion')) {
@@ -210,188 +241,6 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
       );
     },
     p: ({ children }) => {
-      // Check if this paragraph contains an image placeholder
-      const text = children?.toString() || '';
-      if (text.includes('[IMAGE_PLACEHOLDER_1]')) {
-        return (
-          <figure className="mt-1 mb-4 group">
-            <Dialog>
-              <DialogTrigger asChild>
-                <div className="w-full cursor-zoom-in">
-                  <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
-                    <Image
-                      src="/Jira/project-setup.png"
-                      alt="Project Setup"
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
-                      <span className="font-semibold text-primary">Figure 1</span>
-                      <span className="text-muted-foreground"> — Setting up a Jira Project</span>
-                    </figcaption>
-                  </div>
-                </div>
-              </DialogTrigger>
-              <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Project Setup</DialogTitle>
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/Jira/project-setup.png"
-                    alt="Project Setup"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </DialogContent>
-            </Dialog>
-          </figure>
-        );
-      }
-      if (text.includes('[IMAGE_PLACEHOLDER_2]')) {
-        return (
-          <figure className="mt-1 mb-4 group">
-            <Dialog>
-              <DialogTrigger asChild>
-                <div className="w-full cursor-zoom-in">
-                  <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
-                    <Image
-                      src="/Jira/sprint-planning.png"
-                      alt="Sprint Planning"
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
-                      <span className="font-semibold text-primary">Figure 2</span>
-                      <span className="text-muted-foreground"> — Sprint Planning Process</span>
-                    </figcaption>
-                  </div>
-                </div>
-              </DialogTrigger>
-              <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Sprint Planning</DialogTitle>
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/Jira/sprint-planning.png"
-                    alt="Sprint Planning"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </DialogContent>
-            </Dialog>
-          </figure>
-        );
-      }
-      if (text.includes('[IMAGE_PLACEHOLDER_3]')) {
-        return (
-          <figure className="mt-1 mb-4 group">
-            <Dialog>
-              <DialogTrigger asChild>
-                <div className="w-full cursor-zoom-in">
-                  <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
-                    <Image
-                      src="/Jira/task-management.png"
-                      alt="Task Management"
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
-                      <span className="font-semibold text-primary">Figure 3</span>
-                      <span className="text-muted-foreground"> — Task Management Workflow</span>
-                    </figcaption>
-                  </div>
-                </div>
-              </DialogTrigger>
-              <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Task Management</DialogTitle>
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/Jira/task-management.png"
-                    alt="Task Management"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </DialogContent>
-            </Dialog>
-          </figure>
-        );
-      }
-      if (text.includes('[IMAGE_PLACEHOLDER_4]')) {
-        return (
-          <figure className="mt-1 mb-4 group">
-            <Dialog>
-              <DialogTrigger asChild>
-                <div className="w-full cursor-zoom-in">
-                  <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
-                    <Image
-                      src="/Jira/progress-tracking.png"
-                      alt="Progress Tracking"
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
-                      <span className="font-semibold text-primary">Figure 4</span>
-                      <span className="text-muted-foreground"> — Progress Tracking Dashboard</span>
-                    </figcaption>
-                  </div>
-                </div>
-              </DialogTrigger>
-              <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Progress Tracking</DialogTitle>
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/Jira/progress-tracking.png"
-                    alt="Progress Tracking"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </DialogContent>
-            </Dialog>
-          </figure>
-        );
-      }
-      if (text.includes('[IMAGE_PLACEHOLDER_5]')) {
-        return (
-          <figure className="mt-1 mb-4 group">
-            <Dialog>
-              <DialogTrigger asChild>
-                <div className="w-full cursor-zoom-in">
-                  <div className="relative w-full aspect-[16/8] rounded-lg border border-border/40 shadow-sm overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-border/60">
-                    <Image
-                      src="/Jira/reporting.png"
-                      alt="Reporting"
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <figcaption className="absolute bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-2 text-sm text-center border-t border-border/40">
-                      <span className="font-semibold text-primary">Figure 5</span>
-                      <span className="text-muted-foreground"> — Project Reporting Dashboard</span>
-                    </figcaption>
-                  </div>
-                </div>
-              </DialogTrigger>
-              <DialogContent className="max-w-[95vw] w-[95vw] aspect-[16/8] sm:max-w-[85vw] sm:w-[85vw] md:max-w-[80vw] md:w-[80vw] p-0 rounded-none sm:rounded-lg">
-                <DialogTitle className="sr-only">Reporting</DialogTitle>
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/Jira/reporting.png"
-                    alt="Reporting"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </DialogContent>
-            </Dialog>
-          </figure>
-        );
-      }
       return <p className="text-base sm:text-lg">{children}</p>;
     },
   }
@@ -429,15 +278,15 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management/content/team-collaboration" className="text-sm">
-                        Team Collaboration
+                      <BreadcrumbLink href="/docs/project-management/content/project-planning/google-meet-weekly-meetings" className="text-sm">
+                        Project Planning
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbPage>Jira for Project Management</BreadcrumbPage>
+                  <BreadcrumbPage>Google Meet Weekly Meetings</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -459,7 +308,7 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
                   </div>
                 </div>
 
-                {/* Why Jira section */}
+                {/* Why Google Meet section */}
                 <div className="space-y-6">
                   <Skeleton className="h-8 w-[70%]" /> {/* Section title */}
                   <div className="space-y-4">
@@ -544,7 +393,7 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
                   ) : (
                     <>
                       <Link
-                        href="/docs/project-management/content/team-collaboration/telegram-communication"
+                        href="/docs/project-management/content/team-collaboration/jira-project-management"
                         className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline w-full sm:w-auto"
                       >
                         <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
@@ -555,13 +404,13 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
                             Previous
                           </span>
                           <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:-translate-x-0.5 transition-all duration-300">
-                            Telegram for Team Communication
+                            Jira for Project Management
                           </span>
                         </div>
                         <span className="absolute inset-0 bg-gradient-to-l from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                       </Link>
                       <Link
-                        href="/docs/project-management/content/project-planning/google-meet-weekly-meetings"
+                        href="/docs/project-management/content/project-planning/google-docs-documentation"
                         className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline w-full sm:w-auto"
                       >
                         <div className="flex flex-col items-end relative z-10 flex-1 sm:flex-initial">
@@ -569,7 +418,7 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
                             Next
                           </span>
                           <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:translate-x-0.5 transition-all duration-300">
-                            Google Meet for Weekly Meetings
+                            Google Docs for Documentation
                           </span>
                         </div>
                         <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
@@ -602,29 +451,29 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
                   <>
                     <li>
                       <Link 
-                        href="#jira-project-management" 
-                        onClick={(e) => handleScroll(e, 'jira-project-management')}
+                        href="#google-meet-weekly-meetings" 
+                        onClick={(e) => handleScroll(e, 'google-meet-weekly-meetings')}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Jira for Project Management
+                        Google Meet for Weekly Meetings
                       </Link>
                     </li>
                     <li>
                       <Link 
-                        href="#why-jira" 
-                        onClick={(e) => handleScroll(e, 'why-jira')}
+                        href="#why-google-meet" 
+                        onClick={(e) => handleScroll(e, 'why-google-meet')}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Why Jira?
+                        Why Google Meet?
                       </Link>
                     </li>
                     <li>
                       <Link
-                        href="#our-jira-workflow"
-                        onClick={(e) => handleScroll(e, 'our-jira-workflow')}
+                        href="#our-weekly-meeting-workflow"
+                        onClick={(e) => handleScroll(e, 'our-weekly-meeting-workflow')}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Our Jira Workflow
+                        Our Weekly Meeting Workflow
                       </Link>
                     </li>
                     <li>
