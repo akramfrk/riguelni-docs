@@ -475,19 +475,41 @@ GitHub is an essential tool in our development workflow at RIGELNI. It enables e
             ) : (
               <>
                 <ReactMarkdown components={components}>{markdownContent}</ReactMarkdown>
-                {/* Next link section */}
-                <div className="flex justify-between items-center mt-8 pt-8 border-t">
+                {/* Navigation buttons */}
+                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-0 sm:justify-between mt-20 pt-8 border-t border-border/40">
                   <Link
                     href="/docs/project-management/content/version-control/feature-branches"
-                    className="text-primary hover:underline"
+                    className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline w-full sm:w-auto"
                   >
-                    ← Feature Branches
+                    <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                      <ChevronRight className="h-4 w-4 text-primary group-hover:text-primary group-hover:-translate-x-0.5 transition-transform duration-300 rotate-180" />
+                    </div>
+                    <div className="flex flex-col items-start relative z-10 flex-1 sm:flex-initial">
+                      <span className="text-xs font-medium text-muted-foreground/60 mb-1.5 group-hover:text-muted-foreground/80 transition-colors duration-200">
+                        Previous
+                      </span>
+                      <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:-translate-x-0.5 transition-all duration-300">
+                        Feature Branches for New Features
+                      </span>
+                    </div>
+                    <span className="absolute inset-0 bg-gradient-to-l from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </Link>
                   <Link
                     href="/docs/project-management/content/team-collaboration/telegram-communication"
-                    className="text-primary hover:underline"
+                    className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline w-full sm:w-auto"
                   >
-                    Telegram Communication →
+                    <div className="flex flex-col items-end relative z-10 flex-1 sm:flex-initial">
+                      <span className="text-xs font-medium text-muted-foreground/60 mb-1.5 group-hover:text-muted-foreground/80 transition-colors duration-200">
+                        Next
+                      </span>
+                      <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:translate-x-0.5 transition-all duration-300">
+                        Telegram for Team Communication
+                      </span>
+                    </div>
+                    <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                      <ChevronRight className="h-4 w-4 text-primary group-hover:text-primary group-hover:translate-x-0.5 transition-transform duration-300" />
+                    </div>
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </Link>
                 </div>
               </>
