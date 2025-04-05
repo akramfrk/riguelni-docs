@@ -596,7 +596,7 @@ export default function DocumentationPage() {
           </Link>
 
           <Link
-            href="/docs/frontend"
+            href="/docs/front-end/content/introduction/overview"
             className="group relative overflow-hidden rounded-lg border bg-card p-6 transition-colors hover:bg-accent"
           >
             <div className="flex items-center gap-4">

@@ -93,14 +93,13 @@ export default function ProjectManagementLayout({
           >
             <nav
               className={cn(
-                "fixed left-0 w-[85%] max-w-[300px] bg-background/95 border-r border-border/50 px-4 shadow-lg overflow-y-auto",
+                "fixed left-0 w-[85%] max-w-[300px] bg-background/95 border-r border-border/50 px-4 shadow-lg overflow-y-auto sidebar-scrollbar",
                 "transform transition-transform duration-300 ease-out",
                 isSidebarOpen ? "translate-x-0" : "-translate-x-full",
               )}
-              style={{ top: '3.75rem', height: 'calc(100vh - 3.75rem)' }}
+              style={{ top: "3.75rem", height: "calc(100vh - 3.75rem)" }}
               onClick={(e) => {
-                // Prevent closing when clicking inside the sidebar
-                e.stopPropagation();
+                e.stopPropagation()
               }}
             >
               {/* Close button */}
@@ -113,166 +112,156 @@ export default function ProjectManagementLayout({
                   <ChevronLeft className="h-3.5 w-3.5" />
                 </span>
               </button>
-              <div className="space-y-6 pt-4 pb-8">
-                {isLoading ? (
-                  <>
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-3">
-                        <Skeleton className="h-10 w-10 rounded-lg" />
-                        <div className="space-y-2">
-                          <Skeleton className="h-4 w-32" />
-                          <Skeleton className="h-3 w-48" />
+              <div className="flex flex-col h-full pt-4 pb-8">
+                <div className="flex-shrink-0">
+                  {isLoading ? (
+                    <>
+                      <div className="space-y-3">
+                        <div className="flex items-center space-x-3">
+                          <Skeleton className="h-10 w-10 rounded-lg" />
+                          <div className="space-y-2">
+                            <Skeleton className="h-4 w-32" />
+                            <Skeleton className="h-3 w-48" />
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <Skeleton className="h-10 w-10 rounded-lg" />
+                          <div className="space-y-2">
+                            <Skeleton className="h-4 w-28" />
+                            <Skeleton className="h-3 w-16" />
+                          </div>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-3">
-                        <Skeleton className="h-10 w-10 rounded-lg" />
-                        <div className="space-y-2">
-                          <Skeleton className="h-4 w-28" />
-                          <Skeleton className="h-3 w-16" />
+                    </>
+                  ) : (
+                    <>
+                      <div className="space-y-3">
+                        <div className="flex items-start space-x-3">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                            <Clipboard className="w-5 h-5" />
+                          </div>
+                          <div className="space-y-0.5">
+                            <div className="font-medium">Project Management</div>
+                            <div className="text-sm text-muted-foreground">Development workflow & tools</div>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                            <CheckCircle className="w-5 h-5" />
+                          </div>
+                          <div className="space-y-0.5">
+                            <div className="font-medium">Current Version</div>
+                            <div className="text-sm text-muted-foreground">v1.0.0</div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="space-y-3">
-                      <Skeleton className="h-4 w-24" />
-                      <div className="space-y-2">
-                        <Skeleton className="h-3 w-20" />
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                          <Clipboard className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <div className="font-medium">Project Management</div>
-                          <div className="text-sm text-muted-foreground">Development workflow & tools</div>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                          <CheckCircle className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <div className="font-medium">Current Version</div>
-                          <div className="text-sm text-muted-foreground">v1.0.0</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="font-medium">Introduction</div>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/introduction/overview"
-                            className="text-muted-foreground hover:text-primary"
-                            onClick={() => setIsSidebarOpen(false)}
-                          >
-                            Overview
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="font-medium">Version Control</div>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/version-control/git-github-code-hosting"
-                            className="text-muted-foreground hover:text-primary"
-                            onClick={() => setIsSidebarOpen(false)}
-                          >
-                            Git & GitHub for Code Hosting
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/version-control/vs-code-development"
-                            className="text-muted-foreground hover:text-primary"
-                            onClick={() => setIsSidebarOpen(false)}
-                          >
-                            VS Code for Development
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/version-control/feature-branches"
-                            className="text-muted-foreground hover:text-primary"
-                            onClick={() => setIsSidebarOpen(false)}
-                          >
-                            Feature Branches for New Features
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="font-medium">Team Collaboration</div>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/team-collaboration/github-code-collaboration"
-                            className="text-muted-foreground hover:text-primary"
-                            onClick={() => setIsSidebarOpen(false)}
-                          >
-                            GitHub for Code Collaboration
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/team-collaboration/telegram-communication"
-                            className="text-muted-foreground hover:text-primary"
-                            onClick={() => setIsSidebarOpen(false)}
-                          >
-                            Telegram for Team Communication
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/team-collaboration/jira-project-management"
-                            className="text-muted-foreground hover:text-primary"
-                            onClick={() => setIsSidebarOpen(false)}
-                          >
-                            Jira for Project Tracking
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="font-medium">Project Planning</div>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/project-planning/google-meet-weekly-meetings"
-                            className="text-muted-foreground hover:text-primary"
-                            onClick={() => setIsSidebarOpen(false)}
-                          >
-                            Google Meet for Weekly Meetings
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/project-planning/google-docs-documentation"
-                            className="text-muted-foreground hover:text-primary"
-                            onClick={() => setIsSidebarOpen(false)}
-                          >
-                            Google Docs for Documentation
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/project-planning/excalidraw-explaining"
-                            className="text-muted-foreground hover:text-primary"
-                            onClick={() => setIsSidebarOpen(false)}
-                          >
-                            Excalidraw for Explaining
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </>
-                )}
+                    </>
+                  )}
+                </div>
+                <div className="h-px w-full bg-border/50 my-4"></div>
+                <div className="overflow-y-auto sidebar-scrollbar flex-grow space-y-6 pb-16">
+                  <div className="space-y-3">
+                    <div className="font-medium">Introduction</div>
+                    <ul className="space-y-2 text-sm">
+                      <li>
+                        <Link
+                          href="/docs/project-management/content/introduction/overview"
+                          className="text-muted-foreground hover:text-primary"
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          Overview
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="font-medium">Version Control</div>
+                    <ul className="space-y-2 text-sm">
+                      <li>
+                        <Link
+                          href="/docs/project-management/content/version-control/git-github-code-hosting"
+                          className="text-muted-foreground hover:text-primary"
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          Git & GitHub for Code Hosting
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/docs/project-management/content/version-control/vs-code-development"
+                          className="text-muted-foreground hover:text-primary"
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          VS Code for Development
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/docs/project-management/content/version-control/feature-branches"
+                          className="text-muted-foreground hover:text-primary"
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          Feature Branches for New Features
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="font-medium">Team Collaboration</div>
+                    <ul className="space-y-2 text-sm">
+                      <li>
+                        <Link
+                          href="/docs/project-management/content/team-collaboration/github-code-collaboration"
+                          className="text-muted-foreground hover:text-primary"
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          GitHub for Code Collaboration
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/docs/project-management/content/team-collaboration/telegram-communication"
+                          className="text-muted-foreground hover:text-primary"
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          Telegram for Team Communication
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/docs/project-management/content/team-collaboration/jira-project-management"
+                          className="text-muted-foreground hover:text-primary"
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          Jira for Project Tracking
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="font-medium">Project Planning</div>
+                    <ul className="space-y-2 text-sm">
+                      <li>
+                        <Link
+                          href="/docs/project-management/content/project-planning/google-meet-weekly-meetings"
+                          className="text-muted-foreground hover:text-primary"
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          Google Meet for Weekly Meetings
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/docs/project-management/content/project-planning/google-docs-documentation"
+                          className="text-muted-foreground hover:text-primary"
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          Google Docs for Documentation
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </nav>
           </div>
@@ -281,8 +270,8 @@ export default function ProjectManagementLayout({
         {/* Left sidebar */}
         {!shouldHideSidebar && (
           <div className="hidden md:block w-64 shrink-0 border-r border-border/50 pr-6">
-            <nav className="sticky top-[4.5rem] h-[calc(100vh-4.5rem)] overflow-y-auto pr-6">
-              <div className="space-y-6 pb-8">
+            <nav className="sticky top-[4.5rem] h-[calc(100vh-4.5rem)] flex flex-col pr-6">
+              <div className="flex-shrink-0">
                 {isLoading ? (
                   <>
                     <div className="space-y-3">
@@ -301,137 +290,126 @@ export default function ProjectManagementLayout({
                         </div>
                       </div>
                     </div>
-                    <div className="space-y-3">
-                      <Skeleton className="h-4 w-24" />
-                      <div className="space-y-2">
-                        <Skeleton className="h-3 w-20" />
-                      </div>
-                    </div>
                   </>
                 ) : (
                   <>
                     <div className="space-y-3">
-                      <div className="flex items-center space-x-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <div className="flex items-start space-x-3">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                           <Clipboard className="w-5 h-5" />
                         </div>
-                        <div>
+                        <div className="space-y-0.5">
                           <div className="font-medium">Project Management</div>
                           <div className="text-sm text-muted-foreground">Development workflow & tools</div>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <div className="flex items-start space-x-3">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                           <CheckCircle className="w-5 h-5" />
                         </div>
-                        <div>
+                        <div className="space-y-0.5">
                           <div className="font-medium">Current Version</div>
                           <div className="text-sm text-muted-foreground">v1.0.0</div>
                         </div>
                       </div>
                     </div>
-                    <div className="space-y-3">
-                      <div className="font-medium">Introduction</div>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/introduction/overview"
-                            className="text-muted-foreground hover:text-primary"
-                          >
-                            Overview
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="font-medium">Version Control</div>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/version-control/git-github-code-hosting"
-                            className="text-muted-foreground hover:text-primary"
-                          >
-                            Git & GitHub for Code Hosting
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/version-control/vs-code-development"
-                            className="text-muted-foreground hover:text-primary"
-                          >
-                            VS Code for Development
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/version-control/feature-branches"
-                            className="text-muted-foreground hover:text-primary"
-                          >
-                            Feature Branches for New Features
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="font-medium">Team Collaboration</div>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/team-collaboration/github-code-collaboration"
-                            className="text-muted-foreground hover:text-primary"
-                          >
-                            GitHub for Code Collaboration
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/team-collaboration/telegram-communication"
-                            className="text-muted-foreground hover:text-primary"
-                          >
-                            Telegram for Team Communication
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/team-collaboration/jira-project-management"
-                            className="text-muted-foreground hover:text-primary"
-                          >
-                            Jira for Project Tracking
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="font-medium">Project Planning</div>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/project-planning/google-meet-weekly-meetings"
-                            className="text-muted-foreground hover:text-primary"
-                          >
-                            Google Meet for Weekly Meetings
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/project-planning/google-docs-documentation"
-                            className="text-muted-foreground hover:text-primary"
-                          >
-                            Google Docs for Documentation
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/docs/project-management/content/project-planning/excalidraw-explaining"
-                            className="text-muted-foreground hover:text-primary"
-                          >
-                            Excalidraw for Explaining
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
                   </>
                 )}
+              </div>
+              <div className="h-px w-full bg-border/50 my-4"></div>
+              <div className="overflow-y-auto sidebar-scrollbar flex-grow space-y-6 pb-16">
+                <div className="space-y-3">
+                  <div className="font-medium">Introduction</div>
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <Link
+                        href="/docs/project-management/content/introduction/overview"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        Overview
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="space-y-3">
+                  <div className="font-medium">Version Control</div>
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <Link
+                        href="/docs/project-management/content/version-control/git-github-code-hosting"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        Git & GitHub for Code Hosting
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/docs/project-management/content/version-control/vs-code-development"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        VS Code for Development
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/docs/project-management/content/version-control/feature-branches"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        Feature Branches for New Features
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="space-y-3">
+                  <div className="font-medium">Team Collaboration</div>
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <Link
+                        href="/docs/project-management/content/team-collaboration/github-code-collaboration"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        GitHub for Code Collaboration
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/docs/project-management/content/team-collaboration/telegram-communication"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        Telegram for Team Communication
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/docs/project-management/content/team-collaboration/jira-project-management"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        Jira for Project Tracking
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="space-y-3">
+                  <div className="font-medium">Project Planning</div>
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <Link
+                        href="/docs/project-management/content/project-planning/google-meet-weekly-meetings"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        Google Meet for Weekly Meetings
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/docs/project-management/content/project-planning/google-docs-documentation"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        Google Docs for Documentation
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </nav>
           </div>
