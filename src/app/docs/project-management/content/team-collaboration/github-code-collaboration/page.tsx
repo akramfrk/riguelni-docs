@@ -377,7 +377,7 @@ GitHub is an essential tool in our development workflow at RIGELNI. It enables e
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/introduction/overview" className="text-sm">
                         Project Management
                       </BreadcrumbLink>
                     </DropdownMenuItem>

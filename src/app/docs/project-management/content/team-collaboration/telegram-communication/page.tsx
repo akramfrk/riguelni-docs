@@ -55,7 +55,7 @@ export default function TelegramCommunicationPage() {
     // Simulate loading time
     const timer = setTimeout(() => {
       setIsLoading(false)
-      setMarkdownContent(`# Telegram Communication
+      setMarkdownContent(`# Telegram for Team Communication
 At RIGELNI, we have created a dedicated Telegram group that serves as our primary communication channel. This group enables smooth communication and efficient file sharing between team members, making collaboration seamless and effective.
 
 ## Our Telegram Group
@@ -403,12 +403,12 @@ Our Telegram group is an essential communication tool in our workflow at RIGELNI
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/introduction/overview" className="text-sm">
                         Project Management
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management/content/team-collaboration" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/team-collaboration/github-code-collaboration" className="text-sm">
                         Team Collaboration
                       </BreadcrumbLink>
                     </DropdownMenuItem>
@@ -416,7 +416,7 @@ Our Telegram group is an essential communication tool in our workflow at RIGELNI
                 </DropdownMenu>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbPage>Telegram Communication</BreadcrumbPage>
+                  <BreadcrumbPage>Telegram for Team Communication</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -548,7 +548,7 @@ Our Telegram group is an essential communication tool in our workflow at RIGELNI
                             Next
                           </span>
                           <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:translate-x-0.5 transition-all duration-300">
-                            Jira for Project Management
+                            Jira for Project Tracking
                           </span>
                         </div>
                         <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">

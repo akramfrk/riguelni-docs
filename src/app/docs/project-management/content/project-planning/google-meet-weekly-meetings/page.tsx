@@ -273,7 +273,7 @@ Google Meet is an essential tool in our weekly meeting workflow at RIGELNI. It e
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/introduction/overview" className="text-sm">
                         Project Management
                       </BreadcrumbLink>
                     </DropdownMenuItem>
@@ -286,7 +286,7 @@ Google Meet is an essential tool in our weekly meeting workflow at RIGELNI. It e
                 </DropdownMenu>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbPage>Google Meet Weekly Meetings</BreadcrumbPage>
+                  <BreadcrumbPage>Google Meet for Weekly Meetings</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -404,7 +404,7 @@ Google Meet is an essential tool in our weekly meeting workflow at RIGELNI. It e
                             Previous
                           </span>
                           <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:-translate-x-0.5 transition-all duration-300">
-                            Jira for Project Management
+                            Jira for Project Tracking
                           </span>
                         </div>
                         <span className="absolute inset-0 bg-gradient-to-l from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>

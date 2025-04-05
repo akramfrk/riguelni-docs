@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Code2, Database, Globe, Layers, Smartphone, Sparkles, GitBranch, CheckCircle, Users, Calendar, FileCode2, Palette } from "lucide-react"
+import { ArrowRight, Code2, Database, Globe, Layers, Smartphone, Sparkles, GitBranch, CheckCircle, Users, Calendar, FileCode2, Palette, Clipboard } from "lucide-react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import {
@@ -402,12 +402,12 @@ export default function DocumentationPage() {
                 </div>
               </div>
             </h2>
+            <div className="mt-6 p-3 rounded-xl bg-primary/10 text-primary">
+              <Clipboard className="w-6 h-6" />
+            </div>
           </div>
 
           <div className="flex flex-col items-center gap-4 mb-8 text-center">
-            <div className="p-3 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary shadow-inner">
-              <GitBranch className="w-6 h-6" />
-            </div>
             <div className="space-y-2">
               <h3 className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-foreground to-foreground/90 bg-clip-text text-transparent">
                 Discover Our Development Process
@@ -508,7 +508,7 @@ export default function DocumentationPage() {
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary/30" />
-                      Agile methodology with sprints
+                      Excalidraw for Explaining
                     </li>
                   </ul>
                 </div>

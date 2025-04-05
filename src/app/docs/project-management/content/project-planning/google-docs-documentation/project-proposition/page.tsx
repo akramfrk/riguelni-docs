@@ -14,6 +14,18 @@ export default function ProjectPropositionPage() {
   const [markdownContent, setMarkdownContent] = useState("")
   const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false)
 
+  // Effect to prevent scrolling when sidebar is open
+  useEffect(() => {
+    if (isRightSidebarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isRightSidebarOpen]);
+
   useEffect(() => {
     // Simulate loading time
     const timer = setTimeout(() => {
@@ -272,26 +284,32 @@ mobile solution** within the given timeframe.`)
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-background"
     >
-      {/* Mobile More Button */}
+      {/* Mobile Menu Button */}
       <button
         onClick={() => setIsRightSidebarOpen(!isRightSidebarOpen)}
         className={cn(
           "fixed top-16 right-2 px-2 py-1 rounded-lg bg-background/95 shadow-sm border border-border/40 hover:bg-accent/50 transition-all lg:hidden z-30 text-sm text-muted-foreground",
           isRightSidebarOpen && "opacity-0 pointer-events-none"
         )}
-        aria-label="Toggle more options"
+        aria-label="Toggle menu"
       >
         <span className="flex items-center gap-1">
-          More <ChevronLeft className="h-3.5 w-3.5" />
+          <ChevronLeft className="h-3.5 w-3.5" /> More
         </span>
       </button>
 
-      {/* Mobile right sidebar */}
+      {/* Mobile sidebar overlay */}
       <div
         className={cn(
           "fixed inset-0 z-20 bg-background/80 backdrop-blur-sm lg:hidden transition-opacity duration-200",
           isRightSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none",
         )}
+        onClick={(e) => {
+          // Close sidebar when clicking outside
+          if (e.target === e.currentTarget) {
+            setIsRightSidebarOpen(false);
+          }
+        }}
       >
         <nav
           className={cn(
@@ -300,18 +318,21 @@ mobile solution** within the given timeframe.`)
             isRightSidebarOpen ? "translate-x-0" : "translate-x-full",
           )}
           style={{ top: '3.75rem', height: 'calc(100vh - 3.75rem)' }}
+          onClick={(e) => {
+            // Prevent closing when clicking inside the sidebar
+            e.stopPropagation();
+          }}
         >
           {/* Close button */}
           <button
             onClick={() => setIsRightSidebarOpen(false)}
             className="absolute top-2 left-2 px-2 py-1 rounded-lg bg-background/95 shadow-sm border border-border/40 hover:bg-accent/50 transition-all text-sm text-muted-foreground"
-            aria-label="Close more options"
+            aria-label="Close menu"
           >
             <span className="flex items-center gap-1">
               <ChevronRight className="h-3.5 w-3.5" />
             </span>
           </button>
-
           <div className="space-y-8 pt-4 pb-8">
             {/* Download as PDF */}
             <div className="pt-6">
@@ -321,6 +342,7 @@ mobile solution** within the given timeframe.`)
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-3 rounded-lg border border-border/40 p-4 hover:border-primary/50 hover:bg-accent/60 transition-all duration-300"
+                onClick={() => setIsRightSidebarOpen(false)}
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                   <FileDown className="h-5 w-5" />
@@ -333,19 +355,23 @@ mobile solution** within the given timeframe.`)
             <div className="space-y-4">
               <h4 className="text-base font-semibold text-foreground/90 px-1">Other Documents</h4>
               <div className="space-y-2.5">
-                {[1, 2, 3, 4, 5].map((num) => (
+                {[
+                  { name: "Meeting Report #1", href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-1" },
+                  { name: "Meeting Report #2", href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-2" },
+                  { name: "Meeting Report #3", href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-3" },
+                  { name: "Meeting Report #4", href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-4" },
+                  { name: "Meeting Report #5", href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-5" }
+                ].map((doc) => (
                   <Link
-                    key={num}
-                    href={`/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-${num}`}
-                    className="group flex items-center gap-3 rounded-lg border border-border/40 p-3 hover:border-primary/50 hover:bg-accent/60 hover:shadow-sm transition-all duration-300"
+                    key={doc.name}
+                    href={doc.href}
+                    className="group flex items-center gap-3 rounded-lg border border-border/40 p-4 hover:border-primary/50 hover:bg-accent/60 transition-all duration-300"
+                    onClick={() => setIsRightSidebarOpen(false)}
                   >
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300 shadow-sm">
-                      <FileText className="h-4 w-4" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                      <FileText className="h-5 w-5" />
                     </div>
-                    <div className="flex flex-col">
-                      <span className="text-sm font-medium text-foreground group-hover:text-foreground/90">Meeting Report #{num}</span>
-                      <span className="text-xs text-muted-foreground group-hover:text-foreground/60">View report details</span>
-                    </div>
+                    <span className="text-sm font-medium text-foreground">{doc.name}</span>
                   </Link>
                 ))}
               </div>
@@ -356,6 +382,7 @@ mobile solution** within the given timeframe.`)
               <Link
                 href="/docs/project-management/content/project-planning/google-docs-documentation"
                 className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline"
+                onClick={() => setIsRightSidebarOpen(false)}
               >
                 <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                   <ChevronLeft className="h-4 w-4 text-primary group-hover:text-primary group-hover:-translate-x-0.5 transition-transform duration-300" />
@@ -424,19 +451,22 @@ mobile solution** within the given timeframe.`)
               <div className="space-y-4">
                 <h4 className="text-base font-semibold text-foreground/90 px-1">Other Documents</h4>
                 <div className="space-y-2.5">
-                  {[1, 2, 3, 4, 5].map((num) => (
+                  {[
+                    { name: "Meeting Report #1", href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-1" },
+                    { name: "Meeting Report #2", href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-2" },
+                    { name: "Meeting Report #3", href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-3" },
+                    { name: "Meeting Report #4", href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-4" },
+                    { name: "Meeting Report #5", href: "/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-5" }
+                  ].map((doc) => (
                     <Link
-                      key={num}
-                      href={`/docs/project-management/content/project-planning/google-docs-documentation/meeting-report-${num}`}
-                      className="group flex items-center gap-3 rounded-lg border border-border/40 p-3 hover:border-primary/50 hover:bg-accent/60 hover:shadow-sm transition-all duration-300"
+                      key={doc.name}
+                      href={doc.href}
+                      className="group flex items-center gap-3 rounded-lg border border-border/40 p-4 hover:border-primary/50 hover:bg-accent/60 transition-all duration-300"
                     >
-                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300 shadow-sm">
-                        <FileText className="h-4 w-4" />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                        <FileText className="h-5 w-5" />
                       </div>
-                      <div className="flex flex-col">
-                        <span className="text-sm font-medium text-foreground group-hover:text-foreground/90">Meeting Report #{num}</span>
-                        <span className="text-xs text-muted-foreground group-hover:text-foreground/60">View report details</span>
-                      </div>
+                      <span className="text-sm font-medium text-foreground">{doc.name}</span>
                     </Link>
                   ))}
                 </div>

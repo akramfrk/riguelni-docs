@@ -199,12 +199,12 @@ By using our project management tools, you can create a more organized, efficien
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/introduction/overview" className="text-sm">
                         Project Management
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management/content/introduction" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/introduction/overview" className="text-sm">
                         Introduction
                       </BreadcrumbLink>
                     </DropdownMenuItem>

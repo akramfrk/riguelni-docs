@@ -351,12 +351,12 @@ Excalidraw is an essential tool in our documentation and communication workflow 
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/introduction/overview" className="text-sm">
                         Project Management
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management/content/project-planning" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/project-planning/google-meet-weekly-meetings" className="text-sm">
                         Project Planning
                       </BreadcrumbLink>
                     </DropdownMenuItem>
@@ -495,7 +495,7 @@ Excalidraw is an essential tool in our documentation and communication workflow 
                         Previous
                       </span>
                       <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:-translate-x-0.5 transition-all duration-300">
-                        Google Docs Documentation
+                        Google Docs for Documentation
                       </span>
                     </div>
                     <span className="absolute inset-0 bg-gradient-to-l from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>

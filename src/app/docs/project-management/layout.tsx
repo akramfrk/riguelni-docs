@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
-import { BookOpen, CheckCircle, Menu, ChevronRight, ChevronLeft } from "lucide-react"
+import { BookOpen, CheckCircle, Menu, ChevronRight, ChevronLeft, Clipboard } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
 import { usePathname } from "next/navigation"
@@ -34,6 +34,18 @@ export default function ProjectManagementLayout({
                            pathname.includes("meeting-report-4") || 
                            pathname.includes("meeting-report-5")
 
+  // Effect to prevent scrolling when sidebar is open
+  useEffect(() => {
+    if (isSidebarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isSidebarOpen]);
+
   useEffect(() => {
     // Simulate loading time
     const timer = setTimeout(() => {
@@ -54,7 +66,7 @@ export default function ProjectManagementLayout({
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className={cn(
-              "absolute top-2 left-2 px-2 py-1 rounded-lg bg-background/95 shadow-sm border border-border/40 hover:bg-accent/50 transition-all md:hidden z-30 text-sm text-muted-foreground",
+              "fixed top-16 left-2 px-2 py-1 rounded-lg bg-background/95 shadow-sm border border-border/40 hover:bg-accent/50 transition-all md:hidden z-30 text-sm text-muted-foreground",
               isSidebarOpen && "opacity-0 pointer-events-none"
             )}
             aria-label="Toggle menu"
@@ -72,6 +84,12 @@ export default function ProjectManagementLayout({
               "fixed inset-0 z-20 bg-background/80 backdrop-blur-sm md:hidden transition-opacity duration-200",
               isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none",
             )}
+            onClick={(e) => {
+              // Close sidebar when clicking outside
+              if (e.target === e.currentTarget) {
+                setIsSidebarOpen(false);
+              }
+            }}
           >
             <nav
               className={cn(
@@ -80,6 +98,10 @@ export default function ProjectManagementLayout({
                 isSidebarOpen ? "translate-x-0" : "-translate-x-full",
               )}
               style={{ top: '3.75rem', height: 'calc(100vh - 3.75rem)' }}
+              onClick={(e) => {
+                // Prevent closing when clicking inside the sidebar
+                e.stopPropagation();
+              }}
             >
               {/* Close button */}
               <button
@@ -122,7 +144,7 @@ export default function ProjectManagementLayout({
                     <div className="space-y-3">
                       <div className="flex items-center space-x-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                          <BookOpen className="w-5 h-5" />
+                          <Clipboard className="w-5 h-5" />
                         </div>
                         <div>
                           <div className="font-medium">Project Management</div>
@@ -146,6 +168,7 @@ export default function ProjectManagementLayout({
                           <Link
                             href="/docs/project-management/content/introduction/overview"
                             className="text-muted-foreground hover:text-primary"
+                            onClick={() => setIsSidebarOpen(false)}
                           >
                             Overview
                           </Link>
@@ -159,6 +182,7 @@ export default function ProjectManagementLayout({
                           <Link
                             href="/docs/project-management/content/version-control/git-github-code-hosting"
                             className="text-muted-foreground hover:text-primary"
+                            onClick={() => setIsSidebarOpen(false)}
                           >
                             Git & GitHub for Code Hosting
                           </Link>
@@ -167,6 +191,7 @@ export default function ProjectManagementLayout({
                           <Link
                             href="/docs/project-management/content/version-control/vs-code-development"
                             className="text-muted-foreground hover:text-primary"
+                            onClick={() => setIsSidebarOpen(false)}
                           >
                             VS Code for Development
                           </Link>
@@ -175,6 +200,7 @@ export default function ProjectManagementLayout({
                           <Link
                             href="/docs/project-management/content/version-control/feature-branches"
                             className="text-muted-foreground hover:text-primary"
+                            onClick={() => setIsSidebarOpen(false)}
                           >
                             Feature Branches for New Features
                           </Link>
@@ -188,6 +214,7 @@ export default function ProjectManagementLayout({
                           <Link
                             href="/docs/project-management/content/team-collaboration/github-code-collaboration"
                             className="text-muted-foreground hover:text-primary"
+                            onClick={() => setIsSidebarOpen(false)}
                           >
                             GitHub for Code Collaboration
                           </Link>
@@ -196,6 +223,7 @@ export default function ProjectManagementLayout({
                           <Link
                             href="/docs/project-management/content/team-collaboration/telegram-communication"
                             className="text-muted-foreground hover:text-primary"
+                            onClick={() => setIsSidebarOpen(false)}
                           >
                             Telegram for Team Communication
                           </Link>
@@ -204,6 +232,7 @@ export default function ProjectManagementLayout({
                           <Link
                             href="/docs/project-management/content/team-collaboration/jira-project-management"
                             className="text-muted-foreground hover:text-primary"
+                            onClick={() => setIsSidebarOpen(false)}
                           >
                             Jira for Project Tracking
                           </Link>
@@ -217,6 +246,7 @@ export default function ProjectManagementLayout({
                           <Link
                             href="/docs/project-management/content/project-planning/google-meet-weekly-meetings"
                             className="text-muted-foreground hover:text-primary"
+                            onClick={() => setIsSidebarOpen(false)}
                           >
                             Google Meet for Weekly Meetings
                           </Link>
@@ -225,6 +255,7 @@ export default function ProjectManagementLayout({
                           <Link
                             href="/docs/project-management/content/project-planning/google-docs-documentation"
                             className="text-muted-foreground hover:text-primary"
+                            onClick={() => setIsSidebarOpen(false)}
                           >
                             Google Docs for Documentation
                           </Link>
@@ -233,6 +264,7 @@ export default function ProjectManagementLayout({
                           <Link
                             href="/docs/project-management/content/project-planning/excalidraw-explaining"
                             className="text-muted-foreground hover:text-primary"
+                            onClick={() => setIsSidebarOpen(false)}
                           >
                             Excalidraw for Explaining
                           </Link>
@@ -281,7 +313,7 @@ export default function ProjectManagementLayout({
                     <div className="space-y-3">
                       <div className="flex items-center space-x-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                          <BookOpen className="w-5 h-5" />
+                          <Clipboard className="w-5 h-5" />
                         </div>
                         <div>
                           <div className="font-medium">Project Management</div>

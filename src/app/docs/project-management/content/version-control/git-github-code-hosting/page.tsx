@@ -374,12 +374,12 @@ Our main repository structure:`)
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/introduction/overview" className="text-sm">
                         Project Management
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management/content/version-control" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/version-control/git-github-code-hosting" className="text-sm">
                         Version Control
                       </BreadcrumbLink>
                     </DropdownMenuItem>

@@ -55,7 +55,7 @@ export default function JiraProjectManagementPage() {
     // Simulate loading time
     const timer = setTimeout(() => {
       setIsLoading(false)
-      setMarkdownContent(`# Jira for Project Management
+      setMarkdownContent(`# Jira for Project Tracking
 At RIGELNI, we use Jira as our primary project management tool. It helps us track tasks, manage sprints, and maintain transparency across our development process.
 
 ## Why Jira?
@@ -163,8 +163,8 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
   const components: Partial<Components> = {
     h1: ({ children }) => {
       let id = '';
-      if (children?.toString().includes('Jira Project Management')) {
-        id = 'jira-project-management';
+      if (children?.toString().includes('Jira for Project Tracking')) {
+        id = 'jira-project-tracking';
       } else {
         id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') || '';
       }
@@ -424,12 +424,12 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/introduction/overview" className="text-sm">
                         Project Management
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/project-management/content/team-collaboration" className="text-sm">
+                      <BreadcrumbLink href="/docs/project-management/content/team-collaboration/github-code-collaboration" className="text-sm">
                         Team Collaboration
                       </BreadcrumbLink>
                     </DropdownMenuItem>
@@ -437,7 +437,7 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
                 </DropdownMenu>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbPage>Jira for Project Management</BreadcrumbPage>
+                  <BreadcrumbPage>Jira for Project Tracking</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -602,11 +602,11 @@ Jira is an essential tool in our project management workflow at RIGELNI. It enab
                   <>
                     <li>
                       <Link 
-                        href="#jira-project-management" 
-                        onClick={(e) => handleScroll(e, 'jira-project-management')}
+                        href="#jira-project-tracking" 
+                        onClick={(e) => handleScroll(e, 'jira-project-tracking')}
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Jira for Project Management
+                        Jira for Project Tracking
                       </Link>
                     </li>
                     <li>
