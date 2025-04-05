@@ -514,7 +514,7 @@ export default function FrontEndLayout({
                 <ul className="space-y-2 text-sm">
                   <li>
                     <Link
-                      href="/docs/front-end/introduction/overview"
+                      href="/docs/front-end/content/introduction/overview"
                       className="text-muted-foreground hover:text-primary"
                     >
                       Overview
@@ -522,7 +522,7 @@ export default function FrontEndLayout({
                   </li>
                   <li>
                     <Link
-                      href="/docs/front-end/introduction/core-stack"
+                      href="/docs/front-end/content/introduction/core-stack"
                       className="text-muted-foreground hover:text-primary"
                     >
                       Core Stack
