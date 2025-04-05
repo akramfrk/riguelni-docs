@@ -1,103 +1,83 @@
 "use client"
-import React from "react"
+
+import type React from "react"
+import { useState, useRef, useEffect } from "react"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism"
-import { IconCheck, IconCopy } from "@tabler/icons-react"
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { IconCopy, IconCheck } from "@tabler/icons-react"
 
-type CodeBlockProps = {
+interface CodeBlockProps {
+  code: string
   language: string
-  filename: string
-  highlightLines?: number[]
-} & (
-  | {
-      code: string
-      tabs?: never
-    }
-  | {
-      code?: never
-      tabs: Array<{
-        name: string
-        code: string
-        language?: string
-        highlightLines?: number[]
-      }>
-    }
-)
+  filename?: string
+  tabs?: { name: string; code: string }[]
+}
 
-export const CodeBlock = ({ language, filename, code, highlightLines = [], tabs = [] }: CodeBlockProps) => {
-  const [copied, setCopied] = React.useState(false)
-  const [activeTab, setActiveTab] = React.useState(0)
+const CodeBlock: React.FC<CodeBlockProps> = ({ code, language, filename, tabs }) => {
+  const [copied, setCopied] = useState(false)
+  const [activeTab, setActiveTab] = useState(0)
+  const codeRef = useRef<HTMLDivElement>(null)
 
-  const tabsExist = tabs.length > 0
-
-  const copyToClipboard = async () => {
-    const textToCopy = tabsExist ? tabs[activeTab].code : code
-    if (textToCopy) {
-      await navigator.clipboard.writeText(textToCopy)
+  const copyToClipboard = () => {
+    if (codeRef.current) {
+      navigator.clipboard.writeText(tabs ? tabs[activeTab].code : code)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     }
   }
 
-  const activeCode = tabsExist ? tabs[activeTab].code : code
-  const activeLanguage = tabsExist ? tabs[activeTab].language || language : language
-  const activeHighlightLines = tabsExist ? tabs[activeTab].highlightLines || [] : highlightLines
+  useEffect(() => {
+    setCopied(false) // Reset copied state when code changes
+  }, [code, tabs, activeTab])
 
   return (
-    <div className="relative w-full rounded-lg bg-slate-900 p-4 font-mono text-sm">
-      <div className="flex flex-col gap-2">
-        {tabsExist && (
-          <div className="flex overflow-x-auto">
-            {tabs.map((tab, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveTab(index)}
-                className={`px-3 !py-2 text-xs transition-colors font-sans ${
-                  activeTab === index ? "text-white" : "text-zinc-400 hover:text-zinc-200"
-                }`}
-              >
-                {tab.name}
-              </button>
-            ))}
-          </div>
-        )}
-        {!tabsExist && filename && (
-          <div className="flex justify-between items-center py-2">
-            <div className="text-xs text-zinc-400">{filename}</div>
+    <div className="relative w-full rounded-lg bg-slate-900 p-4 font-mono text-sm overflow-x-auto">
+      {filename && (
+        <div className="flex justify-between items-center py-2 flex-wrap gap-2">
+          <div className="text-xs text-zinc-400 break-all">{filename}</div>
+          <button
+            onClick={copyToClipboard}
+            className="flex items-center gap-1 text-xs text-zinc-400 hover:text-zinc-200 transition-colors font-sans ml-auto"
+          >
+            {copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
+          </button>
+        </div>
+      )}
+
+      {tabs && (
+        <div className="flex overflow-x-auto pb-1 -mx-1">
+          {tabs.map((tab, index) => (
             <button
-              onClick={copyToClipboard}
-              className="flex items-center gap-1 text-xs text-zinc-400 hover:text-zinc-200 transition-colors font-sans"
+              key={index}
+              onClick={() => setActiveTab(index)}
+              className={`px-2 md:px-3 !py-1 md:!py-2 text-xs transition-colors font-sans whitespace-nowrap ${
+                activeTab === index ? "text-white" : "text-zinc-400 hover:text-zinc-200"
+              }`}
             >
-              {copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
+              {tab.name}
             </button>
-          </div>
-        )}
-      </div>
-      <div className="overflow-x-auto">
+          ))}
+        </div>
+      )}
+
+      <div ref={codeRef}>
         <SyntaxHighlighter
-          language={activeLanguage}
-          style={atomDark}
+          language={language}
+          style={dracula}
           customStyle={{
             margin: 0,
             padding: 0,
             background: "transparent",
             fontSize: "0.875rem", // text-sm equivalent
+            maxWidth: "100%",
+            overflowX: "auto",
           }}
-          wrapLines={true}
-          showLineNumbers={true}
-          lineProps={(lineNumber) => ({
-            style: {
-              backgroundColor: activeHighlightLines.includes(lineNumber) ? "rgba(255,255,255,0.1)" : "transparent",
-              display: "block",
-              width: "100%",
-            },
-          })}
-          PreTag="div"
         >
-          {String(activeCode)}
+          {tabs ? tabs[activeTab].code : code}
         </SyntaxHighlighter>
       </div>
     </div>
   )
 }
 
+export default CodeBlock

@@ -535,7 +535,7 @@ export default function FrontEndLayout({
                 <ul className="space-y-2 text-sm">
                   <li>
                     <Link
-                      href="/docs/front-end/features/app-router"
+                      href="/docs/front-end/content/key-features/app-router"
                       className="text-muted-foreground hover:text-primary"
                     >
                       Modern App Router

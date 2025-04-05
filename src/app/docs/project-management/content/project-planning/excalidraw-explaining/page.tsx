@@ -6,7 +6,7 @@ import type { Components } from "react-markdown"
 import Link from "next/link"
 import { ChevronRight, MoreHorizontal, FileText, FileSpreadsheet, Presentation, FileBarChart, FileCode, FileCheck } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
-import { CodeBlock } from "@/components/ui/code-block"
+import CodeBlock from "@/components/ui/code-block"
 import {
   Breadcrumb,
   BreadcrumbItem,
