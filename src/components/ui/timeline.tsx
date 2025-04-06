@@ -97,7 +97,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             transition={{ duration: 0.5, delay: index * 0.2 }}
             className="flex justify-start pt-8 md:pt-20 md:gap-10"
           >
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+            <div className="sticky flex flex-col md:flex-row z-[30] items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 className="h-12 absolute left-0 md:left-3 w-12 rounded-full bg-background flex items-center justify-center shadow-lg ring-2 ring-primary/20"
