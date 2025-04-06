@@ -49,231 +49,165 @@ export default function AppRouterPage() {
       setIsLoading(false);
       setMarkdownContent(`# Modern App Router
 
-Next.js 15.1.7 introduces a powerful App Router that revolutionizes how we build web applications. Our implementation leverages the latest features to create a robust and performant routing system.
+Next.js 15.1.7 introduces a powerful App Router that revolutionizes how we build web applications. Our implementation leverages the latest features to create a robust and performant routing system that enhances both developer experience and application performance.
 
 ## File-based Routing Structure
 
-The App Router uses a file-system based routing system where the structure of your files determines the routes in your application. Here's how we organize our routes:
+The App Router uses an intuitive file-system based routing system where your file and folder structure directly maps to your application's URL routes. For example, when you create a file in the app directory, it automatically becomes available as a route.
 
-\`\`\`tsx
-// app/layout.tsx
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
-}
+Common routing patterns include:
+- Home page route: Place a page file in the app root
+- Feature routes: Create folders for each major feature
+- Dynamic routes: Use brackets [ ] in folder names for variable paths
+- Nested routes: Create subfolders for hierarchical navigation
+- API routes: Place route handlers in the api directory
 
-// app/page.tsx
-export default function HomePage() {
-  return <h1>Welcome to Riguelni</h1>;
-}
-
-// app/dashboard/page.tsx
-export default function DashboardPage() {
-  return <h1>Dashboard</h1>;
-}
-\`\`\`
+The file-based routing system automatically handles:
+- Route creation and management
+- Nested routing with layouts
+- Dynamic route parameters
+- Route groups and organization
+- API route handling
 
 ## Layout System
 
-Our layout system is built using Next.js's nested layouts, allowing us to create consistent UI across different sections of the application:
+Our layout system creates consistent UI across different sections of the application. Each section can have its own layout while inheriting common elements from parent layouts. This hierarchical structure allows us to:
 
-\`\`\`tsx
-// app/dashboard/layout.tsx
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex min-h-screen">
-      <Sidebar />
-      <main className="flex-1 p-8">
-        {children}
-      </main>
-    </div>
-  );
-}
-\`\`\`
+- Maintain consistent navigation and branding
+- Share common UI elements across related pages
+- Optimize performance by loading layouts only when needed
+- Create distinct visual identities for different sections
+
+The layout system provides several key benefits:
+- Automatic layout inheritance
+- Shared state and context
+- Consistent UI patterns
+- Optimized resource loading
+- Flexible component composition
 
 ## Middleware Implementation
 
-We use middleware to handle authentication and session management across our application:
+We use middleware to handle critical application-wide concerns like authentication and session management. Our middleware implementation:
 
-\`\`\`tsx
-// middleware.ts
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+- Protects sensitive routes from unauthorized access
+- Manages user sessions and authentication state
+- Handles redirects based on authentication status
+- Applies security headers and other global configurations
 
-export function middleware(request: NextRequest) {
-  const session = request.cookies.get('session');
-  
-  if (!session && !request.nextUrl.pathname.startsWith('/login')) {
-    return NextResponse.redirect(new URL('/login', request.url));
-  }
-  
-  return NextResponse.next();
-}
-
-export const config = {
-  matcher: ['/dashboard/:path*', '/settings/:path*'],
-};
-\`\`\`
+The middleware system provides powerful capabilities:
+- Route protection and access control
+- Session management and validation
+- Request/response modification
+- Error handling and logging
+- Performance monitoring
 
 ## Dynamic Routes
 
-Dynamic routes allow us to create flexible URL structures for our content:
+Dynamic routes allow us to create flexible URL patterns that can handle variable content. Instead of creating individual routes for each possible value, we use dynamic segments in our route paths.
 
-\`\`\`tsx
-// app/gigs/[gig_id]/page.tsx
-export default function GigPage({ params }: { params: { gig_id: string } }) {
-  return (
-    <div>
-      <h1>Gig {params.gig_id}</h1>
-      {/* Gig content */}
-    </div>
-  );
-}
-\`\`\`
+Common use cases include:
+- User profiles with dynamic usernames
+- Product pages with unique identifiers
+- Blog posts with slugs
+- Project pages with custom IDs
+- Category pages with variable parameters
+
+Key features include:
+- Automatic parameter extraction
+- Type-safe route parameters
+- Nested dynamic routes
+- Optional catch-all routes
+- Route validation
 
 ## Server Components
 
-We leverage Server Components for improved performance and SEO:
+Server Components represent a fundamental shift in how we build React applications. They allow us to render components on the server, improving performance and reducing client-side JavaScript.
 
-\`\`\`tsx
-// app/gigs/page.tsx
-import { createClient } from '@/utils/supabase/server';
+Key advantages:
+- Server-side rendering for better performance
+- Reduced client bundle size
+- Improved initial page load
+- Better SEO capabilities
+- Direct database access
 
-export default async function GigsPage() {
-  const supabase = createClient();
-  const { data: gigs } = await supabase.from('gigs').select('*');
-  
-  return (
-    <div>
-      <h1>Available Gigs</h1>
-      <ul>
-        {gigs?.map((gig) => (
-          <li key={gig.id}>{gig.title}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-\`\`\`
+Benefits include:
+- Improved performance
+- Better SEO
+- Reduced client-side code
+- Secure data access
+- Simplified state management
 
 ## Navigation Features
 
-Client-side navigation is handled using Next.js's built-in components:
+Our navigation system provides a smooth, app-like experience while maintaining the benefits of traditional web navigation. Key features include:
 
-\`\`\`tsx
-// components/NavLink.tsx
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+- Instant page transitions
+- Automatic code splitting
+- Prefetching of linked pages
+- Scroll restoration
+- Back/forward navigation handling
 
-export function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  const pathname = usePathname();
-  const isActive = pathname === href;
-  
-  return (
-    <Link
-      href={href}
-      className={\`px-4 py-2 rounded-lg transition-colors \${
-        isActive ? 'bg-primary text-primary-foreground' : 'hover:bg-accent'
-      }\`}
-    >
-      {children}
-    </Link>
-  );
-}
-\`\`\`
+Additional capabilities:
+- Programmatic navigation
+- Route prefetching
+- Loading states
+- Error boundaries
+- Progress indicators
 
 ## Route Groups
 
-Route groups help us organize our routes while maintaining clean URLs:
+Route groups help organize related routes while maintaining clean URLs. They provide a logical structure without affecting the actual URL paths.
 
-\`\`\`tsx
-// app/(auth)/login/page.tsx
-export default function LoginPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <LoginForm />
-    </div>
-  );
-}
+Common grouping patterns:
+- Feature-based groups
+- Authentication-related routes
+- Admin sections
+- API endpoints
+- Public vs private routes
 
-// app/(auth)/register/page.tsx
-export default function RegisterPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <RegisterForm />
-    </div>
-  );
-}
-\`\`\`
+Organizational benefits:
+- Logical code organization
+- Shared layouts and components
+- Clean URL structures
+- Improved maintainability
+- Better code splitting
 
 ## Performance Optimizations
 
-We implement various performance optimizations in our routing system:
+Our routing system includes various optimizations to ensure fast loading and smooth navigation:
 
-\`\`\`tsx
-// app/layout.tsx
-import { Inter } from 'next/font/google';
-import Image from 'next/image';
+Core optimizations:
+- Automatic code splitting
+- Image optimization
+- Font optimization
+- Route prefetching
+- Streaming responses
+- Partial rendering
 
-const inter = Inter({ subsets: ['latin'] });
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en" className={inter.className}>
-      <body>
-        <Image
-          src="/logo.png"
-          alt="Riguelni Logo"
-          width={32}
-          height={32}
-          priority
-        />
-        {children}
-      </body>
-    </html>
-  );
-}
-\`\`\`
+Additional features:
+- Static and dynamic rendering
+- Incremental static regeneration
+- Edge runtime support
+- Caching strategies
+- Resource optimization
 
 ## Authentication Flow
 
-Our authentication system is integrated with the App Router:
+Our authentication system integrates seamlessly with the App Router, providing comprehensive security features:
 
-\`\`\`tsx
-// app/api/auth/[...nextauth]/route.ts
-import { NextAuthOptions } from 'next-auth';
-import { NextResponse } from 'next/server';
+Core capabilities:
+- Protected route handling
+- Session management
+- State synchronization
+- Secure API access
+- Seamless transitions
 
-export const authOptions: NextAuthOptions = {
-  providers: [
-    // Configure providers
-  ],
-  callbacks: {
-    async session({ session, token }) {
-      return session;
-    },
-  },
-};
-
-export async function GET(req: Request) {
-  return NextResponse.json({ message: 'Auth API' });
-}
-\`\`\``);
+Security features:
+- Role-based access control
+- Session management
+- Token handling
+- Secure redirects
+- Error handling`);
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -305,18 +239,11 @@ export async function GET(req: Request) {
       );
     },
     code: ({ children, className }) => {
-      const match = /language-(\w+)/.exec(className || '');
-      const language = match ? match[1] : 'typescript';
       const code = String(children).replace(/\n$/, '');
-      
       return (
-        <div className="my-6">
-          <CodeBlock
-            language={language}
-            filename={language === 'tsx' ? 'example.tsx' : 'example.ts'}
-            code={code}
-          />
-        </div>
+        <code className="inline-code bg-muted px-1.5 py-0.5 rounded-md text-sm">
+          {code}
+        </code>
       );
     },
   };

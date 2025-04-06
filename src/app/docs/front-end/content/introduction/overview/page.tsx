@@ -210,7 +210,7 @@ By following our front-end architecture and best practices, you can create robus
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [markdownContent]);
 
   const components: Partial<Components> = {
     h1: ({ children }) => {

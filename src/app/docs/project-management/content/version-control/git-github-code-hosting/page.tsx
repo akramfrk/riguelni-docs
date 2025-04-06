@@ -6,7 +6,6 @@ import type { Components } from "react-markdown"
 import Link from "next/link"
 import { ChevronRight, MoreHorizontal } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
-import CodeBlock from "@/components/ui/code-block"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -148,31 +147,15 @@ Our main repository structure:`)
 
   const components: Partial<Components> = {
     h1: ({ children }) => {
-      let id = '';
-      if (children?.toString().includes('Git & GitHub for Code Hosting')) {
-        id = 'git-github-for-code-hosting';
-      } else {
-        id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') || '';
-      }
+      const id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
       return (
-        <h1 id={id} className="scroll-mt-24 mt-0 mb-6">
+        <h1 id={id} className="scroll-mt-24 mb-8">
           {children}
         </h1>
       );
     },
     h2: ({ children }) => {
-      let id = '';
-      if (children?.toString().includes('Why Git & GitHub')) {
-        id = 'why-git-github';
-      } else if (children?.toString().includes('How We Use Git & GitHub')) {
-        id = 'how-we-use-git-github-in-riguelni';
-      } else if (children?.toString().includes('Best Practices')) {
-        id = 'best-practices-for-git-github';
-      } else if (children?.toString().includes('Conclusion')) {
-        id = 'conclusion';
-      } else {
-        id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') || '';
-      }
+      const id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
       return (
         <h2 id={id} className="scroll-mt-24 mt-8 mb-4">
           {children}
@@ -182,7 +165,7 @@ Our main repository structure:`)
     h3: ({ children }) => {
       const id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
       return (
-        <h3 id={id} className="scroll-mt-24 mt-4 mb-2">
+        <h3 id={id} className="scroll-mt-24 mt-6 mb-3">
           {children}
         </h3>
       );
@@ -344,6 +327,14 @@ Our main repository structure:`)
       }
       return <p className="text-base sm:text-lg">{children}</p>;
     },
+    code: ({ children, className }) => {
+      const code = String(children).replace(/\n$/, '');
+      return (
+        <code className="inline-code bg-muted px-1.5 py-0.5 rounded-md text-sm">
+          {code}
+        </code>
+      );
+    },
   }
 
   return (
@@ -455,7 +446,7 @@ Our main repository structure:`)
               <>
                 <ReactMarkdown components={components}>{markdownContent}</ReactMarkdown>
                 <div className="mt-6 w-full overflow-hidden">
-                  <CodeBlock language="bash" filename="riguelni-platform-structure.txt" code={repositoryStructure} />
+                  {repositoryStructure}
                 </div>
                 <ReactMarkdown components={components}>{`
 ### 2. Code Management

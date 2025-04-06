@@ -259,6 +259,15 @@ export default function ProjectManagementLayout({
                           Google Docs for Documentation
                         </Link>
                       </li>
+                      <li>
+                        <Link
+                          href="/docs/project-management/content/project-planning/excalidraw-explaining"
+                          className="text-muted-foreground hover:text-primary"
+                          onClick={() => setIsSidebarOpen(false)}
+                        >
+                          Excalidraw for Explaining
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -406,6 +415,14 @@ export default function ProjectManagementLayout({
                         className="text-muted-foreground hover:text-primary"
                       >
                         Google Docs for Documentation
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/docs/project-management/content/project-planning/excalidraw-explaining"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        Excalidraw for Explaining
                       </Link>
                     </li>
                   </ul>

@@ -164,7 +164,7 @@ export default function FrontEndLayout({
                   <ul className="space-y-2 text-sm">
                     <li>
                       <Link
-                        href="/docs/front-end/features/app-router"
+                        href="/docs/front-end/content/key-features/app-router"
                         className="text-muted-foreground hover:text-primary"
                         onClick={() => setIsSidebarOpen(false)}
                       >
@@ -173,7 +173,7 @@ export default function FrontEndLayout({
                     </li>
                     <li>
                       <Link
-                        href="/docs/front-end/features/type-safe"
+                        href="/docs/front-end/content/key-features/type-safe"
                         className="text-muted-foreground hover:text-primary"
                         onClick={() => setIsSidebarOpen(false)}
                       >
@@ -182,7 +182,7 @@ export default function FrontEndLayout({
                     </li>
                     <li>
                       <Link
-                        href="/docs/front-end/features/responsive"
+                        href="/docs/front-end/content/key-features/responsive"
                         className="text-muted-foreground hover:text-primary"
                         onClick={() => setIsSidebarOpen(false)}
                       >
@@ -191,7 +191,7 @@ export default function FrontEndLayout({
                     </li>
                     <li>
                       <Link
-                        href="/docs/front-end/features/real-time"
+                        href="/docs/front-end/content/key-features/real-time"
                         className="text-muted-foreground hover:text-primary"
                         onClick={() => setIsSidebarOpen(false)}
                       >
@@ -200,7 +200,7 @@ export default function FrontEndLayout({
                     </li>
                     <li>
                       <Link
-                        href="/docs/front-end/features/authentication"
+                        href="/docs/front-end/content/key-features/authentication"
                         className="text-muted-foreground hover:text-primary"
                         onClick={() => setIsSidebarOpen(false)}
                       >
@@ -209,7 +209,7 @@ export default function FrontEndLayout({
                     </li>
                     <li>
                       <Link
-                        href="/docs/front-end/features/performance"
+                        href="/docs/front-end/content/key-features/performance"
                         className="text-muted-foreground hover:text-primary"
                         onClick={() => setIsSidebarOpen(false)}
                       >

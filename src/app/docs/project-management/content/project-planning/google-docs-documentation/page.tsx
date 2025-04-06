@@ -6,7 +6,6 @@ import type { Components } from "react-markdown"
 import Link from "next/link"
 import { ChevronRight, MoreHorizontal, FileText, FileSpreadsheet, Presentation, FileBarChart, FileCode, FileCheck } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
-import CodeBlock from "@/components/ui/code-block"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -309,7 +308,7 @@ Google Docs is an essential tool in our documentation workflow at RIGELNI. It en
                     <div className="space-y-2 pl-4">
                       <Skeleton className="h-5 w-[80%]" />
                       <Skeleton className="h-5 w-[75%]" />
-                      <Skeleton className="h-5 w-[85%]" />
+                    <Skeleton className="h-5 w-[85%]" />
                       <Skeleton className="h-5 w-[70%]" />
                     </div>
                   </div>
@@ -473,9 +472,9 @@ Google Docs is an essential tool in our documentation workflow at RIGELNI. It en
                       <div className="flex items-center gap-4 px-5 py-3 w-full sm:w-auto">
                         <div className="flex items-center gap-4 px-5 py-3 w-full sm:w-auto">
                           <div className="h-7 w-7 rounded-full bg-accent/50" />
-                          <div className="flex flex-col items-start flex-1 sm:flex-initial">
-                            <Skeleton className="h-3 w-16 mb-2" />
-                            <Skeleton className="h-4 w-48" />
+                        <div className="flex flex-col items-start flex-1 sm:flex-initial">
+                          <Skeleton className="h-3 w-16 mb-2" />
+                          <Skeleton className="h-4 w-48" />
                           </div>
                         </div>
                       </div>
