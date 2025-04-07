@@ -6,6 +6,7 @@ import type { Components } from "react-markdown";
 import Link from "next/link";
 import { ChevronRight, MoreHorizontal, ChevronLeft } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import CodeBlock from "@/components/ui/code-block";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -21,9 +22,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 
-export default function CoreStackPage() {
+export default function AppRouterPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [markdownContent, setMarkdownContent] = useState("");
 
@@ -47,83 +47,189 @@ export default function CoreStackPage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-      setMarkdownContent(`# Core Stack
+      setMarkdownContent(`# Type-Safe Development
 
-Our front-end development is built on a modern, powerful stack of technologies that enable us to create fast, reliable, and maintainable applications.
+TypeScript is the foundation of our development process, providing static type checking and enhanced developer experience. Our implementation ensures type safety throughout the application, from components to API interactions.
 
-## Next.js 15.1.7 with Turbopack
+## TypeScript Integration
 
-Next.js is the foundation of our front-end architecture, providing:
+TypeScript is integrated throughout our codebase with strict type checking enabled. This ensures that all components, functions, and data structures are properly typed, providing better code completion and error detection during development.
 
-- Server-side rendering (SSR) for optimal performance
-- Static site generation (SSG) for blazing-fast static pages
-- API routes for backend functionality
-- Built-in routing system
-- Image optimization
-- Font optimization
+Common type patterns include:
+- Strict type checking across the codebase
+- Comprehensive type definitions for components
+- Type inference for better development experience
+- Custom type utilities for common patterns
+- Generic types for reusable functionality
 
-With Turbopack, we benefit from:
-
-- Lightning-fast development server
-- Incremental bundling
-- Optimized production builds
-- Improved caching
-- Better developer experience
-
-## React 19
-
-React powers our component-based architecture with:
-
-- Functional components and hooks
-- Virtual DOM for efficient updates
-- Concurrent features for better performance
-- Server components for reduced client-side JavaScript
-- Automatic batching for better performance
-- Improved error handling
-
-## TypeScript 5
-
-TypeScript ensures type safety and better developer experience:
-
-- Static type checking
-- Better IDE support
-- Improved code quality
-- Enhanced refactoring capabilities
-- Better documentation
+The type system provides several key benefits:
+- Early error detection during development
+- Improved code maintainability
+- Better IDE support and autocompletion
 - Reduced runtime errors
+- Enhanced refactoring capabilities
 
-## Tailwind CSS
+## Type Safety Benefits
 
-Our styling solution provides:
+The use of TypeScript brings several key advantages to our development workflow. Early error detection during development helps catch issues before they reach production, while improved code maintainability and readability make the codebase easier to work with.
 
-- Utility-first CSS framework
-- Responsive design out of the box
-- Customizable design system
-- Dark mode support
-- Optimized production builds
-- Consistent styling across components
+Key benefits include:
+- Static type checking
+- Better code organization
+- Improved developer experience
+- Enhanced code quality
+- Reduced debugging time
 
-## Redux Toolkit (State Management)
+Additional advantages:
+- Better documentation
+- Easier onboarding
+- More reliable code
+- Better tooling support
+- Improved collaboration
 
-For state management, we use Redux Toolkit to:
+## Component Typing
 
-- Manage global application state
-- Handle complex state logic
-- Provide predictable state updates
-- Enable time-travel debugging
-- Support middleware for side effects
-- Simplify Redux boilerplate
+Our components are fully typed with TypeScript, ensuring type safety throughout the application. Props validation with TypeScript interfaces and event handler typing help prevent common errors and improve development efficiency.
 
-## Why This Stack?
+Component features include:
+- Props validation with interfaces
+- Event handler typing
+- Generic component support
+- Strict prop checking
+- Custom hook typing
 
-This combination of technologies was chosen because it:
+Implementation details:
+- Interface definitions
+- Type guards
+- Union types
+- Intersection types
+- Conditional types
 
-- Provides excellent developer experience
-- Ensures high performance
-- Supports scalability
-- Enables type safety
-- Facilitates maintainability
-- Delivers great user experience`);
+## API Integration
+
+Type safety extends to our API interactions and data handling. We use type-safe API clients with generated types, ensuring that API responses are properly validated and typed throughout the application.
+
+API features include:
+- Type-safe API clients
+- Generated types from schemas
+- Runtime type validation
+- Error type definitions
+- Response type checking
+
+Integration patterns:
+- Type-safe API calls
+- Response validation
+- Error handling
+- Data transformation
+- Type guards
+
+## Development Workflow
+
+Our development process is optimized for type safety. TypeScript configuration is set to strict checking, and automated type checking is integrated into our CI/CD pipeline for consistent code quality.
+
+Workflow features:
+- Strict TypeScript configuration
+- Automated type checking
+- Type documentation
+- Testing with types
+- Code review guidelines
+
+Process improvements:
+- Type checking in CI/CD
+- Automated type generation
+- Type coverage reporting
+- Performance monitoring
+- Quality metrics
+
+## Best Practices
+
+We follow established best practices for type-safe development. This includes comprehensive type definitions, consistent type naming conventions, and regular type checking during development.
+
+Core practices include:
+- Strict type checking
+- Comprehensive type definitions
+- Consistent naming conventions
+- Regular type checking
+- Documentation standards
+
+Implementation guidelines:
+- Type naming conventions
+- Interface design
+- Generic type usage
+- Type documentation
+- Error handling
+
+## Type Utilities
+
+Our custom type utilities enhance development efficiency. Shared type definitions and type guards ensure runtime safety, while utility types help with common patterns and state management.
+
+Utility features:
+- Shared type definitions
+- Type guards
+- Utility types
+- State management types
+- Generic utilities
+
+Common patterns:
+- Type predicates
+- Mapped types
+- Conditional types
+- Template literal types
+- Index types
+
+## Error Prevention
+
+Type safety helps prevent common development errors. Null and undefined checking, type mismatch prevention, and property access validation are all handled through TypeScript's type system.
+
+Prevention strategies:
+- Null checking
+- Type validation
+- Property access
+- Function parameters
+- Return types
+
+Safety features:
+- Strict null checks
+- Type narrowing
+- Property validation
+- Parameter checking
+- Return type checking
+
+## Performance Optimization
+
+Type safety contributes to application performance. Better code optimization, reduced runtime type checking, and improved bundle size are all benefits of our type-safe approach.
+
+Optimization features:
+- Code optimization
+- Runtime performance
+- Bundle size
+- Tree shaking
+- Code splitting
+
+Performance benefits:
+- Faster execution
+- Smaller bundles
+- Better caching
+- Improved loading
+- Enhanced rendering
+
+## Future Enhancements
+
+We continuously improve our type safety implementation. Advanced type patterns, enhanced type utilities, and better type documentation are all part of our ongoing development efforts.
+
+Planned improvements:
+- Advanced type patterns
+- Enhanced utilities
+- Better documentation
+- Improved inference
+- Expanded coverage
+
+Development roadmap:
+- Type system updates
+- Tooling improvements
+- Documentation enhancements
+- Performance optimizations
+- Feature additions`);
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -152,6 +258,14 @@ This combination of technologies was chosen because it:
         <h3 id={id} className="scroll-mt-24 mt-6 mb-3">
           {children}
         </h3>
+      );
+    },
+    code: ({ children, className }) => {
+      const code = String(children).replace(/\n$/, '');
+      return (
+        <code className="inline-code bg-muted px-1.5 py-0.5 rounded-md text-sm">
+          {code}
+        </code>
       );
     },
   };
@@ -189,15 +303,15 @@ This combination of technologies was chosen because it:
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/front-end/content/introduction/overview" className="text-sm">
-                        Introduction
+                      <BreadcrumbLink href="/docs/front-end/content/key-features/app-router" className="text-sm">
+                        Key Features
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbPage>Core Stack</BreadcrumbPage>
+                  <BreadcrumbPage>Type-Safe Development</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -259,7 +373,7 @@ This combination of technologies was chosen because it:
                 {/* Navigation buttons */}
                 <div className="flex items-center justify-between mt-20 pt-8 border-t border-border/40">
                   <Link
-                    href="/docs/front-end/content/introduction/overview"
+                    href="/docs/front-end/content/introduction/core-stack"
                     className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline"
                   >
                     <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
@@ -270,13 +384,13 @@ This combination of technologies was chosen because it:
                         Previous
                       </span>
                       <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:-translate-x-0.5 transition-all duration-300">
-                        Overview
+                        App Router
                       </span>
                     </div>
                     <span className="absolute inset-0 bg-gradient-to-l from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </Link>
                   <Link
-                    href="/docs/front-end/content/key-features/app-router"
+                    href="/docs/front-end/content/key-features/type-safe"
                     className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline"
                   >
                     <div className="flex flex-col items-end relative z-10">
@@ -284,7 +398,7 @@ This combination of technologies was chosen because it:
                         Next
                       </span>
                       <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:translate-x-0.5 transition-all duration-300">
-                        Modern App Router
+                        Responsive Design
                       </span>
                     </div>
                     <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
@@ -305,53 +419,81 @@ This combination of technologies was chosen because it:
               <div className="font-medium">On this page</div>
               <nav className="space-y-2 text-sm">
                 <Link
-                  href="#core-stack"
-                  onClick={(e) => handleScroll(e, "core-stack")}
+                  href="#type-safe-development"
+                  onClick={(e) => handleScroll(e, "type-safe-development")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Core Stack
+                  Type-Safe Development
                 </Link>
                 <Link
-                  href="#nextjs-1517-with-turbopack"
-                  onClick={(e) => handleScroll(e, "nextjs-1517-with-turbopack")}
+                  href="#typescript-integration"
+                  onClick={(e) => handleScroll(e, "typescript-integration")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Next.js 15.1.7 with Turbopack
+                  TypeScript Integration
                 </Link>
                 <Link
-                  href="#react-19"
-                  onClick={(e) => handleScroll(e, "react-19")}
+                  href="#type-safety-benefits"
+                  onClick={(e) => handleScroll(e, "type-safety-benefits")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  React 19
+                  Type Safety Benefits
                 </Link>
                 <Link
-                  href="#typescript-5"
-                  onClick={(e) => handleScroll(e, "typescript-5")}
+                  href="#component-typing"
+                  onClick={(e) => handleScroll(e, "component-typing")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  TypeScript 5
+                  Component Typing
                 </Link>
                 <Link
-                  href="#tailwind-css"
-                  onClick={(e) => handleScroll(e, "tailwind-css")}
+                  href="#api-integration"
+                  onClick={(e) => handleScroll(e, "api-integration")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Tailwind CSS
+                  API Integration
                 </Link>
                 <Link
-                  href="#redux-toolkit-state-management"
-                  onClick={(e) => handleScroll(e, "redux-toolkit-state-management")}
+                  href="#development-workflow"
+                  onClick={(e) => handleScroll(e, "development-workflow")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Redux Toolkit (State Management)
+                  Development Workflow
                 </Link>
                 <Link
-                  href="#why-this-stack"
-                  onClick={(e) => handleScroll(e, "why-this-stack")}
+                  href="#best-practices"
+                  onClick={(e) => handleScroll(e, "best-practices")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Why This Stack?
+                  Best Practices
+                </Link>
+                <Link
+                  href="#type-utilities"
+                  onClick={(e) => handleScroll(e, "type-utilities")}
+                  className="block text-muted-foreground hover:text-primary"
+                >
+                  Type Utilities
+                </Link>
+                <Link
+                  href="#error-prevention"
+                  onClick={(e) => handleScroll(e, "error-prevention")}
+                  className="block text-muted-foreground hover:text-primary"
+                >
+                  Error Prevention
+                </Link>
+                <Link
+                  href="#performance-optimization"
+                  onClick={(e) => handleScroll(e, "performance-optimization")}
+                  className="block text-muted-foreground hover:text-primary"
+                >
+                  Performance Optimization
+                </Link>
+                <Link
+                  href="#future-enhancements"
+                  onClick={(e) => handleScroll(e, "future-enhancements")}
+                  className="block text-muted-foreground hover:text-primary"
+                >
+                  Future Enhancements
                 </Link>
               </nav>
             </div>

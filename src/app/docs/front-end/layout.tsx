@@ -173,7 +173,7 @@ export default function FrontEndLayout({
                     </li>
                     <li>
                       <Link
-                        href="/docs/front-end/content/key-features/type-safe"
+                        href="/docs/front-end/content/key-features/type-safe-development"
                         className="text-muted-foreground hover:text-primary"
                         onClick={() => setIsSidebarOpen(false)}
                       >
@@ -543,7 +543,7 @@ export default function FrontEndLayout({
                   </li>
                   <li>
                     <Link
-                      href="/docs/front-end/features/type-safe"
+                      href="/docs/front-end/content/key-features/type-safe-development"
                       className="text-muted-foreground hover:text-primary"
                     >
                       Type-Safe Development
