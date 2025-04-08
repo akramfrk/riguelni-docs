@@ -6,7 +6,6 @@ import type { Components } from "react-markdown";
 import Link from "next/link";
 import { ChevronRight, MoreHorizontal, ChevronLeft } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
-import CodeBlock from "@/components/ui/code-block";
 import {
   Breadcrumb,
   BreadcrumbItem,
