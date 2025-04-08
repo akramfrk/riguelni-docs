@@ -50,51 +50,6 @@ export default function GitGitHubPage() {
     }
   }
 
-  const repositoryStructure = `Riguelni-Platform/
-├── Riguelni-Docs/
-│   ├── src/
-│   │   ├── app/
-│   │   ├── components/
-│   │   ├── lib/
-│   │   ├── hooks/
-│   │   └── sections/
-│   ├── public/
-│   └── package.json
-│
-├── Riguelni-Web/
-│   ├── src/
-│   │   ├── app/
-│   │   ├── components/
-│   │   ├── hooks/
-│   │   ├── registry/
-│   │   ├── constants/
-│   │   ├── schemas/
-│   │   ├── types/
-│   │   ├── config/
-│   │   ├── stores/
-│   │   ├── providers/
-│   │   ├── utils/
-│   │   └── lib/
-│   ├── public/
-│   ├── .github/
-│   └── package.json
-│
-└── Reguelni-App/
-    ├── reguelni/
-    │   ├── lib/
-    │   ├── assets/
-    │   ├── fonts/
-    │   ├── test/
-    │   ├── android/
-    │   ├── ios/
-    │   ├── linux/
-    │   ├── macos/
-    │   ├── windows/
-    │   ├── web/
-    │   ├── pubspec.yaml
-    │   └── pubspec.lock`
-
-
   useEffect(() => {
     // Simulate loading time
     const timer = setTimeout(() => {
@@ -139,7 +94,106 @@ GitHub enhances our workflow by providing:
 ### 2. Repository Structure
 We maintain a well-organized GitHub repository where all project files, documentation, and assets are stored. The repository acts as the central hub for our development activities.
 
-Our main repository structure:`)
+Our main repository structure:
+\`\`\`bash
+Riguelni-Platform/
+├── Riguelni-Docs/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── components/
+│   │   ├── lib/
+│   │   ├── hooks/
+│   │   └── sections/
+│   ├── public/
+│   └── package.json
+│
+├── Riguelni-Web/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── registry/
+│   │   ├── constants/
+│   │   ├── schemas/
+│   │   ├── types/
+│   │   ├── config/
+│   │   ├── stores/
+│   │   ├── providers/
+│   │   ├── utils/
+│   │   └── lib/
+│   ├── public/
+│   ├── .github/
+│   └── package.json
+│
+└── Reguelni-App/
+    ├── reguelni/
+    │   ├── lib/
+    │   ├── assets/
+    │   ├── fonts/
+    │   ├── test/
+    │   ├── android/
+    │   ├── ios/
+    │   ├── linux/
+    │   ├── macos/
+    │   ├── windows/
+    │   ├── web/
+    │   ├── pubspec.yaml
+    │   └── pubspec.lock
+\`\`\`
+
+### 3. Code Management
+Developers push their updates to GitHub regularly, ensuring that all changes are tracked and saved.
+
+Every commit includes a clear and descriptive message explaining the changes.
+
+We follow code formatting guidelines to maintain consistency across the project:
+- ESLint for JavaScript/TypeScript linting
+- Prettier for code formatting
+- Husky for pre-commit hooks
+
+Developers frequently sync their local repositories with the latest changes to avoid conflicts.
+
+### 4. Issue Tracking & Collaboration
+GitHub Issues help us manage tasks and track bugs efficiently:
+
+Each issue is labeled and assigned to a team member.
+
+We use labels like:
+- \`bug\` - For bug reports
+- \`feature\` - For new features
+- \`enhancement\` - For improvements
+- \`documentation\` - For doc updates
+- \`priority\` - For urgent tasks
+
+Developers update the issue with progress reports and discussions.
+
+Once resolved, the issue is closed, ensuring a clear record of completed tasks.
+
+### 5. Security & Access Control
+To maintain security and prevent unauthorized changes:
+
+Only authorized team members have write access to the repository.
+
+Sensitive information is kept in environment variables instead of hardcoded values:
+\`\`\`env
+DATABASE_URL=your_database_url
+API_KEY=your_api_key
+JWT_SECRET=your_jwt_secret
+\`\`\`
+
+We use GitHub's security alerts to monitor vulnerabilities in dependencies.
+
+## Best Practices for Git & GitHub
+To keep our workflow smooth and efficient, we follow these best practices:
+
+- Commit Frequently – Small, meaningful commits make it easier to track changes.
+- Write Clear Commit Messages – Every commit should explain what was changed and why.
+- Keep Code Clean & Organized – Follow formatting rules and remove unnecessary files.
+- Use .gitignore – Prevent unwanted files (e.g., logs, temporary files) from being committed.
+- Sync Regularly – Developers pull the latest updates before making changes to avoid conflicts.
+
+## Conclusion
+Git & GitHub are at the core of our development process, ensuring smooth collaboration, code safety, and efficient project management. By following structured workflows and best practices, we maintain a high-quality, well-documented, and secure codebase.`)
     }, 1000)
 
     return () => clearTimeout(timer)
@@ -327,14 +381,6 @@ Our main repository structure:`)
       }
       return <p className="text-base sm:text-lg">{children}</p>;
     },
-    code: ({ children, className }) => {
-      const code = String(children).replace(/\n$/, '');
-      return (
-        <code className="inline-code bg-muted px-1.5 py-0.5 rounded-md text-sm">
-          {code}
-        </code>
-      );
-    },
   }
 
   return (
@@ -445,63 +491,6 @@ Our main repository structure:`)
             ) : (
               <>
                 <ReactMarkdown components={components}>{markdownContent}</ReactMarkdown>
-                <div className="mt-6 w-full overflow-hidden">
-                  {repositoryStructure}
-                </div>
-                <ReactMarkdown components={components}>{`
-### 2. Code Management
-Developers push their updates to GitHub regularly, ensuring that all changes are tracked and saved.
-
-Every commit includes a clear and descriptive message explaining the changes.
-
-We follow code formatting guidelines to maintain consistency across the project:
-- ESLint for JavaScript/TypeScript linting
-- Prettier for code formatting
-- Husky for pre-commit hooks
-
-Developers frequently sync their local repositories with the latest changes to avoid conflicts.
-
-### 3. Issue Tracking & Collaboration
-GitHub Issues help us manage tasks and track bugs efficiently:
-
-Each issue is labeled and assigned to a team member.
-
-We use labels like:
-- \`bug\` - For bug reports
-- \`feature\` - For new features
-- \`enhancement\` - For improvements
-- \`documentation\` - For doc updates
-- \`priority\` - For urgent tasks
-
-Developers update the issue with progress reports and discussions.
-
-Once resolved, the issue is closed, ensuring a clear record of completed tasks.
-
-### 4. Security & Access Control
-To maintain security and prevent unauthorized changes:
-
-Only authorized team members have write access to the repository.
-
-Sensitive information is kept in environment variables instead of hardcoded values:
-\`\`\`env
-DATABASE_URL=your_database_url
-API_KEY=your_api_key
-JWT_SECRET=your_jwt_secret
-\`\`\`
-
-We use GitHub's security alerts to monitor vulnerabilities in dependencies.
-
-## Best Practices for Git & GitHub
-To keep our workflow smooth and efficient, we follow these best practices:
-
-- Commit Frequently – Small, meaningful commits make it easier to track changes.
-- Write Clear Commit Messages – Every commit should explain what was changed and why.
-- Keep Code Clean & Organized – Follow formatting rules and remove unnecessary files.
-- Use .gitignore – Prevent unwanted files (e.g., logs, temporary files) from being committed.
-- Sync Regularly – Developers pull the latest updates before making changes to avoid conflicts.
-
-## Conclusion
-Git & GitHub are at the core of our development process, ensuring smooth collaboration, code safety, and efficient project management. By following structured workflows and best practices, we maintain a high-quality, well-documented, and secure codebase.`}</ReactMarkdown>
               </>
             )}
 
