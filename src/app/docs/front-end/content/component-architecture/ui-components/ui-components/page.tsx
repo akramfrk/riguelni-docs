@@ -1,11 +1,14 @@
 "use client"
 
-import ReactMarkdown from "react-markdown";
-import { useState, useEffect } from "react";
-import type { Components } from "react-markdown";
-import Link from "next/link";
-import { ChevronRight, MoreHorizontal, ChevronLeft } from "lucide-react";
-import { Skeleton } from "@/components/ui/skeleton";
+import type React from "react"
+
+import ReactMarkdown from "react-markdown"
+import { useState, useEffect, useRef } from "react"
+import type { Components } from "react-markdown"
+import Link from "next/link"
+import { ChevronRight, ChevronLeft } from "lucide-react"
+import { Skeleton } from "@/components/ui/skeleton"
+import { cn } from "@/lib/utils"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,46 +17,85 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
-} from "@/components/ui/breadcrumb";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/breadcrumb"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+
+// Define section IDs
+const SECTION_IDS = [
+  "ui-components",
+  "button-component-pattern",
+  "form-field-pattern",
+  "dialog-pattern",
+  "dropdown-menu-pattern",
+  "key-implementation-principles",
+]
 
 export default function UIComponentsPage() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [markdownContent, setMarkdownContent] = useState("");
+  const [isLoading, setIsLoading] = useState(true)
+  const [markdownContent, setMarkdownContent] = useState("")
+  const [activeSection, setActiveSection] = useState<string>("ui-components")
+  const contentRef = useRef<HTMLDivElement>(null)
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
+    e.preventDefault()
+    const element = document.getElementById(id)
     if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const headerOffset = 100
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 
       setTimeout(() => {
         window.scrollTo({
           top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }, 100);
+          behavior: "smooth",
+        })
+      }, 100)
     }
-  };
+  }
+
+  // Function to check which section is currently in view
+  const updateActiveSection = () => {
+    if (isLoading) return
+
+    // Get all section elements
+    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean)
+
+    if (sections.length === 0) return
+
+    // Find the section that's currently in view
+    const scrollPosition = window.scrollY + 150 // Add offset to account for header
+
+    // Find the section that's currently in view
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = sections[i]
+      if (!section) continue
+
+      if (section.offsetTop <= scrollPosition) {
+        setActiveSection(section.id)
+        return
+      }
+    }
+
+    // If no section is found, default to the first one
+    setActiveSection(sections[0]?.id || "ui-components")
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false);
+      setIsLoading(false)
       setMarkdownContent(`# UI Components
 
-The Riguelni Platform implements a comprehensive set of UI components built with React and TypeScript. These components are designed to be reusable, accessible, and customizable while maintaining a consistent design system.
+The Riguelni Platform implements reusable UI components built with React and TypeScript. Our components follow a consistent pattern that emphasizes type safety, accessibility, and customization. Here's how we implement our core components:
 
-## Core Components
+## Button Component Pattern
 
-### 1. Button Component
-Our button component is built with Radix UI and provides various styles and sizes:
+The Button component demonstrates our approach to creating flexible, type-safe components with variants. We use class-variance-authority (cva) to manage styles in a type-safe way, making it easy to:
+- Define multiple visual variants (default, destructive, outline, etc.)
+- Support different sizes (default, small, large, icon)
+- Maintain consistent styling across the application
+- Ensure proper TypeScript types for all variants
+
+Here's how we implement it:
 
 \`\`\`typescript
 const buttonVariants = cva(
@@ -81,10 +123,36 @@ const buttonVariants = cva(
     },
   }
 );
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: VariantProps<typeof buttonVariants>["variant"];
+  size?: VariantProps<typeof buttonVariants>["size"];
+}
+
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, ...props }, ref) => {
+    return (
+      <button
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+Button.displayName = "Button";
 \`\`\`
 
-### 2. Form Components
-Our form system is built on top of React Hook Form and provides a type-safe, accessible form solution:
+## Form Field Pattern
+
+Our form components use React Hook Form for robust form handling. This pattern provides:
+- Type-safe form fields with TypeScript generics
+- Context-based form state management
+- Reusable form field components
+- Consistent styling and layout
+- Built-in validation support
+
+The implementation shows how we create composable form fields:
 
 \`\`\`typescript
 const FormField = <
@@ -99,163 +167,226 @@ const FormField = <
     </FormFieldContext.Provider>
   );
 };
+
+const FormItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => {
+    const id = useId();
+    return (
+      <div ref={ref} className={cn("space-y-2", className)} {...props} />
+    );
+  }
+);
+FormItem.displayName = "FormItem";
 \`\`\`
 
-## Component Categories
+## Dialog Pattern
 
-### 1. Layout Components
-- **Card**: Container for content with various styles
-- **Sheet**: Side panel component for mobile navigation
-- **Dialog**: Modal dialog for important interactions
-- **ScrollArea**: Custom scrollable container
-
-### 2. Form Components
-- **Input**: Text input with validation
-- **Select**: Dropdown selection
-- **Checkbox**: Toggle input
-- **RadioGroup**: Radio button group
-- **Textarea**: Multi-line text input
-- **DatePicker**: Date selection component
-
-### 3. Navigation Components
-- **Breadcrumb**: Navigation hierarchy
-- **Tabs**: Tabbed interface
-- **DropdownMenu**: Context menu
-- **NavbarMenu**: Main navigation
-- **HamburgerMenu**: Mobile navigation
-
-### 4. Feedback Components
-- **AlertDialog**: Important alerts
-- **Skeleton**: Loading states
-- **Spinner**: Progress indicator
-- **Badge**: Status indicators
-
-### 5. Interactive Components
-- **Carousel**: Image/content slider
-- **Accordion**: Collapsible sections
-- **Popover**: Contextual information
-- **Slider**: Range selection
-- **Switch**: Toggle switch
-
-## Implementation Details
-
-### 1. Component Architecture
-Our components follow a consistent architecture:
-- Built with React and TypeScript
-- Styled with Tailwind CSS
-- Accessible by default
-- Fully customizable
-- Type-safe props
-
-### 2. Styling System
-- Uses Tailwind CSS for styling
-- Implements a consistent design system
-- Supports dark/light mode
-- Responsive by default
-- Customizable through variants
-
-### 3. Accessibility
-- Follows WAI-ARIA guidelines
+Our dialog components use Radix UI primitives for accessibility and customization. This pattern provides:
+- Fully accessible modal dialogs
 - Keyboard navigation support
-- Screen reader compatibility
 - Focus management
-- Color contrast compliance
+- Smooth animations
+- Backdrop handling
+- Portal-based rendering
 
-## Best Practices
+Here's how we implement accessible dialogs:
 
-1. **Component Design**
-   - Keep components focused and single-purpose
-   - Use composition over inheritance
-   - Implement proper prop types
-   - Provide sensible defaults
-   - Document component usage
+\`\`\`typescript
+const Dialog = DialogPrimitive.Root;
 
-2. **State Management**
-   - Use controlled components when needed
-   - Implement proper form handling
-   - Manage loading states
-   - Handle errors gracefully
-   - Provide feedback to users
+const DialogTrigger = DialogPrimitive.Trigger;
 
-3. **Performance**
-   - Implement proper memoization
-   - Use lazy loading when appropriate
-   - Optimize re-renders
-   - Minimize bundle size
-   - Use proper code splitting
+const DialogPortal = DialogPrimitive.Portal;
 
-4. **Testing**
-   - Write unit tests for components
-   - Test accessibility
-   - Verify responsive behavior
-   - Test edge cases
-   - Document test coverage
+const DialogOverlay = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Overlay>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
+>(({ className, ...props }, ref) => (
+  <DialogPrimitive.Overlay
+    ref={ref}
+    className={cn(
+      "fixed inset-0 z-50 bg-black/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      className
+    )}
+    {...props}
+  />
+));
+DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
-## Implementation Tips
+const DialogContent = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <DialogPortal>
+    <DialogOverlay />
+    <DialogPrimitive.Content
+      ref={ref}
+      className={cn(
+        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </DialogPrimitive.Content>
+  </DialogPortal>
+));
+DialogContent.displayName = DialogPrimitive.Content.displayName;
+\`\`\`
 
-1. **Component Creation**
-   - Start with a clear purpose
-   - Define the API first
-   - Consider edge cases
-   - Make it reusable
-   - Document thoroughly
+## Dropdown Menu Pattern
 
-2. **Styling**
-   - Use design system tokens
-   - Follow naming conventions
-   - Keep styles maintainable
-   - Support theming
-   - Consider responsive design
+Our dropdown menus combine Radix UI primitives with custom animations for a polished user experience. Key features include:
+- Accessible dropdown menus
+- Smooth animations and transitions
+- Proper positioning
+- Portal-based rendering
+- Keyboard navigation
+- Custom styling options
 
-3. **Accessibility**
-   - Test with screen readers
-   - Verify keyboard navigation
-   - Check color contrast
-   - Provide proper labels
-   - Handle focus management
+Here's our implementation:
 
-## Conclusion
+\`\`\`typescript
+const DropdownMenu = DropdownMenuPrimitive.Root;
 
-The UI component library in the Riguelni Platform provides a solid foundation for building consistent, accessible, and maintainable user interfaces. By following these best practices and implementation strategies, you can create high-quality components that enhance the user experience.`);
-    }, 1000);
+const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 
-    return () => clearTimeout(timer);
-  }, []);
+const DropdownMenuContent = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
+>(({ className, sideOffset = 4, ...props }, ref) => (
+  <DropdownMenuPrimitive.Portal>
+    <DropdownMenuPrimitive.Content
+      ref={ref}
+      sideOffset={sideOffset}
+      className={cn(
+        "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out",
+        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+        "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+        "data-[side=bottom]:slide-in-from-top-2",
+        "data-[side=left]:slide-in-from-right-2",
+        "data-[side=right]:slide-in-from-left-2",
+        "data-[side=top]:slide-in-from-bottom-2",
+        className
+      )}
+      {...props}
+    />
+  </DropdownMenuPrimitive.Portal>
+));
+DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
+\`\`\`
+
+## Key Implementation Principles
+
+Each component in our library follows these essential principles:
+
+1. **Type Safety**
+   - Extensive use of TypeScript
+   - Generic types where appropriate
+   - Proper type inference
+   - Type-safe props and variants
+
+2. **Accessibility**
+   - ARIA attributes and roles
+   - Keyboard navigation
+   - Focus management
+   - Screen reader support
+
+3. **Styling**
+   - Tailwind CSS for consistent styling
+   - Theme-aware design
+   - Responsive by default
+   - Animation support
+
+4. **Composition**
+   - Small, focused components
+   - Radix UI primitives
+   - Context providers when needed
+   - Proper prop forwarding
+
+5. **Performance**
+   - Proper ref forwarding
+   - Portal usage when needed
+   - Optimized animations
+   - Controlled re-renders`)
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Set up scroll event listener
+  useEffect(() => {
+    if (!isLoading) {
+      // Initial check
+      setTimeout(updateActiveSection, 500)
+
+      // Add scroll event listener
+      window.addEventListener("scroll", updateActiveSection, { passive: true })
+
+      return () => {
+        window.removeEventListener("scroll", updateActiveSection)
+      }
+    }
+  }, [isLoading])
 
   const components: Partial<Components> = {
     h1: ({ children }) => {
-      const id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+      const id = children
+        ?.toString()
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^a-z0-9-]/g, "")
       return (
-        <h1 id={id} className="scroll-mt-24 mb-8">
+        <h1 id={id} className="scroll-mt-24 mb-8 text-3xl font-bold">
           {children}
         </h1>
-      );
+      )
     },
     h2: ({ children }) => {
-      const id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+      const id = children
+        ?.toString()
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^a-z0-9-]/g, "")
       return (
-        <h2 id={id} className="scroll-mt-24 mt-8 mb-4">
+        <h2 id={id} className="scroll-mt-24 mt-8 mb-4 text-2xl font-semibold">
           {children}
         </h2>
-      );
+      )
     },
     h3: ({ children }) => {
-      const id = children?.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+      const id = children
+        ?.toString()
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^a-z0-9-]/g, "")
       return (
-        <h3 id={id} className="scroll-mt-24 mt-6 mb-3">
+        <h3 id={id} className="scroll-mt-24 mt-6 mb-3 text-xl font-medium">
           {children}
         </h3>
-      );
+      )
     },
     code: ({ children, className }) => {
-      const code = String(children).replace(/\n$/, '');
-      return (
-        <code className="inline-code bg-muted px-1.5 py-0.5 rounded-md text-sm">
-          {code}
-        </code>
-      );
+      const code = String(children).replace(/\n$/, "")
+      return <code className="inline-code bg-muted px-1.5 py-0.5 rounded-md text-sm">{code}</code>
     },
-  };
+  }
+
+  // Debug output to console
+  useEffect(() => {
+    if (!isLoading) {
+      console.log("Active section:", activeSection)
+    }
+  }, [activeSection, isLoading])
+
+  // Format section title for display
+  const formatSectionTitle = (id: string) => {
+    return id
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -290,7 +421,10 @@ The UI component library in the Riguelni Platform provides a solid foundation fo
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/front-end/content/component-architecture/overview" className="text-sm">
+                      <BreadcrumbLink
+                        href="/docs/front-end/content/component-architecture/overview"
+                        className="text-sm"
+                      >
                         Component Architecture
                       </BreadcrumbLink>
                     </DropdownMenuItem>
@@ -308,7 +442,10 @@ The UI component library in the Riguelni Platform provides a solid foundation fo
 
       <div className="flex flex-col lg:flex-row">
         <main className="flex-1 max-w-full lg:max-w-3xl mx-auto pb-16 pt-16 px-4 md:px-8 lg:px-12">
-          <div className="min-h-[200px] prose dark:prose-invert prose-primary max-w-none [&>*:first-child]:!mt-0 prose-headings:!mt-0">
+          <div
+            ref={contentRef}
+            className="min-h-[200px] prose dark:prose-invert prose-primary max-w-none [&>*:first-child]:!mt-0 prose-headings:!mt-0"
+          >
             {isLoading ? (
               <div className="space-y-8">
                 {/* Title section */}
@@ -405,60 +542,27 @@ The UI component library in the Riguelni Platform provides a solid foundation fo
             <div className="space-y-4 pb-8">
               <div className="font-medium">On this page</div>
               <nav className="space-y-2 text-sm">
-                <Link
-                  href="#ui-components"
-                  onClick={(e) => handleScroll(e, "ui-components")}
-                  className="block text-muted-foreground hover:text-primary"
-                >
-                  UI Components
-                </Link>
-                <Link
-                  href="#core-components"
-                  onClick={(e) => handleScroll(e, "core-components")}
-                  className="block text-muted-foreground hover:text-primary"
-                >
-                  Core Components
-                </Link>
-                <Link
-                  href="#component-categories"
-                  onClick={(e) => handleScroll(e, "component-categories")}
-                  className="block text-muted-foreground hover:text-primary"
-                >
-                  Component Categories
-                </Link>
-                <Link
-                  href="#implementation-details"
-                  onClick={(e) => handleScroll(e, "implementation-details")}
-                  className="block text-muted-foreground hover:text-primary"
-                >
-                  Implementation Details
-                </Link>
-                <Link
-                  href="#best-practices"
-                  onClick={(e) => handleScroll(e, "best-practices")}
-                  className="block text-muted-foreground hover:text-primary"
-                >
-                  Best Practices
-                </Link>
-                <Link
-                  href="#implementation-tips"
-                  onClick={(e) => handleScroll(e, "implementation-tips")}
-                  className="block text-muted-foreground hover:text-primary"
-                >
-                  Implementation Tips
-                </Link>
-                <Link
-                  href="#conclusion"
-                  onClick={(e) => handleScroll(e, "conclusion")}
-                  className="block text-muted-foreground hover:text-primary"
-                >
-                  Conclusion
-                </Link>
+                {!isLoading &&
+                  SECTION_IDS.map((id) => (
+                    <Link
+                      key={id}
+                      href={`#${id}`}
+                      onClick={(e) => handleScroll(e, id)}
+                      className={cn(
+                        "block transition-colors",
+                        activeSection === id
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
+                      {formatSectionTitle(id)}
+                    </Link>
+                  ))}
               </nav>
             </div>
           </nav>
         </aside>
       </div>
     </div>
-  );
-} 
+  )
+}

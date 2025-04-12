@@ -16,6 +16,15 @@ export default function ProjectManagementLayout({
   const [isLoading, setIsLoading] = useState(true)
   const pathname = usePathname()
 
+  // Helper function to check if a link is active
+  const isActive = (path: string) => {
+    // Exact match
+    if (pathname === path) return true
+    // Check if it's a parent path (for nested routes)
+    if (path !== "/" && pathname.startsWith(path)) return true
+    return false
+  }
+
   // List of paths where the sidebar should be hidden
   const hideSidebarPaths = [
     "/docs/project-management/content/project-planning/google-docs-documentation/project-proposition/page",
@@ -27,12 +36,7 @@ export default function ProjectManagementLayout({
   ]
 
   // Check if the current path should hide the sidebar
-  const shouldHideSidebar = pathname.includes("project-proposition") || 
-                           pathname.includes("meeting-report-1") || 
-                           pathname.includes("meeting-report-2") || 
-                           pathname.includes("meeting-report-3") || 
-                           pathname.includes("meeting-report-4") || 
-                           pathname.includes("meeting-report-5")
+  const shouldHideSidebar = hideSidebarPaths.includes(pathname)
 
   // Effect to prevent scrolling when sidebar is open
   useEffect(() => {
@@ -166,7 +170,12 @@ export default function ProjectManagementLayout({
                       <li>
                         <Link
                           href="/docs/project-management/content/introduction/overview"
-                          className="text-muted-foreground hover:text-primary"
+                          className={cn(
+                            "transition-colors",
+                            isActive("/docs/project-management/content/introduction/overview")
+                              ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                              : "text-muted-foreground hover:text-primary"
+                          )}
                           onClick={() => setIsSidebarOpen(false)}
                         >
                           Overview
@@ -180,7 +189,12 @@ export default function ProjectManagementLayout({
                       <li>
                         <Link
                           href="/docs/project-management/content/version-control/git-github-code-hosting"
-                          className="text-muted-foreground hover:text-primary"
+                          className={cn(
+                            "transition-colors",
+                            isActive("/docs/project-management/content/version-control/git-github-code-hosting")
+                              ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                              : "text-muted-foreground hover:text-primary"
+                          )}
                           onClick={() => setIsSidebarOpen(false)}
                         >
                           Git & GitHub for Code Hosting
@@ -189,7 +203,12 @@ export default function ProjectManagementLayout({
                       <li>
                         <Link
                           href="/docs/project-management/content/version-control/vs-code-development"
-                          className="text-muted-foreground hover:text-primary"
+                          className={cn(
+                            "transition-colors",
+                            isActive("/docs/project-management/content/version-control/vs-code-development")
+                              ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                              : "text-muted-foreground hover:text-primary"
+                          )}
                           onClick={() => setIsSidebarOpen(false)}
                         >
                           VS Code for Development
@@ -198,7 +217,12 @@ export default function ProjectManagementLayout({
                       <li>
                         <Link
                           href="/docs/project-management/content/version-control/feature-branches"
-                          className="text-muted-foreground hover:text-primary"
+                          className={cn(
+                            "transition-colors",
+                            isActive("/docs/project-management/content/version-control/feature-branches")
+                              ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                              : "text-muted-foreground hover:text-primary"
+                          )}
                           onClick={() => setIsSidebarOpen(false)}
                         >
                           Feature Branches for New Features
@@ -212,7 +236,12 @@ export default function ProjectManagementLayout({
                       <li>
                         <Link
                           href="/docs/project-management/content/team-collaboration/github-code-collaboration"
-                          className="text-muted-foreground hover:text-primary"
+                          className={cn(
+                            "transition-colors",
+                            isActive("/docs/project-management/content/team-collaboration/github-code-collaboration")
+                              ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                              : "text-muted-foreground hover:text-primary"
+                          )}
                           onClick={() => setIsSidebarOpen(false)}
                         >
                           GitHub for Code Collaboration
@@ -221,7 +250,12 @@ export default function ProjectManagementLayout({
                       <li>
                         <Link
                           href="/docs/project-management/content/team-collaboration/telegram-communication"
-                          className="text-muted-foreground hover:text-primary"
+                          className={cn(
+                            "transition-colors",
+                            isActive("/docs/project-management/content/team-collaboration/telegram-communication")
+                              ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                              : "text-muted-foreground hover:text-primary"
+                          )}
                           onClick={() => setIsSidebarOpen(false)}
                         >
                           Telegram for Team Communication
@@ -230,7 +264,12 @@ export default function ProjectManagementLayout({
                       <li>
                         <Link
                           href="/docs/project-management/content/team-collaboration/jira-project-management"
-                          className="text-muted-foreground hover:text-primary"
+                          className={cn(
+                            "transition-colors",
+                            isActive("/docs/project-management/content/team-collaboration/jira-project-management")
+                              ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                              : "text-muted-foreground hover:text-primary"
+                          )}
                           onClick={() => setIsSidebarOpen(false)}
                         >
                           Jira for Project Tracking
@@ -333,7 +372,13 @@ export default function ProjectManagementLayout({
                     <li>
                       <Link
                         href="/docs/project-management/content/introduction/overview"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/project-management/content/introduction/overview")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary"
+                        )}
+                        onClick={() => setIsSidebarOpen(false)}
                       >
                         Overview
                       </Link>
@@ -346,7 +391,13 @@ export default function ProjectManagementLayout({
                     <li>
                       <Link
                         href="/docs/project-management/content/version-control/git-github-code-hosting"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/project-management/content/version-control/git-github-code-hosting")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary"
+                        )}
+                        onClick={() => setIsSidebarOpen(false)}
                       >
                         Git & GitHub for Code Hosting
                       </Link>
@@ -354,7 +405,13 @@ export default function ProjectManagementLayout({
                     <li>
                       <Link
                         href="/docs/project-management/content/version-control/vs-code-development"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/project-management/content/version-control/vs-code-development")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary"
+                        )}
+                        onClick={() => setIsSidebarOpen(false)}
                       >
                         VS Code for Development
                       </Link>
@@ -362,7 +419,13 @@ export default function ProjectManagementLayout({
                     <li>
                       <Link
                         href="/docs/project-management/content/version-control/feature-branches"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/project-management/content/version-control/feature-branches")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary"
+                        )}
+                        onClick={() => setIsSidebarOpen(false)}
                       >
                         Feature Branches for New Features
                       </Link>
@@ -375,7 +438,13 @@ export default function ProjectManagementLayout({
                     <li>
                       <Link
                         href="/docs/project-management/content/team-collaboration/github-code-collaboration"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/project-management/content/team-collaboration/github-code-collaboration")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary"
+                        )}
+                        onClick={() => setIsSidebarOpen(false)}
                       >
                         GitHub for Code Collaboration
                       </Link>
@@ -383,7 +452,13 @@ export default function ProjectManagementLayout({
                     <li>
                       <Link
                         href="/docs/project-management/content/team-collaboration/telegram-communication"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/project-management/content/team-collaboration/telegram-communication")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary"
+                        )}
+                        onClick={() => setIsSidebarOpen(false)}
                       >
                         Telegram for Team Communication
                       </Link>
@@ -391,7 +466,13 @@ export default function ProjectManagementLayout({
                     <li>
                       <Link
                         href="/docs/project-management/content/team-collaboration/jira-project-management"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/project-management/content/team-collaboration/jira-project-management")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary"
+                        )}
+                        onClick={() => setIsSidebarOpen(false)}
                       >
                         Jira for Project Tracking
                       </Link>

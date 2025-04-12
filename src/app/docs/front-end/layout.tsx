@@ -17,6 +17,15 @@ export default function FrontEndLayout({
   const [isLoading, setIsLoading] = useState(true)
   const pathname = usePathname()
 
+  // Helper function to check if a link is active
+  const isActive = (path: string) => {
+    // Exact match
+    if (pathname === path) return true
+    // Check if it's a parent path (for nested routes)
+    if (path !== "/" && pathname.startsWith(path)) return true
+    return false
+  }
+
   // Effect to prevent scrolling when sidebar is open
   useEffect(() => {
     if (isSidebarOpen) {
@@ -142,7 +151,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/introduction/overview"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/introduction/overview")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Overview
@@ -151,7 +165,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/introduction/core-stack"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/introduction/core-stack")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Core Stack
@@ -165,7 +184,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/content/key-features/app-router"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/content/key-features/app-router")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Modern App Router
@@ -174,7 +198,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/content/key-features/type-safe-development"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/content/key-features/type-safe-development")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Type-Safe Development
@@ -183,7 +212,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/content/key-features/responsive"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/content/key-features/responsive")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Responsive Design
@@ -192,7 +226,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/content/key-features/real-time"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/content/key-features/real-time")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Real-time Capabilities
@@ -206,7 +245,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/content/components-architecture/ui-components"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/content/components-architecture/ui-components")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         UI Components
@@ -215,7 +259,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/content/components-architecture/forms"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/content/components-architecture/forms")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Form Components
@@ -224,7 +273,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/content/components-architecture/dashboard"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/content/components-architecture/dashboard")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Dashboard Components
@@ -233,7 +287,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/content/components-architecture/sections"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/content/components-architecture/sections")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Section Components
@@ -247,7 +306,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/sections/authentication"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/sections/authentication")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Authentication System
@@ -256,7 +320,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/sections/dashboard"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/sections/dashboard")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Dashboard Interface
@@ -265,7 +334,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/sections/chat"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/sections/chat")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Real-time Chat
@@ -274,7 +348,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/sections/payment"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/sections/payment")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Payment Processing
@@ -283,7 +362,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/sections/user-management"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/sections/user-management")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         User Management
@@ -292,7 +376,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/sections/gig-management"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/sections/gig-management")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Gig Management
@@ -301,7 +390,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/sections/analytics"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/sections/analytics")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Analytics
@@ -315,7 +409,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/tools/eslint"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/tools/eslint")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         ESLint
@@ -324,7 +423,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/tools/typescript"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/tools/typescript")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         TypeScript
@@ -333,7 +437,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/tools/tailwind"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/tools/tailwind")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Tailwind CSS
@@ -342,7 +451,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/tools/radix"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/tools/radix")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Radix UI
@@ -351,7 +465,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/tools/framer"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/tools/framer")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Framer Motion
@@ -360,7 +479,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/tools/sonner"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/tools/sonner")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Sonner
@@ -374,7 +498,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/deployment/vercel"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/deployment/vercel")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Vercel Hosting
@@ -383,7 +512,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/deployment/environment"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/deployment/environment")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Environment Configuration
@@ -392,7 +526,12 @@ export default function FrontEndLayout({
                     <li>
                       <Link
                         href="/docs/front-end/deployment/cicd"
-                        className="text-muted-foreground hover:text-primary"
+                        className={cn(
+                          "transition-colors",
+                          isActive("/docs/front-end/deployment/cicd")
+                            ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                            : "text-muted-foreground hover:text-primary",
+                        )}
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         CI/CD Pipeline
@@ -461,7 +600,12 @@ export default function FrontEndLayout({
                   <li>
                     <Link
                       href="/docs/front-end/content/introduction/overview"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/content/introduction/overview")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Overview
                     </Link>
@@ -469,7 +613,12 @@ export default function FrontEndLayout({
                   <li>
                     <Link
                       href="/docs/front-end/content/introduction/core-stack"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/content/introduction/core-stack")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Core Stack
                     </Link>
@@ -482,7 +631,12 @@ export default function FrontEndLayout({
                   <li>
                     <Link
                       href="/docs/front-end/content/key-features/app-router"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/content/key-features/app-router")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Modern App Router
                     </Link>
@@ -490,7 +644,12 @@ export default function FrontEndLayout({
                   <li>
                     <Link
                       href="/docs/front-end/content/key-features/type-safe-development"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/content/key-features/type-safe-development")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Type-Safe Development
                     </Link>
@@ -498,7 +657,12 @@ export default function FrontEndLayout({
                   <li>
                     <Link
                       href="/docs/front-end/content/key-features/responsive"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/content/key-features/responsive")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Responsive Design
                     </Link>
@@ -506,7 +670,12 @@ export default function FrontEndLayout({
                   <li>
                     <Link
                       href="/docs/front-end/content/key-features/real-time-capabilities"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/content/key-features/real-time-capabilities")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Real-time Capabilities
                     </Link>
@@ -517,19 +686,40 @@ export default function FrontEndLayout({
                 <div className="font-medium">Component Architecture</div>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <Link href="/docs/front-end/content/component-architecture/ui-components/ui-components" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/content/component-architecture/ui-components/ui-components"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/content/component-architecture/ui-components/ui-components")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       UI Components
                     </Link>
                   </li>
                   <li>
-                    <Link href="/docs/front-end/components/forms" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/components/forms"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/components/forms")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       Form Components
                     </Link>
                   </li>
                   <li>
                     <Link
                       href="/docs/front-end/components/dashboard"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/components/dashboard")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Dashboard Components
                     </Link>
@@ -537,7 +727,12 @@ export default function FrontEndLayout({
                   <li>
                     <Link
                       href="/docs/front-end/components/sections"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/components/sections")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Section Components
                     </Link>
@@ -550,7 +745,12 @@ export default function FrontEndLayout({
                   <li>
                     <Link
                       href="/docs/front-end/sections/authentication"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/sections/authentication")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Authentication System
                     </Link>
@@ -558,25 +758,51 @@ export default function FrontEndLayout({
                   <li>
                     <Link
                       href="/docs/front-end/sections/dashboard"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/sections/dashboard")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Dashboard Interface
                     </Link>
                   </li>
                   <li>
-                    <Link href="/docs/front-end/sections/chat" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/sections/chat"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/sections/chat")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       Real-time Chat
                     </Link>
                   </li>
                   <li>
-                    <Link href="/docs/front-end/sections/payment" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/sections/payment"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/sections/payment")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       Payment Processing
                     </Link>
                   </li>
                   <li>
                     <Link
                       href="/docs/front-end/sections/user-management"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/sections/user-management")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       User Management
                     </Link>
@@ -584,7 +810,12 @@ export default function FrontEndLayout({
                   <li>
                     <Link
                       href="/docs/front-end/sections/gig-management"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/sections/gig-management")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Gig Management
                     </Link>
@@ -592,7 +823,12 @@ export default function FrontEndLayout({
                   <li>
                     <Link
                       href="/docs/front-end/sections/analytics"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/sections/analytics")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Analytics
                     </Link>
@@ -603,32 +839,80 @@ export default function FrontEndLayout({
                 <div className="font-medium">Development Tools</div>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <Link href="/docs/front-end/tools/eslint" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/tools/eslint"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/tools/eslint")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       ESLint
                     </Link>
                   </li>
                   <li>
-                    <Link href="/docs/front-end/tools/typescript" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/tools/typescript"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/tools/typescript")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       TypeScript
                     </Link>
                   </li>
                   <li>
-                    <Link href="/docs/front-end/tools/tailwind" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/tools/tailwind"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/tools/tailwind")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       Tailwind CSS
                     </Link>
                   </li>
                   <li>
-                    <Link href="/docs/front-end/tools/radix" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/tools/radix"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/tools/radix")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       Radix UI
                     </Link>
                   </li>
                   <li>
-                    <Link href="/docs/front-end/tools/framer" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/tools/framer"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/tools/framer")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       Framer Motion
                     </Link>
                   </li>
                   <li>
-                    <Link href="/docs/front-end/tools/sonner" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/tools/sonner"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/tools/sonner")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       Sonner
                     </Link>
                   </li>
@@ -638,20 +922,41 @@ export default function FrontEndLayout({
                 <div className="font-medium">Deployment</div>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <Link href="/docs/front-end/deployment/vercel" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/deployment/vercel"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/deployment/vercel")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       Vercel Hosting
                     </Link>
                   </li>
                   <li>
                     <Link
                       href="/docs/front-end/deployment/environment"
-                      className="text-muted-foreground hover:text-primary"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/deployment/environment")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
                     >
                       Environment Configuration
                     </Link>
                   </li>
                   <li>
-                    <Link href="/docs/front-end/deployment/cicd" className="text-muted-foreground hover:text-primary">
+                    <Link
+                      href="/docs/front-end/deployment/cicd"
+                      className={cn(
+                        "transition-colors",
+                        isActive("/docs/front-end/deployment/cicd")
+                          ? "text-primary font-medium border-l-2 border-primary pl-2 -ml-2"
+                          : "text-muted-foreground hover:text-primary",
+                      )}
+                    >
                       CI/CD Pipeline
                     </Link>
                   </li>

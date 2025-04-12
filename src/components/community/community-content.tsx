@@ -104,15 +104,15 @@ const teamMembers: TeamMember[] = [
 // Loading skeleton for team member card
 function TeamMemberCardSkeleton() {
   return (
-    <div className="bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden h-full animate-pulse">
-      <div className="aspect-square bg-muted/50" />
+    <div className="rounded-lg overflow-hidden h-full animate-pulse">
+      <div className="aspect-square bg-muted" />
       <div className="p-6 space-y-4">
-        <div className="h-6 bg-muted/50 rounded w-3/4" />
-        <div className="h-4 bg-muted/50 rounded w-1/2" />
+        <div className="h-6 bg-muted rounded w-3/4" />
+        <div className="h-4 bg-muted rounded w-1/2" />
         <div className="space-y-2">
-          <div className="h-4 bg-muted/50 rounded w-full" />
-          <div className="h-4 bg-muted/50 rounded w-5/6" />
-          <div className="h-4 bg-muted/50 rounded w-4/6" />
+          <div className="h-4 bg-muted rounded w-full" />
+          <div className="h-4 bg-muted rounded w-5/6" />
+          <div className="h-4 bg-muted rounded w-4/6" />
         </div>
       </div>
     </div>
@@ -122,27 +122,17 @@ function TeamMemberCardSkeleton() {
 // Loading skeleton for the entire community page
 function CommunityPageSkeleton() {
   return (
-    <div className="community-page">
-      <div className="container mx-auto px-4 py-24 relative z-10">
-        {/* Decorative elements */}
-        <div className="absolute top-16 left-[5%] w-[30vw] h-[30vh] bg-primary/5 rounded-full blur-[100px] -z-10"></div>
-        <div className="absolute top-36 right-[5%] w-[20vw] h-[20vh] bg-primary/5 rounded-full blur-[100px] -z-10"></div>
-
+    <div className="w-full">
+      <div className="container mx-auto px-4 py-24 relative">
         {/* Animated content skeleton */}
-        <div className="h-96 bg-muted/50 rounded-2xl animate-pulse mb-16" />
+        <div className="h-96 bg-muted rounded-lg animate-pulse mb-16" />
 
         {/* Top row skeleton */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-16">
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="w-full transform hover:translate-y-0 transition-all duration-500"
-              style={{
-                animationDelay: `${i * 150}ms`,
-                animation: "fadeInUp 0.6s ease-out forwards",
-                opacity: 0,
-                transform: "translateY(20px)",
-              }}
+              className="w-full"
             >
               <TeamMemberCardSkeleton />
             </div>
@@ -154,13 +144,7 @@ function CommunityPageSkeleton() {
           {[1, 2].map((i) => (
             <div
               key={i}
-              className="w-full md:w-[calc(50%-32px)] max-w-md transform hover:translate-y-0 transition-all duration-500"
-              style={{
-                animationDelay: `${(i + 3) * 150}ms`,
-                animation: "fadeInUp 0.6s ease-out forwards",
-                opacity: 0,
-                transform: "translateY(20px)",
-              }}
+              className="w-full md:w-[calc(50%-32px)] max-w-md"
             >
               <TeamMemberCardSkeleton />
             </div>
