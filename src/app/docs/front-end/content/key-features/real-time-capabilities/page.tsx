@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import ReactMarkdown from "react-markdown";
 import { useState, useEffect } from "react";
@@ -22,7 +22,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function TypeSafeDevelopmentPage() {
+export default function RealTimeCapabilitiesPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [markdownContent, setMarkdownContent] = useState("");
 
@@ -46,227 +46,238 @@ export default function TypeSafeDevelopmentPage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-      setMarkdownContent(`# Type-Safe Development
+      setMarkdownContent(`# Real-time Capabilities
 
-The Riguelni Platform is built with TypeScript and employs various type-safe patterns to ensure code reliability and maintainability. Here are the key type-safe development features and patterns used throughout the project.
+The Riguelni Platform implements robust real-time capabilities to provide instant updates and seamless user interactions. This document outlines the key features and implementation details of our real-time systems.
 
-## Database Type Safety
+## Core Features
 
-We use strongly typed database schemas to ensure type safety when interacting with our Supabase database. This provides compile-time checks for database operations.
+### 1. WebSocket Integration
+We use WebSocket connections to enable real-time communication between clients and servers. This allows for instant updates without polling, providing a more efficient and responsive user experience compared to traditional HTTP requests.
+
+Key aspects of our WebSocket implementation:
+- Bi-directional communication channel
+- Automatic reconnection handling
+- Connection state monitoring
+- Efficient message delivery
+- Secure authentication and authorization
+
+Here's a basic example of setting up a WebSocket subscription:
 
 \`\`\`typescript
-export type Database = {
-  messages: {
-    Row: {
-      attachments: string[] | null
-      content: string
-      conversation_id: string
-      created_at: string | null
-      id: string
-      is_deleted: boolean
-      is_edited: boolean
-      is_read: boolean | null
-      is_system: boolean | null
-      sender_id: string
-      updated_at: string | null
-    }
-    Insert: {
-      attachments?: string[] | null
-      content: string
-      conversation_id: string
-      created_at?: string | null
-      // ... other fields
-    }
-    Update: {
-      attachments?: string[] | null
-      content?: string
-      conversation_id?: string
-      // ... other fields
-    }
-    Relationships: [
+const setupSubscription = async () => {
+  const subscription = supabase
+    .channel('messages')
+    .on(
+      'postgres_changes',
       {
-        foreignKeyName: "messages_conversation_id_fkey"
-        columns: ["conversation_id"]
-        referencedRelation: "conversations"
-        referencedColumns: ["id"]
+        event: '*',
+        schema: 'public',
+        table: 'messages',
+        filter: \`conversation_id=eq.\${currentConversation?.id}\`
+      },
+      (payload) => {
+        if (payload.eventType === 'INSERT') {
+          setMessages(prev => [...prev, payload.new as Message]);
+        }
       }
-      // ... other relationships
-    ]
-  }
-  // ... other tables
-}
+    )
+    .subscribe();
+};
 \`\`\`
 
-## Form Validation with Zod
+### 2. Real-time Messaging
+Our messaging system provides instant message delivery with several advanced features:
 
-We use Zod for runtime type validation and schema definition. This ensures that user input is properly validated and typed.
+- **Optimistic Updates**: Messages appear instantly in the UI while being processed in the background
+- **Read Receipts**: Real-time status updates for message delivery and reading
+- **Typing Indicators**: Live feedback when users are composing messages
+- **Message Synchronization**: Automatic conflict resolution for concurrent updates
+- **Offline Support**: Message queueing and delivery when connection is restored
 
-\`\`\`typescript
-import { z } from "zod";
-
-export const UserSignUpInfoSchema = z
-  .object({
-    username: z
-      .string()
-      .min(3, { message: "Username should be more than 3 characters" })
-      .max(15, { message: "username should be less than 15 characters" })
-      .nonempty("Username is required"),
-    firstName: z.string().nonempty("First name is required"),
-    lastName: z.string().nonempty("Last name is required"),
-    email: z.string().email("Invalid email").nonempty("Email is required"),
-    password: z
-      .string()
-      .trim()
-      .min(8, "Password should be more than 8 characters")
-      .nonempty("Password is required"),
-    confirmPassword: z.string().trim().nonempty("Confirm password is required"),
-  })
-  .refine((data) => /^[a-z0-9_]*$/.test(data.username), {
-    message: "Username should contain only letters, numbers and underscores",
-    path: ["username"],
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
-  });
-
-// Type inference from schema
-export type UserSignUpInfo = z.infer<typeof UserSignUpInfoSchema>;
-\`\`\`
-
-## Type-Safe Components
-
-Our React components are built with TypeScript, ensuring proper prop typing and component composition.
+Here's how we handle optimistic updates in our messaging system:
 
 \`\`\`typescript
-import * as React from "react";
-import { type ClassValue } from "clsx";
-import { cva, type VariantProps } from "class-variance-authority";
-
-// Type-safe variant definitions
-const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-        // ... other variants
-      },
-      size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-);
-
-// Type-safe props interface
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-}
-
-// Type-safe component implementation
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
+const handleSendMessage = async (content: string) => {
+  try {
+    // Optimistic update
+    const optimisticMessage: Message = {
+      id: 'temp-' + Date.now(),
+      content,
+      sender_id: currentUser.id,
+      conversation_id: currentConversation.id,
+      created_at: new Date().toISOString(),
+      is_read: false,
+      is_deleted: false,
+      is_edited: false
+    };
+    
+    setMessages(prev => [...prev, optimisticMessage]);
+    
+    // Send to server
+    const { data, error } = await supabase
+      .from('messages')
+      .insert([{
+        content,
+        conversation_id: currentConversation.id,
+        sender_id: currentUser.id
+      }])
+      .select()
+      .single();
+      
+    if (error) throw error;
+    
+    // Replace optimistic message with server response
+    setMessages(prev => 
+      prev.map(msg => 
+        msg.id === optimisticMessage.id ? data : msg
+      )
     );
+  } catch (error) {
+    console.error('Error sending message:', error);
+    // Handle error and revert optimistic update
   }
-);
-Button.displayName = "Button";
+};
 \`\`\`
 
-## Type-Safe Context Usage
+### 3. Live Updates
+Various components of the platform update in real-time to provide immediate feedback:
 
-We implement type-safe context patterns to ensure proper usage of React Context throughout the application.
+- **Order Status Changes**: Instant updates for order processing and delivery
+- **Notification System**: Real-time alerts for important events
+- **User Presence**: Live status indicators for online/offline users
+- **Activity Feeds**: Instant updates for user activities and system events
+- **Collaborative Features**: Real-time updates for shared resources
+
+## Implementation Details
+
+### 1. Messaging System Architecture
+Our messaging system combines several technologies to provide reliable real-time communication:
+
+- **WebSocket Layer**: Handles real-time connections and message delivery
+- **Database Subscriptions**: Monitors changes in the database for updates
+- **State Management**: Manages local state and synchronizes with server
+- **Caching System**: Improves performance and reduces server load
+- **Error Handling**: Graceful degradation and recovery mechanisms
+
+### 2. State Management
+Real-time updates are managed through a sophisticated state management system:
+
+- **Context Providers**: Global state management for real-time data
+- **Optimistic Updates**: Immediate UI feedback while processing server requests
+- **Conflict Resolution**: Handles concurrent updates and data conflicts
+- **State Reconciliation**: Maintains consistency between client and server
+- **Offline Support**: Queues updates for when connection is restored
+
+Here's how we handle state management in our messaging provider:
 
 \`\`\`typescript
-// Type-safe context hook
-export function useMessaging() {
-  const context = useContext(MessagingContext);
-  if (context === undefined) {
-    throw new Error("useMessaging must be used within a MessagingProvider");
-  }
-  return context;
-}
-
-// Type-safe form field context
-const useFormField = () => {
-  const fieldContext = React.useContext(FormFieldContext);
-  const itemContext = React.useContext(FormItemContext);
-  const { getFieldState, formState } = useFormContext();
-
-  if (!fieldContext) {
-    throw new Error("useFormField should be used within <FormField>");
-  }
-
-  const { id } = itemContext;
-
-  return {
-    id,
-    name: fieldContext.name,
-    formItemId: \`\${id}-form-item\`,
-    formDescriptionId: \`\${id}-form-item-description\`,
-    formMessageId: \`\${id}-form-item-message\`,
-    ...fieldState,
+const MessagingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [conversations, setConversations] = useState<Conversation[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+  
+  // Handle optimistic updates
+  const addMessage = (message: Message) => {
+    setMessages(prev => [...prev, message]);
+  };
+  
+  // Handle server updates
+  const updateMessage = (message: Message) => {
+    setMessages(prev => 
+      prev.map(msg => msg.id === message.id ? message : msg)
+    );
+  };
+  
+  // Handle conflicts
+  const resolveConflict = (local: Message, server: Message) => {
+    if (server.updated_at > local.updated_at) {
+      return server;
+    }
+    return local;
   };
 };
 \`\`\`
 
-## Type-Safe State Management
+### 3. Performance Optimization
+We implement several strategies to ensure optimal performance:
 
-Our Redux store implementation ensures type safety across the entire state management system.
-
-\`\`\`typescript
-import { configureStore } from "@reduxjs/toolkit";
-import isOpenReducer from "@/stores/states/isOpenSlice";
-import signedUpUserReducer from "@/stores/user/signedUpUserSlice";
-import usersReducer from "@/stores/user/userSlice";
-
-const store = configureStore({
-  reducer: {
-    user: usersReducer,
-    signedUpUser: signedUpUserReducer,
-    isOpen: isOpenReducer,
-  },
-  devTools: process.env.NODE_ENV === "development",
-});
-
-// Infer the \`RootState\` type from the store
-export type RootState = ReturnType<typeof store.getState>;
-\`\`\`
+- **Connection Pooling**: Efficient management of WebSocket connections
+- **Message Batching**: Groups related updates to reduce network traffic
+- **Data Compression**: Reduces payload size for faster transmission
+- **Caching Strategies**: Minimizes redundant data transfer
+- **Resource Management**: Efficient handling of system resources
 
 ## Best Practices
 
-- Always define proper types for component props
-- Use TypeScript's strict mode for maximum type safety
-- Leverage type inference when possible
-- Implement proper error boundaries and type guards
-- Use discriminated unions for complex state management
-- Maintain consistent naming conventions for types and interfaces
+1. **Connection Management**
+   - Implement automatic reconnection with exponential backoff
+   - Monitor connection health and state
+   - Handle connection errors gracefully
+   - Implement proper cleanup on disconnection
 
-## Benefits
+2. **Data Synchronization**
+   - Use optimistic updates for better UX
+   - Implement proper conflict resolution
+   - Maintain data consistency across clients
+   - Handle offline scenarios effectively
 
-- Catch errors at compile-time rather than runtime
-- Improved developer experience with better IDE support
-- Self-documenting code through type definitions
-- Safer refactoring and code maintenance
-- Better team collaboration through clear type contracts`);
+3. **Security Considerations**
+   - Implement proper authentication
+   - Use secure WebSocket connections (WSS)
+   - Validate all incoming data
+   - Implement rate limiting and abuse prevention
+
+4. **Performance Optimization**
+   - Minimize message payload size
+   - Implement efficient data structures
+   - Use appropriate caching strategies
+   - Monitor and optimize resource usage
+
+## Testing and Debugging
+
+1. **Connection Testing**
+   - Test under various network conditions
+   - Verify reconnection behavior
+   - Monitor error handling
+   - Measure performance metrics
+
+2. **Data Consistency**
+   - Verify state synchronization
+   - Test conflict resolution
+   - Validate offline behavior
+   - Check recovery procedures
+
+3. **Performance Monitoring**
+   - Track connection latency
+   - Monitor message throughput
+   - Measure resource usage
+   - Analyze error rates
+
+## Implementation Tips
+
+1. **Connection Strategy**
+   - Use WebSocket for real-time updates
+   - Implement fallback mechanisms
+   - Monitor connection health
+   - Handle reconnection gracefully
+
+2. **State Management**
+   - Use optimistic updates
+   - Implement conflict resolution
+   - Maintain data consistency
+   - Handle edge cases
+
+3. **Performance Optimization**
+   - Batch updates when possible
+   - Use efficient data structures
+   - Implement proper caching
+   - Monitor resource usage
+
+## Conclusion
+
+Real-time capabilities are essential for modern web applications. The Riguelni Platform implements these features to provide a seamless and responsive user experience. By following these best practices and implementation strategies, you can ensure reliable and efficient real-time functionality in your applications.`);
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -348,7 +359,7 @@ export type RootState = ReturnType<typeof store.getState>;
                 </DropdownMenu>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbPage>Type-Safe Development</BreadcrumbPage>
+                  <BreadcrumbPage>Real-time Capabilities</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -410,7 +421,7 @@ export type RootState = ReturnType<typeof store.getState>;
                 {/* Navigation buttons */}
                 <div className="flex items-center justify-between mt-20 pt-8 border-t border-border/40">
                   <Link
-                    href="/docs/front-end/content/introduction/core-stack"
+                    href="/docs/front-end/content/key-features/responsive"
                     className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline"
                   >
                     <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
@@ -421,13 +432,13 @@ export type RootState = ReturnType<typeof store.getState>;
                         Previous
                       </span>
                       <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:-translate-x-0.5 transition-all duration-300">
-                        App Router
+                        Responsive Design
                       </span>
                     </div>
                     <span className="absolute inset-0 bg-gradient-to-l from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </Link>
                   <Link
-                    href="/docs/front-end/content/key-features/type-safe"
+                    href="/docs/front-end/content/components-architecture/ui-components"
                     className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline"
                   >
                     <div className="flex flex-col items-end relative z-10">
@@ -435,7 +446,7 @@ export type RootState = ReturnType<typeof store.getState>;
                         Next
                       </span>
                       <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:translate-x-0.5 transition-all duration-300">
-                        Responsive Design
+                        UI Components
                       </span>
                     </div>
                     <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
@@ -454,41 +465,27 @@ export type RootState = ReturnType<typeof store.getState>;
           <nav className="sticky top-[4.5rem] h-[calc(100vh-4.5rem)] overflow-y-auto">
             <div className="space-y-4 pb-8">
               <div className="font-medium">On this page</div>
-              <nav className="space-y-1">
+              <nav className="space-y-2 text-sm">
                 <Link
-                  href="#database-type-safety"
-                  onClick={(e) => handleScroll(e, "database-type-safety")}
+                  href="#real-time-capabilities"
+                  onClick={(e) => handleScroll(e, "real-time-capabilities")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Database Type Safety
+                  Real-time Capabilities
                 </Link>
                 <Link
-                  href="#form-validation-with-zod"
-                  onClick={(e) => handleScroll(e, "form-validation-with-zod")}
+                  href="#core-features"
+                  onClick={(e) => handleScroll(e, "core-features")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Form Validation with Zod
+                  Core Features
                 </Link>
                 <Link
-                  href="#type-safe-components"
-                  onClick={(e) => handleScroll(e, "type-safe-components")}
+                  href="#implementation-details"
+                  onClick={(e) => handleScroll(e, "implementation-details")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Type-Safe Components
-                </Link>
-                <Link
-                  href="#type-safe-context-usage"
-                  onClick={(e) => handleScroll(e, "type-safe-context-usage")}
-                  className="block text-muted-foreground hover:text-primary"
-                >
-                  Type-Safe Context Usage
-                </Link>
-                <Link
-                  href="#type-safe-state-management"
-                  onClick={(e) => handleScroll(e, "type-safe-state-management")}
-                  className="block text-muted-foreground hover:text-primary"
-                >
-                  Type-Safe State Management
+                  Implementation Details
                 </Link>
                 <Link
                   href="#best-practices"
@@ -498,11 +495,18 @@ export type RootState = ReturnType<typeof store.getState>;
                   Best Practices
                 </Link>
                 <Link
-                  href="#benefits"
-                  onClick={(e) => handleScroll(e, "benefits")}
+                  href="#testing-and-debugging"
+                  onClick={(e) => handleScroll(e, "testing-and-debugging")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Benefits
+                  Testing and Debugging
+                </Link>
+                <Link
+                  href="#conclusion"
+                  onClick={(e) => handleScroll(e, "conclusion")}
+                  className="block text-muted-foreground hover:text-primary"
+                >
+                  Conclusion
                 </Link>
               </nav>
             </div>

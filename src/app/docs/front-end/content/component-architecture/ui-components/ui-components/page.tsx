@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import ReactMarkdown from "react-markdown";
 import { useState, useEffect } from "react";
@@ -22,7 +22,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function TypeSafeDevelopmentPage() {
+export default function UIComponentsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [markdownContent, setMarkdownContent] = useState("");
 
@@ -46,113 +46,27 @@ export default function TypeSafeDevelopmentPage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-      setMarkdownContent(`# Type-Safe Development
+      setMarkdownContent(`# UI Components
 
-The Riguelni Platform is built with TypeScript and employs various type-safe patterns to ensure code reliability and maintainability. Here are the key type-safe development features and patterns used throughout the project.
+The Riguelni Platform implements a comprehensive set of UI components built with React and TypeScript. These components are designed to be reusable, accessible, and customizable while maintaining a consistent design system.
 
-## Database Type Safety
+## Core Components
 
-We use strongly typed database schemas to ensure type safety when interacting with our Supabase database. This provides compile-time checks for database operations.
-
-\`\`\`typescript
-export type Database = {
-  messages: {
-    Row: {
-      attachments: string[] | null
-      content: string
-      conversation_id: string
-      created_at: string | null
-      id: string
-      is_deleted: boolean
-      is_edited: boolean
-      is_read: boolean | null
-      is_system: boolean | null
-      sender_id: string
-      updated_at: string | null
-    }
-    Insert: {
-      attachments?: string[] | null
-      content: string
-      conversation_id: string
-      created_at?: string | null
-      // ... other fields
-    }
-    Update: {
-      attachments?: string[] | null
-      content?: string
-      conversation_id?: string
-      // ... other fields
-    }
-    Relationships: [
-      {
-        foreignKeyName: "messages_conversation_id_fkey"
-        columns: ["conversation_id"]
-        referencedRelation: "conversations"
-        referencedColumns: ["id"]
-      }
-      // ... other relationships
-    ]
-  }
-  // ... other tables
-}
-\`\`\`
-
-## Form Validation with Zod
-
-We use Zod for runtime type validation and schema definition. This ensures that user input is properly validated and typed.
+### 1. Button Component
+Our button component is built with Radix UI and provides various styles and sizes:
 
 \`\`\`typescript
-import { z } from "zod";
-
-export const UserSignUpInfoSchema = z
-  .object({
-    username: z
-      .string()
-      .min(3, { message: "Username should be more than 3 characters" })
-      .max(15, { message: "username should be less than 15 characters" })
-      .nonempty("Username is required"),
-    firstName: z.string().nonempty("First name is required"),
-    lastName: z.string().nonempty("Last name is required"),
-    email: z.string().email("Invalid email").nonempty("Email is required"),
-    password: z
-      .string()
-      .trim()
-      .min(8, "Password should be more than 8 characters")
-      .nonempty("Password is required"),
-    confirmPassword: z.string().trim().nonempty("Confirm password is required"),
-  })
-  .refine((data) => /^[a-z0-9_]*$/.test(data.username), {
-    message: "Username should contain only letters, numbers and underscores",
-    path: ["username"],
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
-  });
-
-// Type inference from schema
-export type UserSignUpInfo = z.infer<typeof UserSignUpInfoSchema>;
-\`\`\`
-
-## Type-Safe Components
-
-Our React components are built with TypeScript, ensuring proper prop typing and component composition.
-
-\`\`\`typescript
-import * as React from "react";
-import { type ClassValue } from "clsx";
-import { cva, type VariantProps } from "class-variance-authority";
-
-// Type-safe variant definitions
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors",
   {
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-        // ... other variants
+        destructive: "bg-destructive text-destructive-foreground shadow-sm",
+        outline: "border border-input bg-background shadow-sm",
+        secondary: "bg-secondary text-secondary-foreground shadow-sm",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -167,106 +81,142 @@ const buttonVariants = cva(
     },
   }
 );
-
-// Type-safe props interface
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-}
-
-// Type-safe component implementation
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    );
-  }
-);
-Button.displayName = "Button";
 \`\`\`
 
-## Type-Safe Context Usage
-
-We implement type-safe context patterns to ensure proper usage of React Context throughout the application.
+### 2. Form Components
+Our form system is built on top of React Hook Form and provides a type-safe, accessible form solution:
 
 \`\`\`typescript
-// Type-safe context hook
-export function useMessaging() {
-  const context = useContext(MessagingContext);
-  if (context === undefined) {
-    throw new Error("useMessaging must be used within a MessagingProvider");
-  }
-  return context;
-}
-
-// Type-safe form field context
-const useFormField = () => {
-  const fieldContext = React.useContext(FormFieldContext);
-  const itemContext = React.useContext(FormItemContext);
-  const { getFieldState, formState } = useFormContext();
-
-  if (!fieldContext) {
-    throw new Error("useFormField should be used within <FormField>");
-  }
-
-  const { id } = itemContext;
-
-  return {
-    id,
-    name: fieldContext.name,
-    formItemId: \`\${id}-form-item\`,
-    formDescriptionId: \`\${id}-form-item-description\`,
-    formMessageId: \`\${id}-form-item-message\`,
-    ...fieldState,
-  };
+const FormField = <
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+>({
+  ...props
+}: ControllerProps<TFieldValues, TName>) => {
+  return (
+    <FormFieldContext.Provider value={{ name: props.name }}>
+      <Controller {...props} />
+    </FormFieldContext.Provider>
+  );
 };
 \`\`\`
 
-## Type-Safe State Management
+## Component Categories
 
-Our Redux store implementation ensures type safety across the entire state management system.
+### 1. Layout Components
+- **Card**: Container for content with various styles
+- **Sheet**: Side panel component for mobile navigation
+- **Dialog**: Modal dialog for important interactions
+- **ScrollArea**: Custom scrollable container
 
-\`\`\`typescript
-import { configureStore } from "@reduxjs/toolkit";
-import isOpenReducer from "@/stores/states/isOpenSlice";
-import signedUpUserReducer from "@/stores/user/signedUpUserSlice";
-import usersReducer from "@/stores/user/userSlice";
+### 2. Form Components
+- **Input**: Text input with validation
+- **Select**: Dropdown selection
+- **Checkbox**: Toggle input
+- **RadioGroup**: Radio button group
+- **Textarea**: Multi-line text input
+- **DatePicker**: Date selection component
 
-const store = configureStore({
-  reducer: {
-    user: usersReducer,
-    signedUpUser: signedUpUserReducer,
-    isOpen: isOpenReducer,
-  },
-  devTools: process.env.NODE_ENV === "development",
-});
+### 3. Navigation Components
+- **Breadcrumb**: Navigation hierarchy
+- **Tabs**: Tabbed interface
+- **DropdownMenu**: Context menu
+- **NavbarMenu**: Main navigation
+- **HamburgerMenu**: Mobile navigation
 
-// Infer the \`RootState\` type from the store
-export type RootState = ReturnType<typeof store.getState>;
-\`\`\`
+### 4. Feedback Components
+- **AlertDialog**: Important alerts
+- **Skeleton**: Loading states
+- **Spinner**: Progress indicator
+- **Badge**: Status indicators
+
+### 5. Interactive Components
+- **Carousel**: Image/content slider
+- **Accordion**: Collapsible sections
+- **Popover**: Contextual information
+- **Slider**: Range selection
+- **Switch**: Toggle switch
+
+## Implementation Details
+
+### 1. Component Architecture
+Our components follow a consistent architecture:
+- Built with React and TypeScript
+- Styled with Tailwind CSS
+- Accessible by default
+- Fully customizable
+- Type-safe props
+
+### 2. Styling System
+- Uses Tailwind CSS for styling
+- Implements a consistent design system
+- Supports dark/light mode
+- Responsive by default
+- Customizable through variants
+
+### 3. Accessibility
+- Follows WAI-ARIA guidelines
+- Keyboard navigation support
+- Screen reader compatibility
+- Focus management
+- Color contrast compliance
 
 ## Best Practices
 
-- Always define proper types for component props
-- Use TypeScript's strict mode for maximum type safety
-- Leverage type inference when possible
-- Implement proper error boundaries and type guards
-- Use discriminated unions for complex state management
-- Maintain consistent naming conventions for types and interfaces
+1. **Component Design**
+   - Keep components focused and single-purpose
+   - Use composition over inheritance
+   - Implement proper prop types
+   - Provide sensible defaults
+   - Document component usage
 
-## Benefits
+2. **State Management**
+   - Use controlled components when needed
+   - Implement proper form handling
+   - Manage loading states
+   - Handle errors gracefully
+   - Provide feedback to users
 
-- Catch errors at compile-time rather than runtime
-- Improved developer experience with better IDE support
-- Self-documenting code through type definitions
-- Safer refactoring and code maintenance
-- Better team collaboration through clear type contracts`);
+3. **Performance**
+   - Implement proper memoization
+   - Use lazy loading when appropriate
+   - Optimize re-renders
+   - Minimize bundle size
+   - Use proper code splitting
+
+4. **Testing**
+   - Write unit tests for components
+   - Test accessibility
+   - Verify responsive behavior
+   - Test edge cases
+   - Document test coverage
+
+## Implementation Tips
+
+1. **Component Creation**
+   - Start with a clear purpose
+   - Define the API first
+   - Consider edge cases
+   - Make it reusable
+   - Document thoroughly
+
+2. **Styling**
+   - Use design system tokens
+   - Follow naming conventions
+   - Keep styles maintainable
+   - Support theming
+   - Consider responsive design
+
+3. **Accessibility**
+   - Test with screen readers
+   - Verify keyboard navigation
+   - Check color contrast
+   - Provide proper labels
+   - Handle focus management
+
+## Conclusion
+
+The UI component library in the Riguelni Platform provides a solid foundation for building consistent, accessible, and maintainable user interfaces. By following these best practices and implementation strategies, you can create high-quality components that enhance the user experience.`);
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -340,15 +290,15 @@ export type RootState = ReturnType<typeof store.getState>;
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <BreadcrumbLink href="/docs/front-end/content/key-features/app-router" className="text-sm">
-                        Key Features
+                      <BreadcrumbLink href="/docs/front-end/content/component-architecture/overview" className="text-sm">
+                        Component Architecture
                       </BreadcrumbLink>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem className="text-sm md:text-base">
-                  <BreadcrumbPage>Type-Safe Development</BreadcrumbPage>
+                  <BreadcrumbPage>UI Components</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -410,7 +360,7 @@ export type RootState = ReturnType<typeof store.getState>;
                 {/* Navigation buttons */}
                 <div className="flex items-center justify-between mt-20 pt-8 border-t border-border/40">
                   <Link
-                    href="/docs/front-end/content/introduction/core-stack"
+                    href="/docs/front-end/content/key-features/real-time-capabilities"
                     className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline"
                   >
                     <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
@@ -421,13 +371,13 @@ export type RootState = ReturnType<typeof store.getState>;
                         Previous
                       </span>
                       <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:-translate-x-0.5 transition-all duration-300">
-                        App Router
+                        Real-time Capabilities
                       </span>
                     </div>
                     <span className="absolute inset-0 bg-gradient-to-l from-transparent to-accent/0 group-hover:to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </Link>
                   <Link
-                    href="/docs/front-end/content/key-features/type-safe"
+                    href="/docs/front-end/content/component-architecture/state-management"
                     className="group flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-accent/60 hover:shadow-sm transition-all duration-300 relative overflow-hidden no-underline"
                   >
                     <div className="flex flex-col items-end relative z-10">
@@ -435,7 +385,7 @@ export type RootState = ReturnType<typeof store.getState>;
                         Next
                       </span>
                       <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground group-hover:translate-x-0.5 transition-all duration-300">
-                        Responsive Design
+                        State Management
                       </span>
                     </div>
                     <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
@@ -454,41 +404,34 @@ export type RootState = ReturnType<typeof store.getState>;
           <nav className="sticky top-[4.5rem] h-[calc(100vh-4.5rem)] overflow-y-auto">
             <div className="space-y-4 pb-8">
               <div className="font-medium">On this page</div>
-              <nav className="space-y-1">
+              <nav className="space-y-2 text-sm">
                 <Link
-                  href="#database-type-safety"
-                  onClick={(e) => handleScroll(e, "database-type-safety")}
+                  href="#ui-components"
+                  onClick={(e) => handleScroll(e, "ui-components")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Database Type Safety
+                  UI Components
                 </Link>
                 <Link
-                  href="#form-validation-with-zod"
-                  onClick={(e) => handleScroll(e, "form-validation-with-zod")}
+                  href="#core-components"
+                  onClick={(e) => handleScroll(e, "core-components")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Form Validation with Zod
+                  Core Components
                 </Link>
                 <Link
-                  href="#type-safe-components"
-                  onClick={(e) => handleScroll(e, "type-safe-components")}
+                  href="#component-categories"
+                  onClick={(e) => handleScroll(e, "component-categories")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Type-Safe Components
+                  Component Categories
                 </Link>
                 <Link
-                  href="#type-safe-context-usage"
-                  onClick={(e) => handleScroll(e, "type-safe-context-usage")}
+                  href="#implementation-details"
+                  onClick={(e) => handleScroll(e, "implementation-details")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Type-Safe Context Usage
-                </Link>
-                <Link
-                  href="#type-safe-state-management"
-                  onClick={(e) => handleScroll(e, "type-safe-state-management")}
-                  className="block text-muted-foreground hover:text-primary"
-                >
-                  Type-Safe State Management
+                  Implementation Details
                 </Link>
                 <Link
                   href="#best-practices"
@@ -498,11 +441,18 @@ export type RootState = ReturnType<typeof store.getState>;
                   Best Practices
                 </Link>
                 <Link
-                  href="#benefits"
-                  onClick={(e) => handleScroll(e, "benefits")}
+                  href="#implementation-tips"
+                  onClick={(e) => handleScroll(e, "implementation-tips")}
                   className="block text-muted-foreground hover:text-primary"
                 >
-                  Benefits
+                  Implementation Tips
+                </Link>
+                <Link
+                  href="#conclusion"
+                  onClick={(e) => handleScroll(e, "conclusion")}
+                  className="block text-muted-foreground hover:text-primary"
+                >
+                  Conclusion
                 </Link>
               </nav>
             </div>

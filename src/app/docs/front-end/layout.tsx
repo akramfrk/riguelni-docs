@@ -198,24 +198,6 @@ export default function FrontEndLayout({
                         Real-time Capabilities
                       </Link>
                     </li>
-                    <li>
-                      <Link
-                        href="/docs/front-end/content/key-features/authentication"
-                        className="text-muted-foreground hover:text-primary"
-                        onClick={() => setIsSidebarOpen(false)}
-                      >
-                        Secure Authentication
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/docs/front-end/content/key-features/performance"
-                        className="text-muted-foreground hover:text-primary"
-                        onClick={() => setIsSidebarOpen(false)}
-                      >
-                        Optimized Performance
-                      </Link>
-                    </li>
                   </ul>
                 </div>
                 <div className="space-y-3">
@@ -223,7 +205,7 @@ export default function FrontEndLayout({
                   <ul className="space-y-2 text-sm">
                     <li>
                       <Link
-                        href="/docs/front-end/components/ui"
+                        href="/docs/front-end/content/components-architecture/ui-components"
                         className="text-muted-foreground hover:text-primary"
                         onClick={() => setIsSidebarOpen(false)}
                       >
@@ -232,16 +214,7 @@ export default function FrontEndLayout({
                     </li>
                     <li>
                       <Link
-                        href="/docs/front-end/components/layout"
-                        className="text-muted-foreground hover:text-primary"
-                        onClick={() => setIsSidebarOpen(false)}
-                      >
-                        Layout Components
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/docs/front-end/components/forms"
+                        href="/docs/front-end/content/components-architecture/forms"
                         className="text-muted-foreground hover:text-primary"
                         onClick={() => setIsSidebarOpen(false)}
                       >
@@ -250,7 +223,7 @@ export default function FrontEndLayout({
                     </li>
                     <li>
                       <Link
-                        href="/docs/front-end/components/dashboard"
+                        href="/docs/front-end/content/components-architecture/dashboard"
                         className="text-muted-foreground hover:text-primary"
                         onClick={() => setIsSidebarOpen(false)}
                       >
@@ -259,29 +232,11 @@ export default function FrontEndLayout({
                     </li>
                     <li>
                       <Link
-                        href="/docs/front-end/components/sections"
+                        href="/docs/front-end/content/components-architecture/sections"
                         className="text-muted-foreground hover:text-primary"
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         Section Components
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/docs/front-end/components/mobile"
-                        className="text-muted-foreground hover:text-primary"
-                        onClick={() => setIsSidebarOpen(false)}
-                      >
-                        Mobile Components
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/docs/front-end/components/lego"
-                        className="text-muted-foreground hover:text-primary"
-                        onClick={() => setIsSidebarOpen(false)}
-                      >
-                        Lego Components
                       </Link>
                     </li>
                   </ul>
@@ -443,15 +398,6 @@ export default function FrontEndLayout({
                         CI/CD Pipeline
                       </Link>
                     </li>
-                    <li>
-                      <Link
-                        href="/docs/front-end/deployment/performance"
-                        className="text-muted-foreground hover:text-primary"
-                        onClick={() => setIsSidebarOpen(false)}
-                      >
-                        Performance Optimization
-                      </Link>
-                    </li>
                   </ul>
                 </div>
               </div>
@@ -551,7 +497,7 @@ export default function FrontEndLayout({
                   </li>
                   <li>
                     <Link
-                      href="/docs/front-end/features/responsive"
+                      href="/docs/front-end/content/key-features/responsive"
                       className="text-muted-foreground hover:text-primary"
                     >
                       Responsive Design
@@ -559,26 +505,10 @@ export default function FrontEndLayout({
                   </li>
                   <li>
                     <Link
-                      href="/docs/front-end/features/real-time"
+                      href="/docs/front-end/content/key-features/real-time-capabilities"
                       className="text-muted-foreground hover:text-primary"
                     >
                       Real-time Capabilities
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/docs/front-end/features/authentication"
-                      className="text-muted-foreground hover:text-primary"
-                    >
-                      Secure Authentication
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/docs/front-end/features/performance"
-                      className="text-muted-foreground hover:text-primary"
-                    >
-                      Optimized Performance
                     </Link>
                   </li>
                 </ul>
@@ -587,13 +517,8 @@ export default function FrontEndLayout({
                 <div className="font-medium">Component Architecture</div>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <Link href="/docs/front-end/components/ui" className="text-muted-foreground hover:text-primary">
+                    <Link href="/docs/front-end/content/component-architecture/ui-components/ui-components" className="text-muted-foreground hover:text-primary">
                       UI Components
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/docs/front-end/components/layout" className="text-muted-foreground hover:text-primary">
-                      Layout Components
                     </Link>
                   </li>
                   <li>
@@ -615,16 +540,6 @@ export default function FrontEndLayout({
                       className="text-muted-foreground hover:text-primary"
                     >
                       Section Components
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/docs/front-end/components/mobile" className="text-muted-foreground hover:text-primary">
-                      Mobile Components
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/docs/front-end/components/lego" className="text-muted-foreground hover:text-primary">
-                      Lego Components
                     </Link>
                   </li>
                 </ul>
@@ -738,14 +653,6 @@ export default function FrontEndLayout({
                   <li>
                     <Link href="/docs/front-end/deployment/cicd" className="text-muted-foreground hover:text-primary">
                       CI/CD Pipeline
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/docs/front-end/deployment/performance"
-                      className="text-muted-foreground hover:text-primary"
-                    >
-                      Performance Optimization
                     </Link>
                   </li>
                 </ul>
